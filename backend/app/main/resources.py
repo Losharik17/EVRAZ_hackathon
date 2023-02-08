@@ -1,11 +1,9 @@
 import datetime as dt
-from math import ceil
 
 from flask import jsonify, make_response
 from flask_restful import Resource, reqparse
-from sqlalchemy import or_
 
-from app.models import AcademicPlan, Article, Course, Event, News, Text
+from app.models import Data
 
 
 class TemplateResource(Resource):
@@ -63,60 +61,3 @@ class TemplateListResource(Resource):
 
     def get_number_pages(self, rows):
         return ceil(rows.count() / 6)
-
-
-class NewsResource(TemplateResource):
-    MODEL = News
-
-
-class NewsListResource(TemplateListResource):
-    MODEL = News
-    SORT_KEY = 'date'
-    PAGE_SIZE = 6
-
-
-class EventResource(TemplateResource):
-    MODEL = Event
-
-
-class EventListResource(TemplateListResource):
-    MODEL = Event
-    SORT_KEY = 'start_date'
-    PAGE_SIZE = 8
-    ONLY_ACTUAL = True
-
-    def get_actual(self, events):
-        return events.filter(or_(self.MODEL.start_date >= dt.datetime.now(),
-                                 self.MODEL.end_date >= dt.datetime.now()))
-
-
-class ArticleResource(TemplateResource):
-    MODEL = Article
-
-
-class PlanListResource(TemplateListResource):
-    MODEL = Course
-    SORT_KEY = 'id'
-
-    def get(self):
-        try:
-            rows = self.MODEL.query
-            if self.SORT_KEY:
-                rows = rows.order_by(self.MODEL.__dict__[f'{self.SORT_KEY}'])
-            rows = rows.all()
-
-            return jsonify(dict(array=rows))
-        except:
-            return make_response(jsonify({'message': 'server error'}), 500)
-
-
-class ArticleListResource(TemplateListResource):
-    MODEL = Article
-    SORT_KEY = 'id'
-    PAGE_SIZE = 4
-
-
-class TextResource(Resource):
-    def get(self, name):
-        row = Text.query.filter_by(invisible_title=name).first_or_404()
-        return jsonify(row)
