@@ -1,0 +1,17 @@
+.PageTitle {
+    display: flex;
+    align-items: center;
+    background-color: var(--secondary-bg-color);
+    border-bottom: var(--border);
+    height: var(--page-title-height);
+    padding: 0 10px;
+    position: relative;
+
+    &::before {
+        content: '';
+        padding: 18px;
+        margin-right: 10px;
+        background-color: var(--inverted-primary-color);
+        border-radius: 5px;
+    }
+}

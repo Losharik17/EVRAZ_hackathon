@@ -1,0 +1,23 @@
+:root {
+    --font-family-main: 'Inter';
+
+    // Font size
+    --font-size-s: 0.8rem;
+    --font-size-m: 1rem;
+    --font-size-l: 1.5rem;
+
+    // Font line
+    --font-line-s: 1rem;
+    --font-line-m: 1.7rem;
+    --font-line-l: 2rem;
+
+    // Fonts
+    --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
+    --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
+    --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
+
+    // Properties
+    --navbar-height: 50px;
+    --page-title-height: 50px;
+    --border: 1px solid #ddd;
+}

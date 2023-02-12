@@ -1,0 +1,42 @@
+.Alert {
+    padding: 5px 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.idle {
+    background-color: var(--secondary-bg-color);
+}
+
+.warning {
+    background-color: #ffff06c1;
+}
+
+.info {
+    background-color: #0661ff90;
+}
+
+.critical {
+    background-color: #ff060690;
+}
+
+.start {
+    justify-content: start;
+}
+
+.end {
+    justify-content: end;
+}
+
+.center {
+    justify-content: center;
+}
+
+.spaceBetween {
+    justify-content: space-between;
+}
+
+.spaceAround {
+    justify-content: space-around;
+}

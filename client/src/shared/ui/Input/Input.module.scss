@@ -1,0 +1,14 @@
+input::placeholder {
+    color: var(--secondary-color);
+}
+
+.Input {
+    background-color: var(--inverted-bg-color);
+    color: var(--primary-color);
+    padding: 5px 10px;
+    border: var(--border);
+    border-radius: 5px;
+    font: var(--font-m);
+    max-width: 250px;
+    width: 100%;
+}
