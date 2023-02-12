@@ -6,10 +6,21 @@
 
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
     <script type="text/javascript" charset="utf-8">
-        var socket = io.connect('http://127.0.0.1:5000');
+
+        let socket = io.connect('http://185.87.50.137:5557/');
         socket.on('connect', function () {
-            socket.emit('my response', {data: '789'});
+            socket.emit('my_response', {data: '888'});
+            socket.on("test_data", (data) => {
+                console.log(data);
+            });
+
+            socket.emit('my_response', {data: '789'});
         });
+
+
+        socket.emit('my_response', {data: '1010'});
+
+
     </script>
 </head>
 <body>

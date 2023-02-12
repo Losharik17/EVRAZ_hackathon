@@ -20,7 +20,7 @@ json = FlaskJSON()
 ckeditor = CKEditor()
 babel_ex = BabelEx()
 cors = CORS()
-socketio = SocketIO(cors_allowed_origins="*")
+socketio = SocketIO(cors_allowed_origins='*')
 admin = Admin(name='Сайт Кафедры', template_mode='bootstrap4',
               url='/admin_panel')
 
