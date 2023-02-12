@@ -1,0 +1,21 @@
+.Checkbox {
+    display: none;
+}
+
+.Label {
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 100%;
+    transition: all 0.1s ease-in-out 0s;
+}
+
+.active {
+    background-color: var(--active);
+}
+
+.inactive {
+    background-color: var(--inactive);
+}

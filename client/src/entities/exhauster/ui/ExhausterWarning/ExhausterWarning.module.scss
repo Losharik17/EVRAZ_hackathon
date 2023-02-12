@@ -1,0 +1,14 @@
+.ExhausterWarning {
+    display: flex;
+    justify-content: end;
+}
+
+.Nested {
+    width: 85%;
+    border: var(--border);
+}
+
+.Params {
+    display: flex;
+    gap: 5px;
+}

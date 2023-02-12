@@ -1,0 +1,33 @@
+.Chip {
+    border-radius: 5px;
+    padding: 5px 10px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.small {
+    font: var(--font-s);
+}
+
+.medium {
+    font: var(--font-m);
+}
+
+.large {
+    font: var(--font-l);
+}
+
+.idle {
+    background-color: var(--primary-bg-color);
+    border: var(--border);
+}
+
+.warning {
+    background-color: #f6dbb6;
+    border: 2px solid #fac78f;
+}
+
+.critical {
+    background-color: #ffd9c9;
+    border: 2px solid #e76d59;
+}

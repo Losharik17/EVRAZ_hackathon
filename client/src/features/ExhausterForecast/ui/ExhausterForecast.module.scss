@@ -1,0 +1,19 @@
+.Alert {
+    gap: 20px;
+}
+
+.Forecast {
+    display: grid;
+    place-items: start;
+}
+
+.ForecastBefore {
+    font: var(--font-s);
+    font-weight: 700;
+    color: var(--alternate-bg-color);
+}
+
+.ForecastTitle {
+    font: var(--font-l);
+    font-weight: 500;
+}

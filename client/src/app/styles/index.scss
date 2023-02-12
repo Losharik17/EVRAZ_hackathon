@@ -1,0 +1,56 @@
+@import './reset';
+@import './variables/global';
+@import './themes/dark';
+@import './themes/light';
+
+.app {
+    font: var(--font-m);
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    min-height: 100vh;
+}
+
+.content-page {
+    padding: 10px 20px;
+}
+
+.page {
+    border: var(--border);
+}
+
+.page-wrapper {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: var(--inverted-bg-color);
+    min-height: calc(100vh - var(--navbar-height) - var(--page-title-height) - 20px);
+}
+
+:root {
+    --scrollbarBgColor: #0000000d;
+    --scrollbarThumbColor: #00000026;
+    --scrollbarThumbColorSecond: #ffffffb3;
+    --scrollbarWidth: 10px;
+    --scrollbarBorder: 0 solid var(--scrollbarBgColor);
+    --scrollbarBorderRadius: calc(var(--scrollbarWidth) / 4);
+}
+
+body {
+    scrollbar-width: var(--scrollbarWidth);
+    scrollbar-color: var(--scrollbarThumbColor) var(--scrollbarBgColor);
+}
+
+body::-webkit-scrollbar {
+    width: var(--scrollbarWidth);
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--scrollbarBgColor);
+    border-radius: var(--scrollbarBorderRadius);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbarThumbColor);
+    border-radius: var(--scrollbarBorderRadius);
+    border: var(--scrollbarBorder);
+    background-image: linear-gradient(180deg, var(--scrollbarThumbColor) 0%, var(--scrollbarThumbColorSecond) 90%);
+}

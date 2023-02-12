@@ -1,0 +1,25 @@
+.Arrow {
+    position: relative;
+    padding: 5px;
+    transition: all 0.3s;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 13px;
+        height: 2px;
+        background-color: var(--alternate-bg-color);
+    }
+
+    &::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+
+    &::after {
+        bottom: 0;
+        transform: rotate(-45deg);
+    }
+}
