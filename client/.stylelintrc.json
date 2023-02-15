@@ -18,6 +18,8 @@
 			"height"
 		],
         "string-quotes":"single",
-        "custom-property-pattern":null
+        "custom-property-pattern":null,
+        "selector-combinator-space-after": null,
+        "selector-combinator-space-before": null
     }
 }

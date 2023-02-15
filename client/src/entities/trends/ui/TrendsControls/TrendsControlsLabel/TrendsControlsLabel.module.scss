@@ -1,0 +1,14 @@
+.TrendsControlsLabel {
+    display: flex;
+    gap: 5px;
+
+    &>* {
+        padding-bottom: 5px;
+        color: var(--border-color);
+        border-bottom: 3px solid var(--border-color);
+    }
+
+    &:nth-child(1) {
+        flex-basis: 40%;
+    }
+}
