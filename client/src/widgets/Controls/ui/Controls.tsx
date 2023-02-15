@@ -19,7 +19,7 @@ export const Controls: FC<ControlsProps> = ({ className }) => (
                             <Arrow />
                         </Button>
                     )}
-                    body={<>Агрегат</>}
+                    body={<div>Агрегат</div>}
                     after={<>Значение</>}
                 />
             )}
