@@ -1,2 +1,2 @@
-export { TrendsControls as TrendsControlsWrapper } from './TrendsControls/TrendsControls';
-export { TrendsControlsLabel } from './TrendsControlsLabel/TrendsControlsLabel';
+export { Wrapper as TrendsControlsWrapper } from './Wrapper/Wrapper';
+export { Label as TrendsControlsLabel } from './Label/Label';
