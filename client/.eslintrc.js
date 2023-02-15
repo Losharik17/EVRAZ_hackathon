@@ -60,5 +60,6 @@ module.exports = {
         'object-curly-newline': ['error', { multiline: true }],
         'react/jsx-props-no-spreading': 'warn',
         'jsx-a11y/label-has-associated-control': 'off',
+        'react/jsx-no-useless-fragment': 'off',
     },
 };
