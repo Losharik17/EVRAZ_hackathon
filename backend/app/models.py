@@ -29,7 +29,7 @@ class Eksgauster(db.Model):
 
 
 @dataclass
-class Eksgauster_data(db.Model):
+class EksgausterData(db.Model):
     """Данные эксгаустера"""
     id: int = db.Column(db.Integer, primary_key=True, index=True)
     added_at = db.Column(db.DateTime, default=db.func.now())
@@ -60,7 +60,7 @@ class Rotor(db.Model):
 
 
 @dataclass
-class Rotor_data(db.Model):
+class RotorData(db.Model):
     """Данные ротора"""
 
     id: int = db.Column(db.Integer, primary_key=True, index=True)
@@ -76,7 +76,7 @@ class Bearing(db.Model):
 
 
 @dataclass
-class Bearing_data(db.Model):
+class BearingData(db.Model):
     """Данные подшипника"""
     id: int = db.Column(db.Integer, primary_key=True, index=True)
     added_at = db.Column(db.DateTime, default=db.func.now())
