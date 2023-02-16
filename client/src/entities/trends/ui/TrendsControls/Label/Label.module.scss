@@ -1,20 +1,22 @@
 .Label {
-    gap: 5px;
     display: grid;
+    gap: 3px;
     grid-template-columns: 20px 1fr;
+    color: var(--border-color);
 
     &> :first-child {
-        color: var(--border-color);
+        align-items: center;
         border-bottom: 3px solid var(--border-color);
     }
 }
 
 .LabelBody {
     display: grid;
-    gap: 5px;
-    grid-template-columns: 70% 30%;
+    gap: 3px;
+    grid-template-columns: 66% 1fr;
 
     &>* {
+        padding: 0 5px;
         border-bottom: 3px solid var(--border-color);
     }
 }
