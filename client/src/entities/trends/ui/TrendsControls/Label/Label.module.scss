@@ -1,0 +1,19 @@
+.Label {
+    gap: 5px;
+    display: flex;
+    width: 100%;
+
+    &>* {
+        padding-bottom: 5px;
+        color: var(--border-color);
+        border-bottom: 3px solid var(--border-color);
+    }
+
+    &> :not(:first-child) {
+        padding: 0 5px;
+    }
+
+    &> :nth-child(2) {
+        width: 100%;
+    }
+}
