@@ -11,6 +11,8 @@ interface WrapperProps {
 export const Wrapper: FC<WrapperProps> = ({ label, body, className }) => (
     <div className={classNames(cls.Wrapper, {}, [className])}>
         {label}
-        {body}
+        <div className={cls.WrapperChildren}>
+            {body}
+        </div>
     </div>
 );

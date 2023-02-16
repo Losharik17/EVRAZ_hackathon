@@ -20,16 +20,18 @@ export const Property: FC<PropertyProps> = ({
     isNested,
     className,
 }) => (
-    <div className={classNames('', {}, [className])}>
+    <div className={classNames(cls.PropertyWrapper, {}, [className])}>
         <div className={cls.Property}>
-            {before}
+            <div>{ before }</div>
             <Alert className={cls.PropertyBody}>
-                {title}
-                {value}
+                <div className={cls.PropertyTitle}>{title}</div>
+                {value && <div className={cls.PropertyValue}>{value}</div>}
             </Alert>
         </div>
-        <div>
-            {children}
-        </div>
+        { children && (
+            <div className={cls.PropertyChildren}>
+                {children}
+            </div>
+        )}
     </div>
 );

@@ -16,14 +16,10 @@ export const Label: FC<LabelProps> = ({
     className,
 }) => (
     <div className={classNames(cls.Label, {}, [className])}>
-        { before }
+        <div>{ before }</div>
         <div className={cls.LabelBody}>
             {body}
-            {after && (
-                <span>
-                    {after}
-                </span>
-            )}
+            {after}
         </div>
     </div>
 );
