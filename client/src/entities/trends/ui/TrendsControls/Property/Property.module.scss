@@ -1,0 +1,13 @@
+.Property {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 5px;
+}
+
+.PropertyWrapper {}
+
+.PropertyBody {
+    border: var(--border);
+    width: 100%;
+    padding: 5px;
+}
