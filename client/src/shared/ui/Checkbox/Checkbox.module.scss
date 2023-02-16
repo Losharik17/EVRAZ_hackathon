@@ -3,19 +3,22 @@
 }
 
 .Label {
-    display: block;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     cursor: pointer;
     user-select: none;
-    border-radius: 100%;
+    border-radius: 3px;
+    border: var(--border);
     transition: all 0.1s ease-in-out 0s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .active {
-    background-color: var(--active);
+    background-color: var(--inverted-primary-color);
 }
 
 .inactive {
-    background-color: var(--inactive);
+    background-color: var(--inverted-bg-color);
 }
