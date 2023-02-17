@@ -71,10 +71,6 @@ class Rotor(db.Model):
     end_date = db.Column(db.Date)
     eksgauster_id = db.Column(db.ForeignKey('eksgauster.id'))
 
-    __mapper_args__ = {
-        "order_by": start_date
-    }
-
 
 @dataclass
 class Bearing(db.Model):
