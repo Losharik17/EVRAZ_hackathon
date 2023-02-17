@@ -1,6 +1,8 @@
 import json
-import datetime
+import datetime as dt
+from copy import deepcopy
 from kafka import KafkaConsumer
+from models import Aglomachine
 
 consumer = KafkaConsumer(
     'zsmk-9433-dev-01',
@@ -19,4 +21,4 @@ consumer = KafkaConsumer(
 )
 
 for message in consumer:
-    print(message)
+    ...

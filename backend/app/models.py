@@ -1,6 +1,6 @@
 from dataclasses import dataclass
-
-from app import db
+from flask import jsonify
+from app import db, ma
 
 
 @dataclass
@@ -8,8 +8,6 @@ class Aglomachine(db.Model):
     """Агломашина"""
 
     id: int = db.Column(db.Integer, primary_key=True, index=True)
-    letter_index = db.Column(db.String(2))
-    number = db.Column(db.Integer)
     eksgausters = db.relationship('Eksgauster', backref='aglomachine',
                                   lazy='dynamic')
 
@@ -19,7 +17,7 @@ class Eksgauster(db.Model):
     """Эксгаустер"""
 
     id: int = db.Column(db.Integer, primary_key=True, index=True)
-    number = db.Column(db.Integer)
+    name = db.Column(db.String(8))
     aglomachine_id = db.Column(db.ForeignKey('aglomachine.id'))
 
     # роторы и подшипники
@@ -28,9 +26,6 @@ class Eksgauster(db.Model):
 
     datas = db.relationship('EksgausterData', backref='eksgauster',
                             lazy='dynamic')
-
-
-
 @dataclass
 class EksgausterData(db.Model):
     """Данные эксгаустера"""
@@ -71,21 +66,14 @@ class Rotor(db.Model):
     """Ротор"""
 
     id: int = db.Column(db.Integer, primary_key=True, index=True)
+    rotor_number = db.Column(db.String(4))
+    start_date = db.Column(db.Date)
+    end_date = db.Column(db.Date)
     eksgauster_id = db.Column(db.ForeignKey('eksgauster.id'))
 
-    datas = db.relationship('RotorData', backref='rotor', lazy='dynamic')
-
-
-
-@dataclass
-class RotorData(db.Model):
-    """Данные ротора"""
-
-    id: int = db.Column(db.Integer, primary_key=True, index=True)
-    added_at = db.Column(db.DateTime, default=db.func.now())
-
-    rotor_id = db.Column(db.ForeignKey('rotor.id'))
-
+    __mapper_args__ = {
+        "order_by": start_date
+    }
 
 
 @dataclass
@@ -93,6 +81,7 @@ class Bearing(db.Model):
     """Подшипник"""
 
     id: int = db.Column(db.Integer, primary_key=True, index=True)
+    number = db.Column(db.Integer)
     eksgauster_id = db.Column(db.ForeignKey('eksgauster.id'))
 
     datas = db.relationship('BearingData', backref='bearing',
@@ -111,3 +100,35 @@ class BearingData(db.Model):
     vibration_vertical: float = db.Column(db.Float)
     vibration_horizontal: float = db.Column(db.Float)
     vibration_axial: float = db.Column(db.Float)
+
+
+class RotorSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Rotor
+
+
+class BearingDataSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = BearingData
+        exclude = ('id',)
+
+
+class BearingSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Bearing
+
+    datas = ma.Nested(BearingDataSchema, many=True)
+
+
+class EksgausterDataSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = EksgausterData
+
+
+class EksgausterSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Eksgauster
+
+    bearings = ma.Nested(BearingSchema, many=True)
+    datas = ma.Nested(EksgausterDataSchema, many=True)
+    rotor = ma.Nested(RotorSchema, )
