@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from app import db
+from backend.app import db
 
 
 @dataclass

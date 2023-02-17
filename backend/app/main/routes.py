@@ -1,6 +1,6 @@
-from app import socketio
+from backend.app import socketio
 from flask_socketio import send, emit, Namespace
-from app.main import bp
+from backend.app.main import bp
 
 
 # @socketio.on('my_response')

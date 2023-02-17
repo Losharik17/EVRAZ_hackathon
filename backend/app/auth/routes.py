@@ -3,11 +3,11 @@ from flask import (Flask, current_app, flash, g, redirect, render_template,
 from werkzeug.urls import url_parse
 
 # from app.models import Administrator
-import app
+import backend.app
 # from flask_login import login_user, logout_user, current_user
 # from flask_principal import Principal, Permission, RoleNeed, Identity, identity_changed, identity_loaded, AnonymousIdentity, ActionNeed
 # from app import db, login
-from app.auth import bp
+from backend.app.auth import bp
 
 #
 # @bp.route('/', methods=['GET', 'POST'])

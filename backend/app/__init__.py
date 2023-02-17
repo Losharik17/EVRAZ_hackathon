@@ -12,7 +12,7 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_socketio import SocketIO
 
-from config import Config
+from backend.config import Config
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -40,16 +40,16 @@ def create_app(config_class=Config):
     admin.init_app(app)
     socketio.init_app(app)
 
-    from app.errors import bp as errors_bp
+    from backend.app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
 
-    from app.main import bp as main_bp
+    from backend.app.main import bp as main_bp
     app.register_blueprint(main_bp)
 
     # from app.admin_panel import bp as admin_panel_bp
     # app.register_blueprint(admin_panel_bp, url_prefix='/admin_panel')
 
-    from app.auth import bp as auth_bp
+    from backend.app.auth import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')
 
     if not app.debug and not app.testing:
@@ -69,4 +69,4 @@ def create_app(config_class=Config):
     return app
 
 
-from app import models
+from backend.app import models
