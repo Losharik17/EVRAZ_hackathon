@@ -2,6 +2,7 @@
 @import './variables/global';
 @import './themes/dark';
 @import './themes/light';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .app {
     font: var(--font-m);
@@ -23,7 +24,11 @@
     flex-grow: 1;
     padding: 20px;
     background-color: var(--inverted-bg-color);
-    min-height: calc(100vh - var(--navbar-height) - var(--page-title-height) - 20px);
+    min-height: calc(100vh - var(--navbar-height) - var(--page-title-height) - 25px);
+
+    &>div {
+        min-height: calc(100vh - var(--navbar-height) - var(--page-title-height) - 65px);
+    }
 }
 
 :root {
