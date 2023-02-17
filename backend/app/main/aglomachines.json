@@ -1,0 +1,200 @@
+[
+  {
+    "eksgausters": [
+      {
+        "bearings": [
+          {
+            "datas": [],
+            "number": 8
+          },
+          {
+            "datas": [],
+            "number": 7
+          },
+          {
+            "datas": [
+              {
+                "added_at": "2022-12-25T00:01:00",
+                "id": 2,
+                "temperature": 5.2,
+                "vibration_axial": 1.1,
+                "vibration_horizontal": 0.9,
+                "vibration_vertical": 1.5
+              },
+              {
+                "added_at": "2022-12-25T00:02:00",
+                "id": 1,
+                "temperature": 5.9,
+                "vibration_axial": 1.3,
+                "vibration_horizontal": 0.5,
+                "vibration_vertical": 1.2
+              }
+            ],
+            "number": 1
+          },
+          {
+            "datas": [
+              {
+                "added_at": "2022-12-25T00:01:00",
+                "id": 3,
+                "temperature": 4.1,
+                "vibration_axial": 0.7,
+                "vibration_horizontal": 1.2,
+                "vibration_vertical": 1.1
+              }
+            ],
+            "number": 2
+          },
+          {
+            "datas": [],
+            "number": 3
+          },
+          {
+            "datas": [],
+            "number": 4
+          },
+          {
+            "datas": [],
+            "number": 5
+          },
+          {
+            "datas": [],
+            "number": 6
+          },
+          {
+            "datas": [],
+            "number": 9
+          }
+        ],
+        "datas": [
+          {
+            "added_at": "2023-02-17T14:56:52",
+            "amperage": 6,
+            "gas_valve_closed": 1,
+            "gas_valve_open": 1,
+            "gas_valve_position": 7,
+            "id": 2,
+            "motor_amperage": 7,
+            "oil_level": {
+              "value": '',
+              "state": '',
+            },
+            "oil_pressure": 5,
+            "oil_temperature_after": 7,
+            "oil_temperature_before": 7,
+            "rotor_voltage": 7,
+            "starter_voltage": 7,
+            "temperature_before": 7,
+            "underpressure_before": 7,
+            "water_temperature_after": 7,
+            "water_temperature_before": 7,
+            "work": 0
+          },
+          {
+            "added_at": "2023-02-17T14:57:55",
+            "amperage": 5,
+            "gas_valve_closed": 8,
+            "gas_valve_open": 8,
+            "gas_valve_position": 8,
+            "id": 3,
+            "motor_amperage": 8,
+            "oil_level": 75,
+            "oil_pressure": 6,
+            "oil_temperature_after": 8,
+            "oil_temperature_before": 8,
+            "rotor_voltage": 8,
+            "starter_voltage": 8,
+            "temperature_before": 7,
+            "underpressure_before": 8,
+            "water_temperature_after": 8,
+            "water_temperature_before": 8,
+            "work": 0
+          }
+        ],
+        "id": 1,
+        "name": "У-171"
+      },
+      {
+        "bearings": [
+          {
+            "datas": [],
+            "number": 1
+          },
+          {
+            "datas": [],
+            "number": 2
+          },
+          {
+            "datas": [],
+            "number": 7
+          },
+          {
+            "datas": [],
+            "number": 8
+          },
+          {
+            "datas": [],
+            "number": 3
+          },
+          {
+            "datas": [],
+            "number": 4
+          },
+          {
+            "datas": [],
+            "number": 5
+          },
+          {
+            "datas": [],
+            "number": 6
+          },
+          {
+            "datas": [],
+            "number": 9
+          }
+        ],
+        "datas": [],
+        "id": 2,
+        "name": "У-172"
+      }
+    ],
+    "id": 1,
+    "number": 1
+  },
+  {
+    "eksgausters": [
+      {
+        "bearings": [],
+        "datas": [],
+        "id": 4,
+        "name": "Ф-172"
+      },
+      {
+        "bearings": [],
+        "datas": [],
+        "id": 3,
+        "name": "Ф-171"
+      }
+    ],
+    "id": 2,
+    "number": 2
+  },
+  {
+    "eksgausters": [
+      {
+        "bearings": [],
+        "datas": [],
+        "id": 5,
+        "name": "Х-171"
+      },
+      {
+        "bearings": [],
+        "datas": [],
+        "id": 6,
+        "name": "Х-172"
+      }
+    ],
+    "id": 3,
+    "number": 3
+  }
+]

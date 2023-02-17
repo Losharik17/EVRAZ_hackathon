@@ -11,6 +11,7 @@ class Config(object):
     password = 'tMAwHWP54qPQJ6ha'
     database = 'EVRAZ_hackathon'
 
+    SQLALCHEMY_ECHO = False
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or (
         f"postgresql://{username}:{password}@localhost:5432/{database}"
@@ -20,21 +21,3 @@ class Config(object):
     FLASK_ADMIN_SWATCH = 'LUX'
     BABEL_DEFAULT_LOCALE = 'ru'
     CKEDITOR_LANGUAGE = 'ru'
-
-
-class ProductionConfig(Config):
-    DEBUG = False
-
-
-class StagingConfig(Config):
-    DEVELOPMENT = True
-    DEBUG = True
-
-
-class DevelopmentConfig(Config):
-    DEVELOPMENT = True
-    DEBUG = True
-
-
-class TestingConfig(Config):
-    TESTING = True

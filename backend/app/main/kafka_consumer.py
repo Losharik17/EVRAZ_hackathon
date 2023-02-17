@@ -1,6 +1,7 @@
-import json
 import datetime as dt
+import json
 from copy import deepcopy
+
 from kafka import KafkaConsumer
 from models import Aglomachine
 
