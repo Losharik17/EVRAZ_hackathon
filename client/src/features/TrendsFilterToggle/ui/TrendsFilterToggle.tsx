@@ -1,5 +1,5 @@
-import { FC, useState } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { useTrendsActions, useTrendsSelector } from 'entities/trends/model';
+import { FC, useEffect, useState } from 'react';
 import { Checkbox } from 'shared/ui';
 import cls from './TrendsFilterToggle.module.scss';
 
@@ -12,17 +12,29 @@ export const TrendsFilterToggle: FC<TrendsFilterToggleProps> = ({
     name,
     className,
 }) => {
-    const [isChecked, setIsChecked] = useState(false);
+    const { addFilter, removeFilter, filter } = useTrendsActions();
+    const filters = useTrendsSelector((state) => state.trends.filters);
+    const currentFilter = filters.filter((filterName) => filterName === name)[0];
+    const isCurrent = currentFilter !== undefined;
+    const [isChecked, setIsChecked] = useState<boolean>(isCurrent);
 
     const onToggle = () => {
+        if (isChecked) {
+            removeFilter(name);
+            filter(filters);
+        } else {
+            addFilter(name);
+            filter(filters);
+        }
         setIsChecked((prev) => !prev);
     };
 
     return (
         <Checkbox
             label={name}
-            onClick={onToggle}
+            toggleChecked={onToggle}
             isChecked={isChecked}
+            className={className}
         />
     );
 };

@@ -1,17 +1,25 @@
-.PageTitle {
+.PageTitleWrapper {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background-color: var(--secondary-bg-color);
     border-bottom: var(--border);
     height: var(--page-title-height);
     padding: 0 10px;
     position: relative;
+}
 
-    &::before {
-        content: '';
-        padding: 18px;
-        margin-right: 10px;
+.PageTitle {
+    display: flex;
+    gap: 5px;
+
+    button {
+        cursor: auto;
+        align-items: center;
+        justify-content: center;
         background-color: var(--inverted-primary-color);
-        border-radius: 5px;
+        padding: 5px;
+        width: 26px;
+        height: 26px;
     }
 }

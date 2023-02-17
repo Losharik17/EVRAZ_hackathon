@@ -13,5 +13,5 @@ export const buildPlugins = ({ paths, isDev }: BuildOptions): webpack.WebpackPlu
     new webpack.ProgressPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({ IS_DEV: JSON.stringify(isDev) }),
-    new ReactRefreshWebpackPlugin(),
+    new ReactRefreshWebpackPlugin({ overlay: false }),
 ];
