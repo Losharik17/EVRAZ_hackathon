@@ -7,5 +7,5 @@ interface ArrowProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const Arrow: FC<ArrowProps> = ({ className, ...props }) => (
-    <div className={classNames(cls.Arrow, {}, [className])} {...props} />
+    <div className={classNames(cls.Arrow, {}, [className])} {...props}>{'>'}</div>
 );

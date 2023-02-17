@@ -1,19 +1,22 @@
 .Label {
-    gap: 5px;
-    display: flex;
-    width: 100%;
+    display: grid;
+    gap: 3px;
+    grid-template-columns: 20px 1fr;
+    color: var(--border-color);
 
-    &>* {
-        padding-bottom: 5px;
-        color: var(--border-color);
+    &> :first-child {
+        align-items: center;
         border-bottom: 3px solid var(--border-color);
     }
+}
 
-    &> :not(:first-child) {
+.LabelBody {
+    display: grid;
+    gap: 3px;
+    grid-template-columns: 66% 1fr;
+
+    &>* {
         padding: 0 5px;
-    }
-
-    &> :nth-child(2) {
-        width: 100%;
+        border-bottom: 3px solid var(--border-color);
     }
 }

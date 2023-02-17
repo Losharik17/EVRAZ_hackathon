@@ -1,0 +1,41 @@
+.PropertyWrapper {
+    display: flex;
+    flex-direction: column;
+
+    &> :not(:last-child) {
+        margin-bottom: 4px;
+    }
+}
+
+.Property {
+    display: grid;
+    align-items: center;
+    gap: 3px;
+    grid-template-columns: 20px 1fr;
+
+    &> :first-child {
+        align-items: center;
+    }
+}
+
+.PropertyBody {
+    display: grid;
+    gap: 3px;
+    align-items: center;
+    padding: 5px;
+    grid-template-columns: 66% 1fr;
+    border: var(--border);
+}
+
+.PropertyChildren {
+    width: 92.5%;
+    align-self: flex-end;
+    display: grid;
+    gap: 4px;
+}
+
+.PropertyTitle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}

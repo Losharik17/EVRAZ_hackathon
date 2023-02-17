@@ -1,4 +1,5 @@
 import { FC, HTMLAttributes, useState } from 'react';
+import { Mark } from 'shared/assets';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Checkbox.module.scss';
 
@@ -33,8 +34,10 @@ export const Checkbox: FC<CheckboxProps> = ({
         />
         <label
             htmlFor={label}
-            className={classNames(cls.Label, {}, [cls[theme]])}
+            className={classNames(cls.Label, {}, [isChecked ? cls.active : cls.inactive])}
             {...props}
-        />
+        >
+            <Mark />
+        </label>
     </>
 );
