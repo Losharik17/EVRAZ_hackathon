@@ -1,5 +1,5 @@
-import { FC, HTMLAttributes, useState } from 'react';
-import { Mark } from 'shared/assets';
+import { FC, HTMLAttributes } from 'react';
+import { MarkIcon } from 'shared/assets';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Checkbox.module.scss';
 
@@ -15,12 +15,11 @@ interface CheckboxProps extends HTMLAttributes<HTMLLabelElement> {
 }
 
 export const Checkbox: FC<CheckboxProps> = ({
-    className,
     label,
     isChecked,
     toggleChecked,
     disabled = false,
-    theme = 'inactive',
+    className,
     ...props
 }) => (
     <>
@@ -28,6 +27,7 @@ export const Checkbox: FC<CheckboxProps> = ({
             id={label}
             type='checkbox'
             disabled={disabled}
+            value={`${isChecked}`}
             checked={isChecked}
             onChange={toggleChecked}
             className={classNames(cls.Checkbox, {}, [className])}
@@ -37,7 +37,7 @@ export const Checkbox: FC<CheckboxProps> = ({
             className={classNames(cls.Label, {}, [isChecked ? cls.active : cls.inactive])}
             {...props}
         >
-            <Mark />
+            <MarkIcon />
         </label>
     </>
 );
