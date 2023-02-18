@@ -16,3 +16,15 @@
         background-color: #28f8;
     }
 }
+
+.Span {
+    padding: 2px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--border);
+    background-color: var(--inverted-bg-color);
+    font-weight: 600;
+    color: var(--dark-bg-color);
+}
