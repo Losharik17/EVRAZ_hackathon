@@ -6,20 +6,9 @@ from backend.app import create_app
 with create_app().app_context():
     tags = []
     id = 2
-    for tag in EksgausterData.__dict__:
-        tags.append(tag)
+    for tag in EksgausterData.__table__.columns:
+        tags.append(tag.name)
     tags.remove('id')
-    tags.remove('__module__')
-    tags.remove('__doc__')
-    tags.remove('filed_titles')
-    tags.remove('components')
-    tags.remove('to_dict')
-    tags.remove('__tablename__')
-    tags.remove('_sa_class_manager')
-    tags.remove('__table__')
-    tags.remove('__init__')
-    tags.remove('__mapper__')
-    print(tags)
     index = range(0, EksgausterData.query.filter_by(eksgauster_id=id).count(), 1)
     multi_iter1 = {'index': index}
     for field in tags:
