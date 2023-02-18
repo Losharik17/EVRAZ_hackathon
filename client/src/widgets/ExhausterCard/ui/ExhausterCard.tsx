@@ -19,25 +19,38 @@ import {
     Input,
 } from 'shared/ui';
 import { Exhauster, RadioIcon, ThermometerIcon, WaterIcon } from 'shared/assets';
+import { Exhauster as IExhauster } from 'shared/api/models';
 
 interface ExhausterCardProps {
     className?: string;
+    exhauster: IExhauster;
 }
 
-const status = 'critical';
-
-export const ExhausterCard: FC<ExhausterCardProps> = ({ className }) => (
+export const ExhausterCard: FC<ExhausterCardProps> = ({
+    className,
+    exhauster: {
+        id,
+        name,
+        rotor,
+        bearings,
+        datas,
+        current: {
+            eksgauster_operation: { work },
+            oil: { oil_level },
+        },
+    },
+}) => (
     <Card className={className}>
         <ExhausterRow
-            before={<ExhausterState title='123' />}
-            title='Эксгаустер'
+            before={<ExhausterState state={work.value.number} />}
+            title={`Эксгаустер ${name}`}
             after={(
-                <ExhausterLink to={RoutePath.Эксгаустер} />
+                <ExhausterLink to={`${RoutePath.Эксгаустер}/${id}`} />
             )}
         />
         <ExhausterBody>
             <RotorTitle
-                rotorTitle='Ротор № 37'
+                rotorTitle={`Ротор №${rotor.number}`}
                 rotorDate='25.02.2023'
                 after={<>Изменить</>}
             />
@@ -57,28 +70,41 @@ export const ExhausterCard: FC<ExhausterCardProps> = ({ className }) => (
             <ExhausterInfo
                 title='Предупреждения'
                 description={(
-                    <ExhausterWarning
-                        title='№5 п-к'
-                        params={(
-                            <>
-                                <WarningIndicator
-                                    variant='critical'
-                                    title='T'
-                                    Icon={ThermometerIcon}
-                                />
-                                <WarningIndicator
-                                    variant='idle'
-                                    title='V'
-                                    Icon={RadioIcon}
-                                />
-                                <WarningIndicator
-                                    variant='warning'
-                                    title='L'
-                                    Icon={WaterIcon}
-                                />
-                            </>
+                    <>
+                        {(bearings.map(({
+                            id,
+                            number,
+                            current: { parameters },
+                        }) => (
+                            <ExhausterWarning
+                                key={id}
+                                title={`№${number} п-к`}
+                                params={parameters.map(({ value, title }) => (
+                                    value.status !== 'idle'
+                                        ? (
+                                            <WarningIndicator
+                                                key={title}
+                                                title={title}
+                                                variant={value.status}
+                                                Icon={title === 'T' ? ThermometerIcon : RadioIcon}
+                                            />
+                                        ) : null
+                                ))}
+                            />
+                        )))}
+                        {oil_level.value.status !== 'idle' && (
+                            <ExhausterWarning
+                                title={oil_level.title}
+                                params={(
+                                    <WarningIndicator
+                                        variant={oil_level.value.status}
+                                        title={oil_level.title}
+                                        Icon={WaterIcon}
+                                    />
+                                )}
+                            />
                         )}
-                    />
+                    </>
                 )}
             />
             <Divider />
@@ -86,26 +112,39 @@ export const ExhausterCard: FC<ExhausterCardProps> = ({ className }) => (
                 title='Все подшипники'
                 description={(
                     <>
-                        <ExhausterWarning
-                            title='№7 п-к'
-                            params={(
-                                <WarningIndicator
-                                    variant='warning'
-                                    title='L'
-                                    Icon={WaterIcon}
-                                />
-                            )}
-                        />
-                        <ExhausterWarning
-                            title='№8 п-к'
-                            params={(
-                                <WarningIndicator
-                                    variant='critical'
-                                    title='T'
-                                    Icon={ThermometerIcon}
-                                />
-                            )}
-                        />
+                        {(bearings.map(({
+                            id,
+                            number,
+                            current: { parameters },
+                        }) => (
+                            <ExhausterWarning
+                                key={id}
+                                title={`№${number} п-к`}
+                                params={parameters.map(({ value, title }) => (
+                                    value.status === 'idle'
+                                        ? (
+                                            <WarningIndicator
+                                                key={title}
+                                                title={title}
+                                                variant={value.status}
+                                                Icon={title === 'T' ? ThermometerIcon : RadioIcon}
+                                            />
+                                        ) : null
+                                ))}
+                            />
+                        )))}
+                        {oil_level.value.status === 'idle' && (
+                            <ExhausterWarning
+                                title={oil_level.title}
+                                params={(
+                                    <WarningIndicator
+                                        variant={oil_level.value.status}
+                                        title={oil_level.title}
+                                        Icon={WaterIcon}
+                                    />
+                                )}
+                            />
+                        )}
                     </>
                 )}
             />
