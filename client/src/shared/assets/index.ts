@@ -4,7 +4,7 @@ import arrow from './icons/arrow.svg';
 import mark from './icons/mark.svg';
 import file from './icons/file.svg';
 import scheme from './images/exhauster.svg';
-import brush from './icons/brush.svg';
+import brush from './icons/custombrush.svg';
 
 export const Exhauster = exhauster;
 export const EvrazIcon = evraz;
