@@ -8,8 +8,8 @@ import cls from './TrendPage.module.scss';
 interface TrendPageProps {
     className?: string;
 }
-// const filters = useTrendsSelector((state) => state.trends.filters);
 // const setShown = 'uv';
+// const filters = useTrendsSelector((state) => state.trends.filters);
 const TrendPage: FC<TrendPageProps> = ({ className }) => (
     <div className={classNames(cls.TrendPage, {}, [className])}>
         <Controls />

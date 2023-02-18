@@ -13,7 +13,7 @@ export const TrendsFilterToggle: FC<TrendsFilterToggleProps> = ({
     className,
 }) => {
     const { addFilter, removeFilter, filter } = useTrendsActions();
-    const filters = useTrendsSelector((state) => state.trends.filters);
+    const filters = useTrendsSelector((state) => state.filter.filters);
     const currentFilter = filters.filter((filterName) => filterName === name)[0];
     const isCurrent = currentFilter !== undefined;
     const [isChecked, setIsChecked] = useState<boolean>(isCurrent);
