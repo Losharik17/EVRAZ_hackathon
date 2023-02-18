@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import {
     ExhausterBody,
     ExhausterProperty,
@@ -10,10 +11,14 @@ import { ExhausterInfo } from 'features/ExhausterInfo';
 import { ExhausterLink } from 'features/ExhausterLink';
 import { ExhausterState } from 'features/ExhausterState';
 import { WarningIndicator } from 'features/WarningIndicator';
-import { FC } from 'react';
-import { Exhauster, RadioIcon, ThermometerIcon, WaterIcon } from 'shared/assets';
+
 import { RoutePath } from 'shared/config';
-import { Button, Card, Chip, Divider, Input } from 'shared/ui';
+import {
+    Card,
+    Divider,
+    Input,
+} from 'shared/ui';
+import { Exhauster, RadioIcon, ThermometerIcon, WaterIcon } from 'shared/assets';
 
 interface ExhausterCardProps {
     className?: string;
@@ -56,9 +61,21 @@ export const ExhausterCard: FC<ExhausterCardProps> = ({ className }) => (
                         title='№5 п-к'
                         params={(
                             <>
-                                <WarningIndicator variant='critical' title='T' Icon={ThermometerIcon} />
-                                <WarningIndicator variant='idle' title='V' Icon={RadioIcon} />
-                                <WarningIndicator variant='warning' title='L' Icon={WaterIcon} />
+                                <WarningIndicator
+                                    variant='critical'
+                                    title='T'
+                                    Icon={ThermometerIcon}
+                                />
+                                <WarningIndicator
+                                    variant='idle'
+                                    title='V'
+                                    Icon={RadioIcon}
+                                />
+                                <WarningIndicator
+                                    variant='warning'
+                                    title='L'
+                                    Icon={WaterIcon}
+                                />
                             </>
                         )}
                     />
@@ -72,13 +89,21 @@ export const ExhausterCard: FC<ExhausterCardProps> = ({ className }) => (
                         <ExhausterWarning
                             title='№7 п-к'
                             params={(
-                                <WarningIndicator variant='warning' title='L' Icon={WaterIcon} />
+                                <WarningIndicator
+                                    variant='warning'
+                                    title='L'
+                                    Icon={WaterIcon}
+                                />
                             )}
                         />
                         <ExhausterWarning
                             title='№8 п-к'
                             params={(
-                                <WarningIndicator variant='critical' title='T' Icon={ThermometerIcon} />
+                                <WarningIndicator
+                                    variant='critical'
+                                    title='T'
+                                    Icon={ThermometerIcon}
+                                />
                             )}
                         />
                     </>

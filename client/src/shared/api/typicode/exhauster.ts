@@ -52,9 +52,9 @@ export interface Manifold {
 
 export interface Operations {
     work: Property;
-    motor_air_temperature_1: Property;
-    motor_air_temperature_2: Property;
-    motor_air_temperature_3: Property;
+    motor_air_temperature_1?: Property;
+    motor_air_temperature_2?: Property;
+    motor_air_temperature_3?: Property;
     temperature_front_eksgauster: Property;
     vacuum_front_eksgauster: Property;
 }
