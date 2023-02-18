@@ -3,6 +3,7 @@ import { FC, ReactNode, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/ui';
 import { Arrow } from 'shared/ui/Icons';
+import { ExhausterLinkIcon } from 'shared/assets';
 import cls from './ExhausterInfo.module.scss';
 
 type PropertyTitle = 'Все подшипники' | 'Предупреждения' | 'Последняя замена ротора'
@@ -23,7 +24,7 @@ export const ExhausterInfo: FC<ExhausterInfoProps> = ({ title, description }) =>
         <ExhausterProperty
             before={(
                 <Button onClick={toggleOpen}>
-                    <Arrow style={{ transform: isOpened ? 'rotate(90deg)' : '' }} />
+                    <ExhausterLinkIcon style={{ transform: isOpened ? 'rotate(90deg)' : '' }} />
                 </Button>
             )}
             title={title}
