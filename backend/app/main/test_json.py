@@ -89,6 +89,10 @@ def eksgauster_to_json():
 
     x = Eksgauster.where(
         datas___added_at=dat,
-    ).first()
+        bearings___datas___added_at=dat,
+        id=1
+    ).all()
 
-    print(x.to_dict())
+    with open('example_eksgauster.json', 'w') as json_file:
+        json_file.write(json.dumps(x[0].to_dict(), indent=2))
+    # print(x.to_dict())

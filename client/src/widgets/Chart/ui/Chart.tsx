@@ -12,6 +12,7 @@ import {
     YAxis,
 } from 'recharts';
 import { ChartTooltip } from 'entities/chart/ui';
+import { BrushTraveller } from 'shared/assets';
 import cls from './Chart.module.scss';
 
 interface ChartProps {
@@ -41,43 +42,74 @@ const data = [
     { name: '04:45', uv: 100, pv: 200 },
 ];
 
-export const Chart: FC<ChartProps> = ({ className }) => (
-    <div className={classNames(cls.Chart, {}, [className])}>
-        <ResponsiveContainer width='100%' height='100%'>
-            <LineChart syncMethod='index' syncId={30} data={data}>
-                <XAxis dataKey='name' interval={3} padding={{ left: 30 }} />
-                <YAxis padding={{ top: 30 }} />
-                <Legend verticalAlign='top' iconType='diamond' />
-                <Tooltip
-                    cursor={{ stroke: '#9B9B9C' }}
-                    content={(
-                        <ChartTooltip />
-                    )}
-                />
-                {/* <Brush
-                        // traveller={<MarkIcon />}
+export const Chart: FC<ChartProps> = ({ className }) => {
+    const array: any = [];
+    return (
+        <div className={classNames(cls.Chart, {}, [className])}>
+            <ResponsiveContainer
+                width='100%'
+                height='100%'
+                debounce={2}
+            >
+                <LineChart data={data}>
+                    <XAxis
+                        dataKey='name'
+                        interval={3}
+                        padding={{ left: 30 }}
+                    />
+                    <YAxis
+                        // typeof Axiss
+                        type='category'
+                        padding={{ top: 30 }}
+                    />
+                    {/* Compeleted */}
+                    <Legend
+                        verticalAlign='top'
+                        iconType='diamond'
+                    />
+                    {/* TODO: Change data display */}
+                    <Tooltip
+                        // The offset size between the position of tooltip and the active position.
+                        offset={5}
+                        cursor={{ stroke: '#9B9B9C' }}
+                        // content={(
+                        //     <ChartTooltip />
+                        // )}
+                        // Sort items in payload
+                        // itemSorter={() => {}}
+                    />
+                    <Brush
+                        traveller={(<BrushTraveller style={{ display: 'flex' }} />)}
                         data={data}
                         dataKey='name'
-                        travellerWidth={9}
-                    /> */}
-                <Brush
-                    dataKey='pv'
-                    travellerWidth={9}
-                />
-
-                <CartesianGrid stroke='#eaeaea' />
-                <Line
-                    type='linear'
-                    dot={{ stroke: 'red', strokeWidth: 2 }}
-                    activeDot={{ stroke: 'red', strokeWidth: 4 }}
-                    // label={{ fill: 'red', fontSize: 20 }}
-                    points={[{ x: 12, y: 12, value: 240 }]}
-                    dataKey='uv'
-                    strokeWidth='2px'
-                    stroke='#8884d8'
-                />
-                <Line type='linear' dataKey='pv' strokeWidth='2px' stroke='#ED7817' />
-            </LineChart>
-        </ResponsiveContainer>
-    </div>
-);
+                        travellerWidth={10}
+                    />
+                    {/* Done */}
+                    <CartesianGrid stroke='#eaeaea' />
+                    {/* TODO: Connect with server */}
+                    {array.map(({ color, key, name }: any) => (
+                        <Line
+                            key={name}
+                            // Set data key for chart
+                            name={name}
+                            dataKey={`${Math.random()}`}
+                            type='linear'
+                            legendType='plainline'
+                            // Change active dot, optional
+                            activeDot={{ stroke: 'red', strokeWidth: 4 }}
+                            // Set color
+                            stroke={`${Math.random()}`}
+                            strokeWidth='2px'
+                            // Hide chart with condition
+                            hide
+                            points={[{ x: 12, y: 12, value: 240 }]}
+                            // unit
+                        />
+                    ))}
+                    <Line type='monotone' dataKey='uv' stroke='red' />
+                    <Line dataKey='pv' stroke='yellow' />
+                </LineChart>
+            </ResponsiveContainer>
+        </div>
+    );
+};
