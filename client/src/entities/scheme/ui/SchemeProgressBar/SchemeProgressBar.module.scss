@@ -1,0 +1,40 @@
+.SchemeProgressBar {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.Progress {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.DataContainer {
+    transition: background 1s ease;
+    height: 100%;
+    font: inherit;
+    z-index: 20;
+}
+
+.Title {
+    // font-style: normal;
+    // font-weight: 500;
+    // font-size: 13px;
+    // line-height: 15px;
+    // color: #262626;
+    font: inherit;
+    line-height: inherit;
+}
+
+.Value {
+    // font-style: normal;
+    // font-weight: 375;
+    // font-size: 10px;
+    // line-height: 12px;
+    // color: #000;
+    z-index: 200;
+    font: inherit;
+}
