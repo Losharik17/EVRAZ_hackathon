@@ -1,10 +1,9 @@
 .Button {
-    padding: 10px;
-    border-radius: 5px;
+    border-radius: 3px;
+    min-width: 20px;
+    min-height: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 20px;
-    min-width: 20px;
-    border: var(--border);
+    background-color: var(--secondary-bg-color);
 }

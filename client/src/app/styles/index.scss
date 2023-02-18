@@ -2,12 +2,14 @@
 @import './variables/global';
 @import './themes/dark';
 @import './themes/light';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .app {
     font: var(--font-m);
     background-color: var(--bg-color);
     color: var(--primary-color);
     min-height: 100vh;
+    scroll-behavior: smooth;
 }
 
 .content-page {
@@ -22,7 +24,11 @@
     flex-grow: 1;
     padding: 20px;
     background-color: var(--inverted-bg-color);
-    min-height: calc(100vh - var(--navbar-height) - var(--page-title-height) - 20px);
+    min-height: calc(100vh - var(--navbar-height) - var(--page-title-height) - 25px);
+
+    &>div {
+        min-height: calc(100vh - var(--navbar-height) - var(--page-title-height) - 65px);
+    }
 }
 
 :root {
@@ -34,23 +40,32 @@
     --scrollbarBorderRadius: calc(var(--scrollbarWidth) / 4);
 }
 
-body {
-    scrollbar-width: var(--scrollbarWidth);
-    scrollbar-color: var(--scrollbarThumbColor) var(--scrollbarBgColor);
+*::-webkit-scrollbar {
+    width: 6px;
+    height: 16px;
 }
 
-body::-webkit-scrollbar {
-    width: var(--scrollbarWidth);
+*::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 16px;
+    padding: 10px;
 }
 
-body::-webkit-scrollbar-track {
-    background: var(--scrollbarBgColor);
-    border-radius: var(--scrollbarBorderRadius);
+*::-webkit-scrollbar-track {
+    padding: 10px;
 }
 
-body::-webkit-scrollbar-thumb {
-    background-color: var(--scrollbarThumbColor);
-    border-radius: var(--scrollbarBorderRadius);
-    border: var(--scrollbarBorder);
-    background-image: linear-gradient(180deg, var(--scrollbarThumbColor) 0%, var(--scrollbarThumbColorSecond) 90%);
+.recharts-brush-slide {
+    fill: var(--inverted-primary-color);
+    fill-opacity: 1;
+}
+
+.recharts-brush {
+    background-color: black;
+    fill: black;
+
+    &>:first-child {
+        stroke: none;
+        border: 2px solid black;
+    }
 }

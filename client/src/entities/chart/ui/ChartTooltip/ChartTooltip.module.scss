@@ -1,0 +1,15 @@
+.ChartTooltip {
+    border-radius: 3px;
+    background: var(--dark-bg-color);
+    color: var(--inverted-bg-color);
+    padding: 5px;
+    min-width: 100px;
+}
+
+.ChartLabel {}
+
+.ChartBody {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

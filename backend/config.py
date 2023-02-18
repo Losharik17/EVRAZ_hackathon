@@ -7,6 +7,11 @@ load_dotenv(os.path.join(basedir, '.env'))
 
 
 class Config(object):
+    username = 'postgres'
+    password = 'tMAwHWP54qPQJ6ha'
+    database = 'EVRAZ_hackathon'
+
+    SQLALCHEMY_ECHO = False
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'test.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -30,3 +35,6 @@ class DevelopmentConfig(Config):
 
 class TestingConfig(Config):
     TESTING = True
+    FLASK_ADMIN_SWATCH = 'LUX'
+    BABEL_DEFAULT_LOCALE = 'ru'
+    CKEDITOR_LANGUAGE = 'ru'

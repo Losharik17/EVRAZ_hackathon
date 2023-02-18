@@ -22,6 +22,6 @@ export const Chip: FC<ChipProps> = ({
         className={classNames(cls.Chip, {}, [className, cls[font], cls[variant]])}
         {...props}
     >
-        <h2>{children}</h2>
+        {children}
     </div>
 );

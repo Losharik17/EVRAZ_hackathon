@@ -1,0 +1,19 @@
+.Exhauster {
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+}
+
+// .container {
+//     background-image: url('../../assets/images/exhauster.svg');
+// }
+
+.rect {
+    border: 1px solid #ff8800;
+    position: absolute;
+    word-wrap: break-word;
+    &:hover {
+        background-color: #2288ff88;
+    }
+}
+
