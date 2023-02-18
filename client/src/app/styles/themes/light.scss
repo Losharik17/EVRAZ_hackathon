@@ -6,6 +6,13 @@
     --primary-bg-color: #f4f4f4;
     --secondary-bg-color: #fafafa;
     --dark-bg-color: #434343;
+    --dark-color: #414f4f;
+    --light-bg-color: #e8eaea;
+    --light-color: #eff2f6;
+
+    // Font
+    --grey-font-color: #6e6e6d;
+    --dark-grey-font-color: #565655;
 
     // Color
     --primary-color: #211f1f;
@@ -21,8 +28,11 @@
     --inactive: #d1291c;
 
     // Other
-    --warning-bg-color: #fcdbcb;
-    --warning-color: #e32112;
+    --warning-bg-color: #fef1db;
+    --warning-color: #f37e0d;
+    --critical-bg-color: #fcdbcb;
+    --critical-color: #e32112;
+    --idle-color: #868686;
 
     // Line
     --line-color: #ddd;

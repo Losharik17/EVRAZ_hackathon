@@ -1,8 +1,40 @@
 from functools import lru_cache
 from sqlalchemy_mixins import AllFeaturesMixin
-from backend.app import db
-from backend.app.mapping_models import (AglomachineMapping, BearingMapping,
+from app import db
+from app.mapping_models import (AglomachineMapping, BearingMapping,
                                 EksgausterMapping)
+
+
+class AglomachineCriticalValue(db.Model, AllFeaturesMixin):
+    """Константы критических значений эксгаустера"""
+    # Т.к. для эксгаустеров в разных агломашинах критические значения
+    # различаются, привяжем их к конкретной агломашине, что позволит проще
+    # масштабироваться в дальнейшем
+
+    id = db.Column(db.Integer, primary_key=True, index=True)
+    aglomachine_id = db.Column(db.ForeignKey('aglomachine.id'), unique=True)
+
+    # Маслосистема
+    oil_level_alarm_min = db.Column(db.Integer)
+    oil_level_warning_min = db.Column(db.Integer)
+
+    oil_pressure_alarm_min = db.Column(db.Float)
+
+    # Главный привод
+    rotor_current_warning_max = db.Column(db.Float)
+
+    stator_current_alarm_max = db.Column(db.Float)
+    stator_current_warning_max = db.Column(db.Float)
+
+    # Охладитель
+    water_temperature_before_warning_max = db.Column(db.Float)
+    water_temperature_after_warning_max = db.Column(db.Float)
+
+    oil_temperature_before_warning_max = db.Column(db.Float)
+    oil_temperature_after_warning_max = db.Column(db.Float)
+
+    def check_status(self, field_name, field_value):
+        return 'ok'
 
 
 class Aglomachine(db.Model, AllFeaturesMixin):
@@ -13,9 +45,9 @@ class Aglomachine(db.Model, AllFeaturesMixin):
     eksgausters = db.relationship('Eksgauster', backref='aglomachine')
     datas = db.relationship('AglomachineData', backref='aglomachine')
 
-    critical_values = db.relationship('AglomachineCriticalValue',
-                                      backref="aglomachine",
-                                      uselist=False)
+    crit_value = db.relationship(AglomachineCriticalValue,
+                                 backref="aglomachine",
+                                 uselist=False)
 
     mapping = db.relationship(AglomachineMapping,
                               backref="aglomachine",
@@ -71,7 +103,8 @@ class Eksgauster(db.Model, AllFeaturesMixin):
         our_dict = {}
 
         for field in self.__table__.columns:
-            our_dict[field.name] = str(getattr(self, field.name))
+            our_dict[field.name] = getattr(self, field.name)
+        print(self.bearings)
 
         for relation_name in self.one_to_many_relations:
             our_dict[relation_name] = []
@@ -83,39 +116,6 @@ class Eksgauster(db.Model, AllFeaturesMixin):
 
         # print(our_dict)
         return our_dict
-
-
-class AglomachineCriticalValue(db.Model, AllFeaturesMixin):
-    """Константы критических значений эксгаустера"""
-    # Т.к. для эксгаустеров в разных агломашинах критические значения
-    # различаются, привяжем их к конкретной агломашине, что позволит проще
-    # масштабироваться в дальнейшем
-
-    id = db.Column(db.Integer, primary_key=True, index=True)
-    aglomachine_id = db.Column(db.ForeignKey('aglomachine.id'), unique=True)
-
-    # Маслосистема
-    oil_level_alarm_min = db.Column(db.Integer)
-    oil_level_warning_min = db.Column(db.Integer)
-
-    oil_pressure_alarm_min = db.Column(db.Float)
-
-    # Главный привод
-    rotor_current_warning_max = db.Column(db.Float)
-
-    stator_current_alarm_max = db.Column(db.Float)
-    stator_current_warning_max = db.Column(db.Float)
-
-    # Охладитель
-    water_temperature_before_warning_max = db.Column(db.Float)
-    water_temperature_after_warning_max = db.Column(db.Float)
-
-    oil_temperature_before_warning_max = db.Column(db.Float)
-    oil_temperature_after_warning_max = db.Column(db.Float)
-
-
-    def check_status(self):
-        return 'ok'
 
 
 class EksgausterData(db.Model, AllFeaturesMixin):
@@ -177,7 +177,7 @@ class EksgausterData(db.Model, AllFeaturesMixin):
         'gas_valve_closed': 'ЗАКРЫТО задвижка',
         'gas_valve_open': 'ОТКРЫТО задвижка',
         'gas_valve_position': 'Положение задвижки',
-        'collector_temperature_before': 'Коллектор температуры до',
+        'collector_temperature_before': 'Коллектор температура до',
         'collector_underpressure_before': 'Коллектор давление до',
         'work': 'Состояние работы эксгаустера',
         'motor_air_temperature_1': 'Температура воздуха двигателя 1',
@@ -188,30 +188,32 @@ class EksgausterData(db.Model, AllFeaturesMixin):
     }
 
     components = {
-        'Маслосистема': [
+        'oil': [
             'oil_level',
             'oil_pressure',
+        ],
+        'oil_pump': [
             'starting_oil_pump_started',
             'emergency_oil_pump_started',
         ],
-        'Главный привод': [
+        'main_drive': [
             'rotor_current',
             'rotor_voltage',
             'stator_current',
-            'starter_voltage',
+            'stator_voltage',
             'stator_temperature',
         ],
-        'Охладитель': [
+        'cooler': [
             'water_temperature_before',
             'water_temperature_after',
             'oil_temperature_before',
             'oil_temperature_after',
         ],
-        'Газовый коллектор': [
+        'gas_manifold': [
             'collector_temperature_before',
             'collector_underpressure_before',
         ],
-        'Работа эксгаустера': [
+        'eksgauster_operation': [
             'work',
             'motor_air_temperature_1',
             'motor_air_temperature_2',
@@ -221,19 +223,28 @@ class EksgausterData(db.Model, AllFeaturesMixin):
         ],
     }
 
+    @property
+    def excluded_fields(self):
+        return ('gas_valve_open', 'gas_valve_closed', 'eksgauster_id')
+
     def to_dict(self):
         our_dict = {}
         for key in self.components.keys():
             our_dict[key] = {}
 
-        critical_values_obj = self.eksgauster.aglomachine.critical_values
+        critical_values_obj = self.eksgauster.aglomachine.crit_value
 
         for field in self.__table__.columns:
+            if field.name in self.excluded_fields:
+                continue
+            if field.name == 'added_at':
+                our_dict[field.name] = getattr(
+                    self, field.name
+                ).strftime('%Y-%m-%d %H:%M:%S.%f')
+                continue
             if field.name not in self.filed_titles:
-                our_dict[field.name] = str(getattr(self, field.name))
+                our_dict[field.name] = getattr(self, field.name)
             else:
-                added = False
-
                 status = {}
                 for critical_value in critical_values_obj.__table__.columns:
                     if field.name in critical_value.name:
@@ -244,31 +255,24 @@ class EksgausterData(db.Model, AllFeaturesMixin):
                             ),
                         }
 
+                parameter_data = {
+                    'value': {
+                        'number': getattr(self, field.name),
+                    },
+                    'title': self.filed_titles[field.name]
+                }
+                if status:
+                    parameter_data['value'].update(status)
+
+                added = False
                 for key in self.components.keys():
                     if field.name in self.components[key]:
-                        our_dict[key].update({
-                            'value': {
-                                'number': str(getattr(self, field.name)),
-                            },
-                            'title': self.filed_titles[field.name]
-                        })
-
-                        if status:
-                            our_dict[key]['value'].update(status)
-
+                        our_dict[key][field.name] = parameter_data
                         added = True
-                        break
 
                 if not added:
-                    our_dict[field.name] = {
-                        'value': {
-                            'number': str(getattr(self, field.name)),
-                        },
-                        'title': self.filed_titles[field.name]
-                    }
+                    our_dict[field.name] = parameter_data
 
-                    if status:
-                        our_dict[field.name]['value'].update(status)
         return our_dict
 
 
@@ -276,7 +280,7 @@ class Rotor(db.Model, AllFeaturesMixin):
     """Ротор"""
 
     id = db.Column(db.Integer, primary_key=True, index=True)
-    rotor_number = db.Column(db.String(4))
+    number = db.Column(db.String(8))
     start_date = db.Column(db.Date)
     end_date = db.Column(db.Date)
     eksgauster_id = db.Column(db.ForeignKey('eksgauster.id'))
@@ -285,7 +289,13 @@ class Rotor(db.Model, AllFeaturesMixin):
         our_dict = {}
 
         for field in self.__table__.columns:
-            our_dict[field.name] = str(getattr(self, field.name))
+            if 'date' in field.name:
+                date = getattr(self, field.name)
+                our_dict[field.name] = date.strftime('%Y-%m-%d %H:%M:%S.%f')\
+                    if date else None
+                continue
+
+            our_dict[field.name] = getattr(self, field.name)
 
         return our_dict
 
@@ -362,21 +372,21 @@ class BearingData(db.Model, AllFeaturesMixin):
         'vibration_axial': 'Ось',
     }
 
-    alarm_max_values = {
-        'temperature': 75
-    }
-
-    alarm_min_values = {
-
-    }
-
-    warning_max_values = {
-        'temperature': 65
-    }
-
-    warning_min_values = {
-
-    }
+    # alarm_max_values = {
+    #     'temperature': 75
+    # }
+    #
+    # alarm_min_values = {
+    #
+    # }
+    #
+    # warning_max_values = {
+    #     'temperature': 65
+    # }
+    #
+    # warning_min_values = {
+    #
+    # }
 
     def get_parameter_status(self, parameter_name):
         value = getattr(self, parameter_name)
@@ -418,53 +428,20 @@ class BearingData(db.Model, AllFeaturesMixin):
         for field in self.__table__.columns:
             if field.name in excluded_fields:
                 continue
+            if field.name == 'added_at':
+                our_dict[field.name] = getattr(
+                    self, field.name
+                ).strftime('%Y-%m-%d %H:%M:%S.%f')
+                continue
+
             if field.name not in self.fields_title:
-                our_dict[field.name] = str(getattr(self, field.name))
+                our_dict[field.name] = getattr(self, field.name)
             else:
                 our_dict['parameters'].append({
                     'value': {
-                        'number': str(getattr(self, field.name)),
+                        'number': getattr(self, field.name),
                         'status': self.get_parameter_status(field.name),
                     },
                     'title': self.fields_title[field.name]
                 })
-
         return our_dict
-
-# class RotorSchema(ma.SQLAlchemyAutoSchema):
-#     class Meta:
-#         model = Rotor
-#
-# class BearingDataSchema(ma.SQLAlchemyAutoSchema):
-#     class Meta:
-#         model = BearingData
-#
-#
-# class BearingSchema(ma.SQLAlchemyAutoSchema):
-#     class Meta:
-#         model = Bearing
-#         exclude = ('id',)
-#
-#     datas = ma.Nested(BearingDataSchema, many=True)
-#
-#
-# class EksgausterDataSchema(ma.SQLAlchemyAutoSchema):
-#     class Meta:
-#         model = EksgausterData
-#
-#
-# class EksgausterSchema(ma.SQLAlchemyAutoSchema):
-#     class Meta:
-#         model = Eksgauster
-#
-#     bearings = ma.Nested(BearingSchema, many=True)
-#     datas = ma.Nested(EksgausterDataSchema, many=True)
-#     rotor = ma.Nested(RotorSchema)
-#
-#
-# class AglomachineSchema(ma.SQLAlchemyAutoSchema):
-#     class Meta:
-#         model = Aglomachine
-#
-#     eksgausters = ma.Nested(EksgausterSchema, many=True)
-#

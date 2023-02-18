@@ -1,5 +1,7 @@
-import { FC, HTMLAttributes } from 'react';
+import { Scheme, SchemeRangeContainer } from 'entities/scheme/ui';
+import { FC, HTMLAttributes, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { SchemeProgressIndicator } from 'features/SchemeProgressIndicator/ui/SchemeProgressIndicator';
 import cls from './Exhauster.module.scss';
 import exhausterPng from './exhauster.png';
 
@@ -11,19 +13,13 @@ export const Exhauster: FC<ExhausterProps> = ({
     className,
     children,
     ...props
-}) => (
-    <div
-        className={classNames(cls.Exhauster, {}, [className])}
-        {...props}
-    >
-        {children}
+}) => {
+    const [test, setTest] = useState(10);
+
+    return (
         <div
-            style={{
-                width: '100%',
-                height: '100%',
-                position: 'relative',
-            }}
-            className={cls.container}
+            className={classNames(cls.Exhauster, {}, [className])}
+            {...props}
         >
             <div>
                 <img
@@ -41,7 +37,12 @@ export const Exhauster: FC<ExhausterProps> = ({
                         fontSize: `${15 / 855 * 100}vh`,
                         lineHeight: `${15 / 855 * 100}vh`,
                     }}
-                />
+                >
+                    <Scheme title={<>9СП</>}>
+                        <div>T, °С 220</div>
+                        <div>T, °С 220</div>
+                    </Scheme>
+                </div>
                 <div
                     className={cls.rect}
                     style={{
@@ -53,7 +54,24 @@ export const Exhauster: FC<ExhausterProps> = ({
                         lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
+                    <Scheme title={<>8СП</>}>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                    </Scheme>
                 </div>
                 <div
                     className={cls.rect}
@@ -66,8 +84,24 @@ export const Exhauster: FC<ExhausterProps> = ({
                         lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                    Lorem ipsum dolor sit.
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
+                    <Scheme title={<>7СП</>}>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                    </Scheme>
                 </div>
                 <div
                     className={cls.rect}
@@ -80,8 +114,12 @@ export const Exhauster: FC<ExhausterProps> = ({
                         lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                    Lorem, ipsum dolor. Lorem ipsum, dolor sit amet
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
+                    <Scheme title={<>6СП</>}>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                    </Scheme>
                 </div>
                 <div
                     className={cls.rect}
@@ -90,9 +128,16 @@ export const Exhauster: FC<ExhausterProps> = ({
                         top: `${552 / 855 * 100}%`,
                         width: `${120 / 1449 * 100}%`,
                         height: `${68 / 855 * 100}%`,
+                        fontSize: `${15 / 855 * 100}vh`,
+                        lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
+                    <Scheme title={<>5СП</>}>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                    </Scheme>
                 </div>
                 <div
                     className={cls.rect}
@@ -103,18 +148,54 @@ export const Exhauster: FC<ExhausterProps> = ({
                         height: `${136 / 855 * 100}%`,
                     }}
                 >
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
+                    <Scheme title={<>2ПС</>}>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                    </Scheme>
                 </div>
                 <div
                     className={cls.rect}
                     style={{
-                        left: `${941 / 1449 * 100}%`,
+                        left: `${942 / 1449 * 100}%`,
                         top: `${337 / 855 * 100}%`,
                         width: `${230 / 1449 * 100}%`,
                         height: `${148 / 855 * 100}%`,
+                        fontSize: `${15 / 855 * 100}vh`,
+                        lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
+                    <Scheme variant='light' title={<>5СП</>}>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                    </Scheme>
                 </div>
                 <div
                     className={cls.rect}
@@ -123,9 +204,11 @@ export const Exhauster: FC<ExhausterProps> = ({
                         top: `${259 / 855 * 100}%`,
                         width: `${229 / 1449 * 100}%`,
                         height: `${59 / 855 * 100}%`,
+                        fontSize: `${15 / 855 * 100}vh`,
+                        lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
+                    <SchemeRangeContainer />
                 </div>
                 <div
                     className={cls.rect}
@@ -134,9 +217,13 @@ export const Exhauster: FC<ExhausterProps> = ({
                         top: `${240 / 855 * 100}%`,
                         width: `${60 / 1449 * 100}%`,
                         height: `${29 / 855 * 100}%`,
+                        fontSize: `${15 / 855 * 100}vh`,
+                        lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
+                    <Scheme>
+                        <span>-223C</span>
+                    </Scheme>
                 </div>
                 <div
                     className={cls.rect}
@@ -145,10 +232,10 @@ export const Exhauster: FC<ExhausterProps> = ({
                         top: `${144 / 855 * 100}%`,
                         width: `${130 / 1449 * 100}%`,
                         height: `${21 / 855 * 100}%`,
+                        fontSize: `${15 / 855 * 100}vh`,
+                        lineHeight: `${15 / 855 * 100}vh`,
                     }}
-                >
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
-                </div>
+                />
                 <div
                     className={cls.rect}
                     style={{
@@ -156,9 +243,13 @@ export const Exhauster: FC<ExhausterProps> = ({
                         top: `${74 / 855 * 100}%`,
                         width: `${60 / 1449 * 100}%`,
                         height: `${29 / 855 * 100}%`,
+                        fontSize: `${15 / 855 * 100}vh`,
+                        lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
+                    <Scheme>
+                        <span>-223C</span>
+                    </Scheme>
                 </div>
                 <div
                     className={cls.rect}
@@ -167,9 +258,13 @@ export const Exhauster: FC<ExhausterProps> = ({
                         top: `${75 / 855 * 100}%`,
                         width: `${60 / 1449 * 100}%`,
                         height: `${29 / 855 * 100}%`,
+                        fontSize: `${15 / 855 * 100}vh`,
+                        lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
+                    <Scheme>
+                        <span>-223C</span>
+                    </Scheme>
                 </div>
                 <div
                     className={cls.rect}
@@ -178,20 +273,43 @@ export const Exhauster: FC<ExhausterProps> = ({
                         top: `${165 / 855 * 100}%`,
                         width: `${60 / 1449 * 100}%`,
                         height: `${29 / 855 * 100}%`,
+                        fontSize: `${15 / 855 * 100}vh`,
+                        lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
+                    <Scheme>
+                        <span>-223C</span>
+                    </Scheme>
                 </div>
                 <div
                     className={cls.rect}
                     style={{
-                        left: `${694 / 1449 * 100}%`,
+                        left: `${696 / 1449 * 100}%`,
                         top: `${100 / 855 * 100}%`,
                         width: `${230 / 1449 * 100}%`,
                         height: `${163 / 855 * 100}%`,
+                        fontSize: `${15 / 855 * 100}vh`,
+                        lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
+                    <Scheme variant='light' title={<>5СП</>}>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                    </Scheme>
                 </div>
                 <div
                     className={cls.rect}
@@ -200,9 +318,16 @@ export const Exhauster: FC<ExhausterProps> = ({
                         top: `${275 / 855 * 100}%`,
                         width: `${120 / 1449 * 100}%`,
                         height: `${67 / 855 * 100}%`,
+                        fontSize: `${15 / 855 * 100}vh`,
+                        lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
+                    <Scheme title={<>3СП</>}>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                    </Scheme>
                 </div>
                 <div
                     className={cls.rect}
@@ -211,9 +336,16 @@ export const Exhauster: FC<ExhausterProps> = ({
                         top: `${275 / 855 * 100}%`,
                         width: `${120 / 1449 * 100}%`,
                         height: `${67 / 855 * 100}%`,
+                        fontSize: `${15 / 855 * 100}vh`,
+                        lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
+                    <Scheme title={<>4СП</>}>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                    </Scheme>
                 </div>
                 <div
                     className={cls.rect}
@@ -222,20 +354,29 @@ export const Exhauster: FC<ExhausterProps> = ({
                         top: `${553 / 855 * 100}%`,
                         width: `${120 / 1449 * 100}%`,
                         height: `${136 / 855 * 100}%`,
+                        fontSize: `${15 / 855 * 100}vh`,
+                        lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
+                    <Scheme title={<>1СП</>}>
+                        <div>
+                            <span>T, °С</span>
+                            <span>220</span>
+                        </div>
+                    </Scheme>
                 </div>
                 <div
                     className={cls.rect}
                     style={{
-                        left: `${251 / 1449 * 100}%`,
+                        left: `${252 / 1449 * 100}%`,
                         top: `${231 / 855 * 100}%`,
                         width: `${157 / 1449 * 100}%`,
                         height: `${91 / 855 * 100}%`,
+                        fontSize: `${15 / 855 * 100}vh`,
+                        lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
+                    <SchemeRangeContainer />
                 </div>
                 <div
                     className={cls.rect}
@@ -244,6 +385,8 @@ export const Exhauster: FC<ExhausterProps> = ({
                         top: `${445 / 855 * 100}%`,
                         width: `${103 / 1449 * 100}%`,
                         height: `${22 / 855 * 100}%`,
+                        fontSize: `${15 / 855 * 100}vh`,
+                        lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
                     <div style={{ width: 'inherit', height: 'inherit' }} />
@@ -251,15 +394,19 @@ export const Exhauster: FC<ExhausterProps> = ({
                 <div
                     className={cls.rect}
                     style={{
-                        left: `${290 / 1449 * 100}%`,
+                        left: `${292 / 1449 * 100}%`,
                         top: `${720 / 855 * 100}%`,
                         width: `${79 / 1449 * 100}%`,
                         height: `${12 / 855 * 100}%`,
+                        fontSize: `${15 / 855 * 100}vh`,
+                        lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
+                        wef
+                        <div style={{ width: 'inherit', height: 'inherit' }} />
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-);
+    );
+};

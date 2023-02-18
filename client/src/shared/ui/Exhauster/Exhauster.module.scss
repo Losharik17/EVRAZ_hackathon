@@ -9,11 +9,10 @@
 // }
 
 .rect {
-    border: 1px solid #ff8800;
     position: absolute;
     word-wrap: break-word;
+
     &:hover {
-        background-color: #2288ff88;
+        background-color: #28f8;
     }
 }
-

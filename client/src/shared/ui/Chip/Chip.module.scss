@@ -20,15 +20,17 @@
 
 .idle {
     background-color: var(--primary-bg-color);
-    border: var(--border);
+    border: 1px solid var(--idle-color);
 }
 
 .warning {
-    background-color: #f6dbb6;
-    border: 2px solid #fac78f;
+    background-color: var(--warning-bg-color);
+    color: var(--warning-color);
+    border: 1px solid var(--warning-color);
 }
 
 .critical {
-    background-color: var(--warning-bg-color);
-    color: var(--warning-color);
+    background-color: var(--critical-bg-color);
+    color: var(--critical-color);
+    border: 1px solid var(--critical-color);
 }
