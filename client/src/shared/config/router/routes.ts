@@ -6,8 +6,8 @@ export enum AppRoutes {
 
 export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN_SERVICE]: '/',
-    [AppRoutes.EXHAUSTER]: '/exhauster',
-    [AppRoutes.TRENDS]: '/trends',
+    [AppRoutes.EXHAUSTER]: '/exhauster/:id',
+    [AppRoutes.TRENDS]: '/trends/:id',
 };
 
 export enum RouteName {

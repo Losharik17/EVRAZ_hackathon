@@ -13,4 +13,7 @@ export {
     Rotor,
     Exhauster,
     Aglomachine,
+    ExhausterMain,
+    CurrentBearing,
+    BearingMain,
 } from './typicode/exhauster';
