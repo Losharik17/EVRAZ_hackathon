@@ -9,6 +9,7 @@ interface TrendPageProps {
 }
 
 export const TrendPage: FC<TrendPageProps> = ({ className }) => (
+
     <div className={classNames(cls.TrendPage, {}, [className])}>
         <Controls />
         <Chart />

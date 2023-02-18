@@ -67,7 +67,7 @@ export const bearings = {
         left: `${60 / 1449 * 100}%`,
         top: `${445 / 855 * 100}%`,
         width: `${120 / 1449 * 100}%`,
-        height: `${67 / 855 * 100}%`,
+        height: `${90 / 855 * 100}%`,
         fontSize: `${15 / 855 * 100}vh`,
         lineHeight: `${15 / 855 * 100}vh`,
     },
@@ -86,7 +86,7 @@ export const presure = {
     left: `${1175 / 1449 * 100}%`,
     top: `${259 / 855 * 100}%`,
     width: `${229 / 1449 * 100}%`,
-    height: `${59 / 855 * 100}%`,
+    height: `${92 / 855 * 100}%`,
     fontSize: `${15 / 855 * 100}vh`,
     lineHeight: `${15 / 855 * 100}vh`,
 };
