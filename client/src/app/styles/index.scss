@@ -54,3 +54,18 @@
 *::-webkit-scrollbar-track {
     padding: 10px;
 }
+
+.recharts-brush-slide {
+    fill: var(--inverted-primary-color);
+    fill-opacity: 1;
+}
+
+.recharts-brush {
+    background-color: black;
+    fill: black;
+
+    &>:first-child {
+        stroke: none;
+        border: 2px solid black;
+    }
+}
