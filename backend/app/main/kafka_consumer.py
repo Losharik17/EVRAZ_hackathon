@@ -4,7 +4,7 @@ from kafka import KafkaConsumer
 import datetime as dt
 import json
 
-from app.models import *
+from backend.app.models import *
 
 def read():
     consumer = KafkaConsumer(

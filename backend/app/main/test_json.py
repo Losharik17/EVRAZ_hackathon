@@ -1,7 +1,7 @@
 import datetime as dt
 import json
 from sqlalchemy import or_, extract
-from app.models import *
+from backend.app.models import *
 
 
 def read_to_db():
