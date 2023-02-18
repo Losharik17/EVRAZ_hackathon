@@ -13,28 +13,20 @@
 }
 
 .DataContainer {
-    transition: background 1s ease;
     height: 100%;
-    font: inherit;
     z-index: 20;
-}
-
-.Title {
-    // font-style: normal;
-    // font-weight: 500;
-    // font-size: 13px;
-    // line-height: 15px;
-    // color: #262626;
-    font: inherit;
-    line-height: inherit;
+    padding: 5px 12px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .Value {
-    // font-style: normal;
-    // font-weight: 375;
-    // font-size: 10px;
-    // line-height: 12px;
-    // color: #000;
-    z-index: 200;
-    font: inherit;
+    font-weight: 700;
+    line-height: inherit;
+}
+
+.Title {
+    color: #000;
+    font: var(--font-s);
 }

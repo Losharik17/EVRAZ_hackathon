@@ -27,8 +27,8 @@ export const SchemeProgressBar: FC<SchemeProgressBarProps> = ({
                        #00000000 ${value / range * 100}%, #00000000 100%)`,
             }}
         >
-            <div className={cls.Value} style={{ zIndex: 100 }}>{value}</div>
-            <div className={cls.title} style={{ zIndex: 100 }}>{title}</div>
+            <h1 className={cls.Value}>{value}</h1>
+            <div className={cls.Title}>{title}</div>
         </div>
     </div>
 );

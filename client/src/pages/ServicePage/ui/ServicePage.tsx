@@ -13,6 +13,10 @@ const ServicePage: FC<ServicePageProps> = ({ className }) => (
             <ExhausterCard className={cls.ExhausterCard} />
             <ExhausterCard className={cls.ExhausterCard} />
         </div>
+        <div className={cls.Aglomaschine}>
+            <ExhausterCard className={cls.ExhausterCard} />
+            <ExhausterCard className={cls.ExhausterCard} />
+        </div>
     </div>
 );
 

@@ -1,7 +1,8 @@
 import { Scheme, SchemeRangeContainer } from 'entities/scheme/ui';
+import { SchemeProgressIndicator }
+    from 'features/SchemeProgressIndicator/ui/SchemeProgressIndicator';
 import { FC, HTMLAttributes, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { SchemeProgressIndicator } from 'features/SchemeProgressIndicator/ui/SchemeProgressIndicator';
 import cls from './Exhauster.module.scss';
 import exhausterPng from './exhauster.png';
 
@@ -13,13 +14,18 @@ export const Exhauster: FC<ExhausterProps> = ({
     className,
     children,
     ...props
-}) => {
-    const [test, setTest] = useState(10);
-
-    return (
+}) => (
+    <div
+        className={classNames(cls.Exhauster, {}, [className])}
+        {...props}
+    >
         <div
-            className={classNames(cls.Exhauster, {}, [className])}
-            {...props}
+            style={{
+                width: '100%',
+                height: '100%',
+                position: 'relative',
+            }}
+            className={cls.container}
         >
             <div>
                 <img
@@ -208,7 +214,13 @@ export const Exhauster: FC<ExhausterProps> = ({
                         lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                    <SchemeRangeContainer />
+                    <SchemeRangeContainer progress={(
+                        <SchemeProgressIndicator
+                            type='Oil presure'
+                            value={2}
+                        />
+                    )}
+                    />
                 </div>
                 <div
                     className={cls.rect}
@@ -371,12 +383,18 @@ export const Exhauster: FC<ExhausterProps> = ({
                         left: `${252 / 1449 * 100}%`,
                         top: `${231 / 855 * 100}%`,
                         width: `${157 / 1449 * 100}%`,
-                        height: `${91 / 855 * 100}%`,
+                        height: `${70 / 855 * 100}%`,
                         fontSize: `${15 / 855 * 100}vh`,
                         lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                    <SchemeRangeContainer />
+                    <SchemeRangeContainer progress={(
+                        <SchemeProgressIndicator
+                            type='Gas temperature'
+                            value={80}
+                        />
+                    )}
+                    />
                 </div>
                 <div
                     className={cls.rect}
@@ -402,11 +420,10 @@ export const Exhauster: FC<ExhausterProps> = ({
                         lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-                        wef
-                        <div style={{ width: 'inherit', height: 'inherit' }} />
-                    </div>
+                    wef
+                    <div style={{ width: 'inherit', height: 'inherit' }} />
                 </div>
             </div>
         </div>
-    );
-};
+    </div>
+);
