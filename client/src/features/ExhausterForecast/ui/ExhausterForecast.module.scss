@@ -1,19 +1,31 @@
 .Alert {
+    padding: 9.5px 20px;
     gap: 20px;
 }
 
 .Forecast {
     display: grid;
     place-items: start;
+    padding: 2px 15px;
 }
 
 .ForecastBefore {
-    font: var(--font-s);
-    font-weight: 700;
-    color: var(--alternate-bg-color);
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 375;
+    color: var(--grey-font-color);
 }
 
 .ForecastTitle {
-    font: var(--font-l);
     font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: var(--dark-grey-font-color);
+
+}
+
+.ForecastDays {
+    font-size: 18px;
+    font-weight: 700;
+    border: 0;
 }
