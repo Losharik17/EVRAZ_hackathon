@@ -1,4 +1,4 @@
-import { ExhausterProperty, ExhausterWarning } from 'entities/exhauster';
+import { ExhausterProperty } from 'entities/exhauster';
 import { FC, ReactNode, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/ui';

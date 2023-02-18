@@ -1,0 +1,47 @@
+.Scheme {
+    border-radius: 7px;
+    padding: 5px;
+    display: grid;
+    grid-template-rows: 30px 1fr;
+    gap: 9px;
+    font-size: inherit;
+    line-height: inherit;
+    height: 100%;
+}
+
+.SchemeTitle {
+    padding: 2px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--border);
+    background-color: var(--inverted-bg-color);
+    font-weight: 600;
+    color: var(--dark-bg-color);
+}
+
+.SchemeBody {
+    font-weight: 700;
+    padding: 2px 5px;
+    gap: 4px;
+    display: grid;
+
+    & div {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.dark {
+    color: var(--inverted-bg-color);
+    border: 1px solid var(--dark-color);
+    box-shadow: 0 0 10px var(--grey-font-color);
+    background-color: var(--dark-color);
+}
+
+.light {
+    border: none;
+    background-color: var(--light-bg-color);
+    outline: 3px solid var(--idle-color);
+}
