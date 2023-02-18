@@ -1,26 +1,28 @@
 from functools import lru_cache
-
+from sqlalchemy_mixins import AllFeaturesMixin
 from app import db
 from app.mapping_models import (AglomachineMapping, BearingMapping,
                                 EksgausterMapping)
 
 
-class Aglomachine(db.Model):
+class Aglomachine(db.Model, AllFeaturesMixin):
     """Агломашина"""
 
     id = db.Column(db.Integer, primary_key=True, index=True)
     number = db.Column(db.Integer, index=True)
-    eksgausters = db.relationship('Eksgauster', backref='aglomachine',
-                                  lazy='dynamic')
-    datas = db.relationship('AglomachineData', backref='aglomachine',
-                            lazy='dynamic')
+    eksgausters = db.relationship('Eksgauster', backref='aglomachine')
+    datas = db.relationship('AglomachineData', backref='aglomachine')
+
+    critical_values = db.relationship('AglomachineCriticalValue',
+                                      backref="aglomachine",
+                                      uselist=False)
 
     mapping = db.relationship(AglomachineMapping,
                               backref="aglomachine",
                               uselist=False)
 
 
-class AglomachineData(db.Model):
+class AglomachineData(db.Model, AllFeaturesMixin):
     """Данные агломашины"""
     id = db.Column(db.Integer, primary_key=True, index=True)
     aglomachine_id = db.Column(db.ForeignKey('aglomachine.id'))
@@ -32,7 +34,7 @@ class AglomachineData(db.Model):
     work = db.Column(db.Boolean)
 
 
-class Eksgauster(db.Model):
+class Eksgauster(db.Model, AllFeaturesMixin):
     """Эксгаустер"""
 
     id = db.Column(db.Integer, primary_key=True, index=True)
@@ -41,9 +43,8 @@ class Eksgauster(db.Model):
 
     # связи к ротору, подшипникам и данным
     rotor = db.relationship("Rotor", backref="eksgauster", uselist=False)
-    bearings = db.relationship('Bearing', backref='eksgauster', lazy='joined')
-    datas = db.relationship('EksgausterData', backref='eksgauster',
-                            lazy='dynamic')
+    bearings = db.relationship('Bearing', backref='eksgauster')
+    datas = db.relationship('EksgausterData', backref='eksgauster')
 
     mapping = db.relationship(EksgausterMapping, backref="eksgauster",
                               uselist=False)
@@ -80,11 +81,44 @@ class Eksgauster(db.Model):
         for relation_name in self.one_to_one_relations:
             our_dict[relation_name] = getattr(self, relation_name).to_dict()
 
-        print(our_dict)
+        # print(our_dict)
         return our_dict
 
 
-class EksgausterData(db.Model):
+class AglomachineCriticalValue(db.Model, AllFeaturesMixin):
+    """Константы критических значений эксгаустера"""
+    # Т.к. для эксгаустеров в разных агломашинах критические значения
+    # различаются, привяжем их к конкретной агломашине, что позволит проще
+    # масштабироваться в дальнейшем
+
+    id = db.Column(db.Integer, primary_key=True, index=True)
+    aglomachine_id = db.Column(db.ForeignKey('aglomachine.id'), unique=True)
+
+    # Маслосистема
+    oil_level_alarm_min = db.Column(db.Integer)
+    oil_level_warning_min = db.Column(db.Integer)
+
+    oil_pressure_alarm_min = db.Column(db.Float)
+
+    # Главный привод
+    rotor_current_warning_max = db.Column(db.Float)
+
+    stator_current_alarm_max = db.Column(db.Float)
+    stator_current_warning_max = db.Column(db.Float)
+
+    # Охладитель
+    water_temperature_before_warning_max = db.Column(db.Float)
+    water_temperature_after_warning_max = db.Column(db.Float)
+
+    oil_temperature_before_warning_max = db.Column(db.Float)
+    oil_temperature_after_warning_max = db.Column(db.Float)
+
+
+    def check_status(self):
+        return 'ok'
+
+
+class EksgausterData(db.Model, AllFeaturesMixin):
     """Данные эксгаустера"""
     id = db.Column(db.Integer, primary_key=True, index=True)
     eksgauster_id = db.Column(db.ForeignKey('eksgauster.id'))
@@ -153,24 +187,92 @@ class EksgausterData(db.Model):
         'vacuum_front_eksgauster': 'Разряжение перед эксгаустером',
     }
 
+    components = {
+        'Маслосистема': [
+            'oil_level',
+            'oil_pressure',
+            'starting_oil_pump_started',
+            'emergency_oil_pump_started',
+        ],
+        'Главный привод': [
+            'rotor_current',
+            'rotor_voltage',
+            'stator_current',
+            'starter_voltage',
+            'stator_temperature',
+        ],
+        'Охладитель': [
+            'water_temperature_before',
+            'water_temperature_after',
+            'oil_temperature_before',
+            'oil_temperature_after',
+        ],
+        'Газовый коллектор': [
+            'collector_temperature_before',
+            'collector_underpressure_before',
+        ],
+        'Работа эксгаустера': [
+            'work',
+            'motor_air_temperature_1',
+            'motor_air_temperature_2',
+            'motor_air_temperature_3',
+            'temperature_front_eksgauster',
+            'vacuum_front_eksgauster',
+        ],
+    }
+
     def to_dict(self):
         our_dict = {}
+        for key in self.components.keys():
+            our_dict[key] = {}
+
+        critical_values_obj = self.eksgauster.aglomachine.critical_values
 
         for field in self.__table__.columns:
             if field.name not in self.filed_titles:
                 our_dict[field.name] = str(getattr(self, field.name))
             else:
-                our_dict[field.name] = {
-                    'value': {
-                        'number': str(getattr(self, field.name)),
-                    },
-                    'title': self.filed_titles[field.name]
-                }
+                added = False
 
+                status = {}
+                for critical_value in critical_values_obj.__table__.columns:
+                    if field.name in critical_value.name:
+                        status = {
+                            'status': critical_values_obj.check_status(
+                                field.name,
+                                getattr(self, field.name)
+                            ),
+                        }
+
+                for key in self.components.keys():
+                    if field.name in self.components[key]:
+                        our_dict[key].update({
+                            'value': {
+                                'number': str(getattr(self, field.name)),
+                            },
+                            'title': self.filed_titles[field.name]
+                        })
+
+                        if status:
+                            our_dict[key]['value'].update(status)
+
+                        added = True
+                        break
+
+                if not added:
+                    our_dict[field.name] = {
+                        'value': {
+                            'number': str(getattr(self, field.name)),
+                        },
+                        'title': self.filed_titles[field.name]
+                    }
+
+                    if status:
+                        our_dict[field.name]['value'].update(status)
         return our_dict
 
 
-class Rotor(db.Model):
+class Rotor(db.Model, AllFeaturesMixin):
     """Ротор"""
 
     id = db.Column(db.Integer, primary_key=True, index=True)
@@ -188,15 +290,14 @@ class Rotor(db.Model):
         return our_dict
 
 
-class Bearing(db.Model):
+class Bearing(db.Model, AllFeaturesMixin):
     """Подшипник"""
 
     id = db.Column(db.Integer, primary_key=True, index=True)
     number = db.Column(db.Integer)
     eksgauster_id = db.Column(db.ForeignKey('eksgauster.id'))
 
-    datas = db.relationship('BearingData', backref='bearing',
-                            lazy='dynamic')
+    datas = db.relationship('BearingData', backref='bearing')
 
     mapping = db.relationship(BearingMapping,
                               backref="bearing",
@@ -220,7 +321,7 @@ class Bearing(db.Model):
         return our_dict
 
 
-class BearingData(db.Model):
+class BearingData(db.Model, AllFeaturesMixin):
     """Данные подшипника"""
     id = db.Column(db.Integer, primary_key=True, index=True)
     bearing_id = db.Column(db.ForeignKey('bearing.id'))
@@ -259,6 +360,22 @@ class BearingData(db.Model):
         'vibration_vertical': 'Верт',
         'vibration_horizontal': 'Гориз',
         'vibration_axial': 'Ось',
+    }
+
+    alarm_max_values = {
+        'temperature': 75
+    }
+
+    alarm_min_values = {
+
+    }
+
+    warning_max_values = {
+        'temperature': 65
+    }
+
+    warning_min_values = {
+
     }
 
     def get_parameter_status(self, parameter_name):

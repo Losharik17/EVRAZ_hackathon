@@ -1,6 +1,6 @@
 import datetime as dt
 import json
-
+from sqlalchemy import or_, extract
 from app.models import *
 
 
@@ -74,4 +74,21 @@ def read_to_db():
 
 
 def eksgauster_to_json():
-    Eksgauster.query.get(1).to_dict()
+    dat = dt.datetime.strptime('2023-01-25 22:31:25.125007',
+                               '%Y-%m-%d %H:%M:%S.%f')
+    # x = Eksgauster.query.join(
+    #     Eksgauster.datas, (Eksgauster.datas.eksgauster_id == Eksgauster.id,
+    #                        Eksgauster.datas.added_at == dat)
+    # ).join(
+    #         Bearing, (Bearing.eksgauster_id == Eksgauster.id)
+    #         .join(
+    #             BearingData, (BearingData.bearing_id == Bearing.id,
+    #                           BearingData.added_at == dat)
+    #         )
+    #     )
+
+    x = Eksgauster.where(
+        datas___added_at=dat,
+    ).first()
+
+    print(x.to_dict())
