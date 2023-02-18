@@ -1,6 +1,7 @@
 import { Scheme, SchemeRangeContainer } from 'entities/scheme/ui';
-import { FC, HTMLAttributes } from 'react';
+import { FC, HTMLAttributes, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { SchemeProgressIndicator } from 'features/SchemeProgressIndicator/ui/SchemeProgressIndicator';
 import cls from './Exhauster.module.scss';
 import exhausterPng from './exhauster.png';
 
@@ -12,19 +13,13 @@ export const Exhauster: FC<ExhausterProps> = ({
     className,
     children,
     ...props
-}) => (
-    <div
-        className={classNames(cls.Exhauster, {}, [className])}
-        {...props}
-    >
-        {children}
+}) => {
+    const [test, setTest] = useState(10);
+
+    return (
         <div
-            style={{
-                width: '100%',
-                height: '100%',
-                position: 'relative',
-            }}
-            className={cls.container}
+            className={classNames(cls.Exhauster, {}, [className])}
+            {...props}
         >
             <div>
                 <img
@@ -407,11 +402,11 @@ export const Exhauster: FC<ExhausterProps> = ({
                         lineHeight: `${15 / 855 * 100}vh`,
                     }}
                 >
-
-                    wef
-                    <div style={{ width: 'inherit', height: 'inherit' }} />
+                        wef
+                        <div style={{ width: 'inherit', height: 'inherit' }} />
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-);
+    );
+};
