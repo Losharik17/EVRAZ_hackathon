@@ -79,19 +79,15 @@ export const Chart: FC<ChartProps> = ({ className }) => {
                         // itemSorter={() => {}}
                     />
                     <Brush
-                        // traveller={<BrushTraveller />}
+                        traveller={(<BrushTraveller style={{ display: 'flex' }} />)}
                         data={data}
                         dataKey='name'
-                        travellerWidth={9}
+                        travellerWidth={10}
                     />
-                    {/* <Brush
-                        dataKey='pv'
-                        travellerWidth={9}
-                    /> */}
                     {/* Done */}
                     <CartesianGrid stroke='#eaeaea' />
                     {/* TODO: Connect with server */}
-                    {/* {array.map(({ color, key, name }: any) => (
+                    {array.map(({ color, key, name }: any) => (
                         <Line
                             key={name}
                             // Set data key for chart
@@ -107,10 +103,9 @@ export const Chart: FC<ChartProps> = ({ className }) => {
                             // Hide chart with condition
                             hide
                             points={[{ x: 12, y: 12, value: 240 }]}
-                            // unit????
                             // unit
                         />
-                    ))} */}
+                    ))}
                     <Line type='monotone' dataKey='uv' stroke='red' />
                     <Line dataKey='pv' stroke='yellow' />
                 </LineChart>
