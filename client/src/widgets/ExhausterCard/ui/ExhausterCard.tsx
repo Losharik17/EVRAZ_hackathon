@@ -32,7 +32,7 @@ export const ExhausterCard: FC<ExhausterCardProps> = ({
 }) => (
     <Card className={className}>
         <ExhausterRow
-            before={<ExhausterState state={exhauster.work.value.number} />}
+            before={<ExhausterState state={false} />}
             title={`Эксгаустер ${exhauster.name}`}
             after={(
                 <ExhausterLink to={`${RoutePath.Эксгаустер}`} />

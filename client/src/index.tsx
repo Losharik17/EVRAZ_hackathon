@@ -10,11 +10,11 @@ const root = createRoot(document.getElementById('root'));
 root.render(
     <Provider store={store}>
         <BrowserRouter>
-            <ErrorBoundary>
-                <ThemeProvider>
-                    <App />
-                </ThemeProvider>
-            </ErrorBoundary>
+            {/* <ErrorBoundary> */}
+            <ThemeProvider>
+                <App />
+            </ThemeProvider>
+            {/* </ErrorBoundary> */}
         </BrowserRouter>
     </Provider>,
 );

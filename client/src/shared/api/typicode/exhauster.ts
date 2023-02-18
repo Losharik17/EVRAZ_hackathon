@@ -112,7 +112,7 @@ export interface ExhausterMain {
         oil?: Oil;
     }
     rotor?: Rotor;
-    work: BooleanProperty;
+    work?: BooleanProperty;
 }
 
 export interface Exhauster {

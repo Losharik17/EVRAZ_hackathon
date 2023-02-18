@@ -7,7 +7,7 @@ const baseQuery = fetchBaseQuery({ baseUrl: 'http://185.87.50.137:7777/api' });
 const baseQueryWithRetry = retry(baseQuery, { maxRetries: 6 });
 
 export const api = createApi({
-    baseQuery: baseQueryWithRetry,
+    baseQuery,
     endpoints: () => ({}),
 });
 /* eslint-disable */
@@ -19,4 +19,4 @@ export const exhausterApi = api.injectEndpoints({
     }) 
 });
 
-export const { useGetExhausterQuery } = exhausterApi
+export const { useGetExhausterQuery, useLazyGetExhausterQuery } = exhausterApi
