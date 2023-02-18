@@ -1,7 +1,7 @@
 from flask import render_template
 
-from backend.app import db
-from backend.app.errors import bp
+from app import db
+from app.errors import bp
 
 # @bp.app_errorhandler(404)
 # def not_found_error(error):

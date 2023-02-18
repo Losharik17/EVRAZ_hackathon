@@ -1,7 +1,7 @@
 import pandas as pd
-from backend.app.models import EksgausterData
-from backend.app import create_app
-from backend.app import db
+from app.models import EksgausterData
+from app import create_app
+from app import db
 
 
 with create_app().app_context():
@@ -15,7 +15,6 @@ with create_app().app_context():
             multi_iter1[field] = [eval('Eksgauter' + '.' + str(field)) for Eksgauter in EksgausterData.query.filter_by(eksgauster_id=id).all()]
     index_2 = multi_iter1.pop('index')
     df = pd.DataFrame(multi_iter1, index=index_2)
-    df['added_at'] = df['added_at'].dt.floor('T')
     df['Date'] = [d.date() for d in df['added_at']]
     df['Time'] = [d.time() for d in df['added_at']]
     df = df.sort_values(by=['Date'])
@@ -51,6 +50,7 @@ with create_app().app_context():
             'smooth': True,
             'overlap': 1,
         })
+
 
 chart.set_x_axis({'name': 'Время'})
 chart.set_y_axis({'name': 'Значения', 'major_gridlines': {'visible': False}})
