@@ -13,11 +13,12 @@ with create_app().app_context():
     multi_iter1 = {'index': index}
     for field in tags:
             multi_iter1[field] = [eval('Eksgauter' + '.' + str(field)) for Eksgauter in EksgausterData.query.filter_by(eksgauster_id=id).all()]
-
     index_2 = multi_iter1.pop('index')
     df = pd.DataFrame(multi_iter1, index=index_2)
+    df['added_at'] = df['added_at'].dt.floor('T')
     df['Date'] = [d.date() for d in df['added_at']]
     df['Time'] = [d.time() for d in df['added_at']]
+    df = df.sort_values(by=['Date'])
     df.pop('added_at')
     df.pop('id')
     df.pop('eksgauster_id')
@@ -37,7 +38,6 @@ with create_app().app_context():
     workbook = writer.book
     worksheet = writer.sheets[sheet_name]
 
-
     chart = workbook.add_chart({'type': 'line'})
 
     for i in range(len(tags)):
@@ -55,7 +55,7 @@ with create_app().app_context():
 chart.set_x_axis({'name': 'Время'})
 chart.set_y_axis({'name': 'Значения', 'major_gridlines': {'visible': False}})
 
-worksheet.insert_chart('G2:G5', chart)
+worksheet.insert_chart('G2', chart, {'x_scale': 2, 'y_scale': 2})
 
 
 writer.save()
