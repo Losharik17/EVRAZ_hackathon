@@ -8,7 +8,7 @@ interface ExhausterPageProps {
     className?: string;
 }
 
-const ExhausterPage: FC<ExhausterPageProps> = ({ className }) => {
+export const ExhausterPage: FC<ExhausterPageProps> = ({ className }) => {
     const getExhauster = (): IExhauster => ({});
     const exhauster = getExhauster();
 
@@ -19,4 +19,4 @@ const ExhausterPage: FC<ExhausterPageProps> = ({ className }) => {
     );
 };
 
-export default ExhausterPage;
+// export default ExhausterPage;

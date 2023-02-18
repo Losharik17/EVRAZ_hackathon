@@ -1,3 +1,4 @@
+import { ExhausterMain } from 'shared/api/models';
 /* eslint-disable max-len */
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react';
 
@@ -12,8 +13,10 @@ export const api = createApi({
 /* eslint-disable */
 export const exhausterApi = api.injectEndpoints({ 
     endpoints: (build) => ({ 
-        getExhauster: build.query<any, any>({ 
+        getExhauster: build.query<ExhausterMain, any>({ 
             query: (id) => ({ url: '/eksgauster' }) 
         }),
     }) 
 });
+
+export const { useGetExhausterQuery } = exhausterApi
