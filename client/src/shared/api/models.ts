@@ -12,4 +12,5 @@ export {
     SensorsData,
     Rotor,
     Exhauster,
+    Aglomachine,
 } from './typicode/exhauster';
