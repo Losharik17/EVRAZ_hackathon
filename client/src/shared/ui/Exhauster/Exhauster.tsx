@@ -108,12 +108,13 @@ export const Exhauster: FC<ExhausterProps> = ({
                 <div
                     className={cls.rect}
                     style={{
-                        left: `${941 / 1449 * 100}%`,
+                        left: `${942 / 1449 * 100}%`,
                         top: `${337 / 855 * 100}%`,
                         width: `${230 / 1449 * 100}%`,
                         height: `${148 / 855 * 100}%`,
                     }}
                 >
+                    ewfwef
                     <div style={{ width: 'inherit', height: 'inherit' }} />
                 </div>
                 <div
@@ -185,7 +186,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                 <div
                     className={cls.rect}
                     style={{
-                        left: `${694 / 1449 * 100}%`,
+                        left: `${696 / 1449 * 100}%`,
                         top: `${100 / 855 * 100}%`,
                         width: `${230 / 1449 * 100}%`,
                         height: `${163 / 855 * 100}%`,
@@ -229,7 +230,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                 <div
                     className={cls.rect}
                     style={{
-                        left: `${251 / 1449 * 100}%`,
+                        left: `${252 / 1449 * 100}%`,
                         top: `${231 / 855 * 100}%`,
                         width: `${157 / 1449 * 100}%`,
                         height: `${91 / 855 * 100}%`,
@@ -251,12 +252,14 @@ export const Exhauster: FC<ExhausterProps> = ({
                 <div
                     className={cls.rect}
                     style={{
-                        left: `${290 / 1449 * 100}%`,
+                        left: `${292 / 1449 * 100}%`,
                         top: `${720 / 855 * 100}%`,
                         width: `${79 / 1449 * 100}%`,
                         height: `${12 / 855 * 100}%`,
                     }}
                 >
+
+                    wef
                     <div style={{ width: 'inherit', height: 'inherit' }} />
                 </div>
             </div>
