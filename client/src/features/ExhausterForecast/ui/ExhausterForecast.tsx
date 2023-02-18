@@ -9,7 +9,7 @@ interface ExhausterForecastProps {
 
 export const ExhausterForecast: FC<ExhausterForecastProps> = ({ currentDay, forecastDay }) => (
     <Alert className={cls.Alert}>
-        <Chip>{currentDay}</Chip>
+        <Chip className={cls.ForecastDays}>{currentDay}</Chip>
         <div className={cls.Forecast}>
             <h2 className={cls.ForecastBefore}>Прогноз</h2>
             <h2 className={cls.ForecastTitle}>{forecastDay}</h2>
