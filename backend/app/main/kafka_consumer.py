@@ -11,9 +11,9 @@ from app.models import *
 def read(app):
     consumer = KafkaConsumer(
         'zsmk-9433-dev-01',
-        group_id='WhyCrocodile',
+        group_id='WhyCrocodile1',
         api_version='1.0',
-        sasl_kerberos_service_name='WhyCrocodile',
+        sasl_kerberos_service_name='WhyCrocodile1',
         bootstrap_servers='rc1a-2ar1hqnl386tvq7k.mdb.yandexcloud.net:9091',
         security_protocol='SASL_SSL',
         ssl_cafile='app/CA.pem',
@@ -27,7 +27,6 @@ def read(app):
     )
     key = 'SM_Exgauster\\[{}]'
     print("Consumer started")
-
     with app.app_context():
         for msg in consumer:
             message = msg.value

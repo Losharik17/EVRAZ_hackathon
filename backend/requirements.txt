@@ -35,6 +35,7 @@ MarkupSafe==2.1.2
 marshmallow==3.19.0
 marshmallow-sqlalchemy==0.28.1
 mccabe==0.7.0
+pandas==1.5.3
 packaging==23.0
 platformdirs==3.0.0
 psycopg2==2.9.5
