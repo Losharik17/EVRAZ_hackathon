@@ -1,0 +1,812 @@
+{
+  "datas": {
+    "added_at": "2023-01-25 22:29:25.125007",
+    "id": 2812,
+    "speed": {
+      "title": "Скорость агломашины",
+      "value": {
+        "number": 2.472555637359619
+      }
+    },
+    "temperature_collector": {
+      "title": "Температура в общем коллекторе",
+      "value": {
+        "number": 130.18655395507812
+      }
+    },
+    "vacuum_collector": {
+      "title": "Разрежение в общем коллекторе",
+      "value": {
+        "number": 533.10888671875
+      }
+    },
+    "work": {
+      "title": "Работа агломашины",
+      "value": {
+        "number": true
+      }
+    }
+  },
+  "eksgausters": [
+    {
+      "bearings": [
+        {
+          "current": {
+            "added_at": "2023-01-25 22:29:25.125007",
+            "parameters": [
+              {
+                "title": "Т",
+                "value": {
+                  "number": 42.099998474121094,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Верт",
+                "value": {
+                  "number": 1.0358796119689941,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Гориз",
+                "value": {
+                  "number": 1.5740740299224854,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Ось",
+                "value": {
+                  "number": 2.5405094623565674,
+                  "status": "warning"
+                }
+              }
+            ]
+          },
+          "eksgauster_id": 1,
+          "id": 4,
+          "number": 8
+        },
+        {
+          "current": {
+            "added_at": "2023-01-25 22:29:25.125007",
+            "parameters": [
+              {
+                "title": "Т",
+                "value": {
+                  "number": 37.5,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Верт",
+                "value": {
+                  "number": 2.1149182319641113,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Гориз",
+                "value": {
+                  "number": 1.4872684478759766,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Ось",
+                "value": {
+                  "number": 2.21064829826355,
+                  "status": "warning"
+                }
+              }
+            ]
+          },
+          "eksgauster_id": 1,
+          "id": 3,
+          "number": 7
+        },
+        {
+          "current": {
+            "added_at": "2023-01-25 22:29:25.125007",
+            "parameters": [
+              {
+                "title": "Т",
+                "value": {
+                  "number": 62.19999694824219,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Верт",
+                "value": {
+                  "number": 0.28356480598449707,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Гориз",
+                "value": {
+                  "number": 0.6076388955116272,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Ось",
+                "value": {
+                  "number": 0.347222238779068,
+                  "status": "warning"
+                }
+              }
+            ]
+          },
+          "eksgauster_id": 1,
+          "id": 1,
+          "number": 1
+        },
+        {
+          "current": {
+            "added_at": "2023-01-25 22:29:25.125007",
+            "parameters": [
+              {
+                "title": "Т",
+                "value": {
+                  "number": 55.99999237060547,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Верт",
+                "value": {
+                  "number": 0.5729166865348816,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Гориз",
+                "value": {
+                  "number": 0.7770854234695435,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Ось",
+                "value": {
+                  "number": 0.23148147761821747,
+                  "status": "warning"
+                }
+              }
+            ]
+          },
+          "eksgauster_id": 1,
+          "id": 2,
+          "number": 2
+        },
+        {
+          "current": {
+            "added_at": "2023-01-25 22:29:25.125007",
+            "parameters": [
+              {
+                "title": "Т",
+                "value": {
+                  "number": 48.099998474121094,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Верт",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Гориз",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Ось",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              }
+            ]
+          },
+          "eksgauster_id": 1,
+          "id": 5,
+          "number": 3
+        },
+        {
+          "current": {
+            "added_at": "2023-01-25 22:29:25.125007",
+            "parameters": [
+              {
+                "title": "Т",
+                "value": {
+                  "number": 50.899993896484375,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Верт",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Гориз",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Ось",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              }
+            ]
+          },
+          "eksgauster_id": 1,
+          "id": 6,
+          "number": 4
+        },
+        {
+          "current": {
+            "added_at": "2023-01-25 22:29:25.125007",
+            "parameters": [
+              {
+                "title": "Т",
+                "value": {
+                  "number": 41.099998474121094,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Верт",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Гориз",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Ось",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              }
+            ]
+          },
+          "eksgauster_id": 1,
+          "id": 7,
+          "number": 5
+        },
+        {
+          "current": {
+            "added_at": "2023-01-25 22:29:25.125007",
+            "parameters": [
+              {
+                "title": "Т",
+                "value": {
+                  "number": 41.099998474121094,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Верт",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Гориз",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Ось",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              }
+            ]
+          },
+          "eksgauster_id": 1,
+          "id": 8,
+          "number": 6
+        },
+        {
+          "current": {
+            "added_at": "2023-01-25 22:29:25.125007",
+            "parameters": [
+              {
+                "title": "Т",
+                "value": {
+                  "number": 42.099998474121094,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Верт",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Гориз",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Ось",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              }
+            ]
+          },
+          "eksgauster_id": 1,
+          "id": 9,
+          "number": 9
+        }
+      ],
+      "datas": {
+        "oil": {
+          "oil_level": {
+            "title": "Уровень масла",
+            "value": {
+              "number": 83.16161346435547,
+              "status": "idle"
+            }
+          },
+          "oil_pressure": {
+            "title": "Давление масла",
+            "value": {
+              "number": 2.159489631652832,
+              "status": "idle"
+            }
+          }
+        }
+      },
+      "id": 1,
+      "name": "У-171",
+      "rotor": {
+        "eksgauster_id": 1,
+        "id": 1,
+        "number": "22",
+        "start_date": "2023-02-09 00:00:00.000000"
+      },
+      "warnings": [
+        8,
+        7,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        9
+      ],
+      "work": {
+        "title": "Работа эксгаустера",
+        "value": {
+          "number": true
+        }
+      }
+    },
+    {
+      "bearings": [
+        {
+          "current": {
+            "added_at": "2023-01-25 22:29:25.125007",
+            "parameters": [
+              {
+                "title": "Т",
+                "value": {
+                  "number": 54.49999237060547,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Верт",
+                "value": {
+                  "number": 1.7939815521240234,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Гориз",
+                "value": {
+                  "number": 1.1921296119689941,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Ось",
+                "value": {
+                  "number": 2.557870388031006,
+                  "status": "warning"
+                }
+              }
+            ]
+          },
+          "eksgauster_id": 2,
+          "id": 10,
+          "number": 1
+        },
+        {
+          "current": {
+            "added_at": "2023-01-25 22:29:25.125007",
+            "parameters": [
+              {
+                "title": "Т",
+                "value": {
+                  "number": 64.30000305175781,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Верт",
+                "value": {
+                  "number": 1.71875,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Гориз",
+                "value": {
+                  "number": 1.0416666269302368,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Ось",
+                "value": {
+                  "number": 1.967592477798462,
+                  "status": "warning"
+                }
+              }
+            ]
+          },
+          "eksgauster_id": 2,
+          "id": 11,
+          "number": 2
+        },
+        {
+          "current": {
+            "added_at": "2023-01-25 22:29:25.125007",
+            "parameters": [
+              {
+                "title": "Т",
+                "value": {
+                  "number": 32.599998474121094,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Верт",
+                "value": {
+                  "number": 0.42824074625968933,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Гориз",
+                "value": {
+                  "number": 0.347222238779068,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Ось",
+                "value": {
+                  "number": 0.31828704476356506,
+                  "status": "warning"
+                }
+              }
+            ]
+          },
+          "eksgauster_id": 2,
+          "id": 12,
+          "number": 7
+        },
+        {
+          "current": {
+            "added_at": "2023-01-25 22:29:25.125007",
+            "parameters": [
+              {
+                "title": "Т",
+                "value": {
+                  "number": 39.0,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Верт",
+                "value": {
+                  "number": 0.45717594027519226,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Гориз",
+                "value": {
+                  "number": 0.7581018805503845,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Ось",
+                "value": {
+                  "number": 0.671296238899231,
+                  "status": "warning"
+                }
+              }
+            ]
+          },
+          "eksgauster_id": 2,
+          "id": 13,
+          "number": 8
+        },
+        {
+          "current": {
+            "added_at": "2023-01-25 22:29:25.125007",
+            "parameters": [
+              {
+                "title": "Т",
+                "value": {
+                  "number": 46.0,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Верт",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Гориз",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Ось",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              }
+            ]
+          },
+          "eksgauster_id": 2,
+          "id": 14,
+          "number": 3
+        },
+        {
+          "current": {
+            "added_at": "2023-01-25 22:29:25.125007",
+            "parameters": [
+              {
+                "title": "Т",
+                "value": {
+                  "number": 45.0,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Верт",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Гориз",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Ось",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              }
+            ]
+          },
+          "eksgauster_id": 2,
+          "id": 15,
+          "number": 4
+        },
+        {
+          "current": {
+            "added_at": "2023-01-25 22:29:25.125007",
+            "parameters": [
+              {
+                "title": "Т",
+                "value": {
+                  "number": 36.400001525878906,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Верт",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Гориз",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Ось",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              }
+            ]
+          },
+          "eksgauster_id": 2,
+          "id": 16,
+          "number": 5
+        },
+        {
+          "current": {
+            "added_at": "2023-01-25 22:29:25.125007",
+            "parameters": [
+              {
+                "title": "Т",
+                "value": {
+                  "number": 36.599998474121094,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Верт",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Гориз",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Ось",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              }
+            ]
+          },
+          "eksgauster_id": 2,
+          "id": 17,
+          "number": 6
+        },
+        {
+          "current": {
+            "added_at": "2023-01-25 22:29:25.125007",
+            "parameters": [
+              {
+                "title": "Т",
+                "value": {
+                  "number": 49.80000305175781,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Верт",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Гориз",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              },
+              {
+                "title": "Ось",
+                "value": {
+                  "number": null,
+                  "status": "warning"
+                }
+              }
+            ]
+          },
+          "eksgauster_id": 2,
+          "id": 18,
+          "number": 9
+        }
+      ],
+      "datas": {
+        "oil": {
+          "oil_level": {
+            "title": "Уровень масла",
+            "value": {
+              "number": 73.26688385009766,
+              "status": "idle"
+            }
+          },
+          "oil_pressure": {
+            "title": "Давление масла",
+            "value": {
+              "number": 2.092043876647949,
+              "status": "idle"
+            }
+          }
+        }
+      },
+      "id": 2,
+      "name": "У-172",
+      "rotor": {
+        "eksgauster_id": 2,
+        "id": 2,
+        "number": "29",
+        "start_date": "2023-01-19 00:00:00.000000"
+      },
+      "warnings": [
+        1,
+        2,
+        7,
+        8,
+        3,
+        4,
+        5,
+        6,
+        9
+      ],
+      "work": {
+        "title": "Работа эксгаустера",
+        "value": {
+          "number": true
+        }
+      }
+    }
+  ],
+  "id": 1,
+  "number": 1
+}

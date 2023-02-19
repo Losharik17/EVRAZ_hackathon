@@ -76,22 +76,12 @@ def read_to_db():
 def eksgauster_to_json():
     dat = dt.datetime.strptime('2023-01-25 22:31:25.125007',
                                '%Y-%m-%d %H:%M:%S.%f')
-    # x = Eksgauster.query.join(
-    #     Eksgauster.datas, (Eksgauster.datas.eksgauster_id == Eksgauster.id,
-    #                        Eksgauster.datas.added_at == dat)
-    # ).join(
-    #         Bearing, (Bearing.eksgauster_id == Eksgauster.id)
-    #         .join(
-    #             BearingData, (BearingData.bearing_id == Bearing.id,
-    #                           BearingData.added_at == dat)
-    #         )
-    #     )
-
     x = Eksgauster.where(
-        datas___added_at=dat,
-        bearings___datas___added_at=dat,
+        datas___added_at__between=(dat, dat + dt.timedelta(hours=1)),
+        bearings___datas___added_at__between=(dat, dat + dt.timedelta(
+            hours=1)),
         id=1
-    ).all()
+    ).all()[0]
 
     with open('example_eksgauster.json', 'w') as json_file:
         json_file.write(json.dumps(x[0].to_dict(), indent=2))

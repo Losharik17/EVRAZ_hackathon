@@ -38,7 +38,7 @@ class EksgausterMapping(db.Model):
     rotor_current= db.Column(db.String(8), unique=True)
     rotor_voltage = db.Column(db.String(8), unique=True)
     stator_current = db.Column(db.String(8), unique=True)
-    starter_voltage = db.Column(db.String(8), unique=True)
+    stator_voltage = db.Column(db.String(8), unique=True)
     stator_temperature = db.Column(db.String(8), unique=True)
 
     # Охладитель
