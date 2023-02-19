@@ -5,11 +5,11 @@ import { api } from './api';
 export const exhausterApi = api.injectEndpoints({
     endpoints: (build) => ({
         getExhauster: build.query<ExhausterMain, any>({
-            query: (id) => ({ url: '/eksgauster/' + id }),
+            query: (id) => ({ url: '/eksgauster' }),
             providesTags: ['Exhauster']
         }),
         getAllExhausterProperties: build.query<Exhauster, any>({
-            query: (id) => ({ url: '/eksgauster_all' }),
+            query: (id) => ({ url: '/eksgauster_all/' + id }),
             providesTags: ['Exhauster']
         }),
     })
