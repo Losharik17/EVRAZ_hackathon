@@ -1,10 +1,12 @@
+import datetime as dt
+import json
 import time
 
 from kafka import KafkaConsumer
-import datetime as dt
-import json
 
+from app import create_app
 from app.models import *
+
 
 def read():
     consumer = KafkaConsumer(
@@ -20,11 +22,10 @@ def read():
         sasl_plain_password='eUIpgWu0PWTJaTrjhjQD3.hoyhntiK',
         value_deserializer=lambda m: json.loads(m.decode('ascii')),
         auto_offset_reset='earliest',
-        enable_auto_commit=False,
+        enable_auto_commit=True,
     )
-    print("Consumer started")
     key = 'SM_Exgauster\\[{}]'
-
+    print("Consumer started")
     for m in consumer:
         message = m.value
         date = dt.datetime.strptime(message['moment'], '%Y-%m-%dT%H:%M:%S.%f')
@@ -86,4 +87,11 @@ def read():
                                        bearing_id=bearing.id)
                     db.session.add(data)
                     db.session.commit()
-    time.sleep(15)
+
+# read()
+from multiprocessing import Process, current_process
+
+# process = Process(target=read, daemon=True)
+# process.start()
+# process.join()
+# read()

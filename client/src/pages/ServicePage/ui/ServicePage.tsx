@@ -1,6 +1,5 @@
 import { FC, useEffect, useLayoutEffect } from 'react';
-import { Aglomachine } from 'shared/api/models';
-import { useGetExhausterQuery, useLazyGetExhausterQuery } from 'shared/api/service/api';
+import { useLazyGetExhausterQuery } from 'shared/api/service/exhauster';
 import { classNames } from 'shared/lib';
 import { ExhausterCard } from 'widgets/ExhausterCard';
 import cls from './ServicePage.module.scss';

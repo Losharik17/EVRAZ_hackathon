@@ -8,12 +8,18 @@ import cls from './TrendPage.module.scss';
 interface TrendPageProps {
     className?: string;
 }
-// const filters = useTrendsSelector((state) => state.trends.filters);
-// const setShown = 'uv';
-const TrendPage: FC<TrendPageProps> = ({ className }) => (
-    <div className={classNames(cls.TrendPage, {}, [className])}>
-        <Controls />
-        <Chart />
-    </div>
-);
+
+const TrendPage: FC<TrendPageProps> = ({ className }) => {
+    const { search } = useLocation();
+    const query = new URLSearchParams(search);
+    const id = query.get('id');
+
+    return (
+        <div className={classNames(cls.TrendPage, {}, [className])}>
+            <Controls />
+            <Chart />
+        </div>
+    );
+};
+
 export default TrendPage;

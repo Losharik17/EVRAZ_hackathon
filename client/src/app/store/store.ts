@@ -1,8 +1,7 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
-import { trendsReducer } from '../../entities/trends/model/trends';
-
 import { api } from 'shared/api/service/api';
+import { trendsReducer } from '../../entities/trends/model/trends';
 
 const rootReducer = combineReducers({ [api.reducerPath]: api.reducer, filter: trendsReducer });
 

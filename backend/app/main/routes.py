@@ -1,18 +1,11 @@
-from flask import jsonify
-from flask_socketio import Namespace, emit, send
-from app.main import bp
-from app.main.test_json import eksgauster_to_json, read_to_db
-from app.main.kafka_consumer import read
+from flask import current_app, jsonify
 
-# from app.models import (EksgausterSchema, Eksgauster, BearingSchema, Bearing,
-#                         AglomachineSchema, Aglomachine)
+from app.main import bp
+from app.main.kafka_consumer import read
 
 
 @bp.route('/123', methods=['GET'])
 def test():
-    # read()
-    eksgauster_to_json()
     return jsonify({'status': 'ok'})
-
 
 
