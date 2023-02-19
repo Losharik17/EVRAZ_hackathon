@@ -8,7 +8,7 @@ from app import create_app
 from app.models import *
 
 
-def read():
+def read(app):
     consumer = KafkaConsumer(
         'zsmk-9433-dev-01',
         group_id='WhyCrocodile',
@@ -21,72 +21,77 @@ def read():
         sasl_plain_username='9433_reader',
         sasl_plain_password='eUIpgWu0PWTJaTrjhjQD3.hoyhntiK',
         value_deserializer=lambda m: json.loads(m.decode('ascii')),
-        auto_offset_reset='earliest',
+        auto_offset_reset='latest',
         enable_auto_commit=True,
+        consumer_timeout_ms=20000,
     )
     key = 'SM_Exgauster\\[{}]'
     print("Consumer started")
-    for m in consumer:
-        message = m.value
-        date = dt.datetime.strptime(message['moment'], '%Y-%m-%dT%H:%M:%S.%f')
 
-        for aglomachine in Aglomachine.query.all():
-            aglomachine_mapping = aglomachine.mapping
-            aglomachine_data = {}
+    with app.app_context():
+        for msg in consumer:
+            message = msg.value
+            date = dt.datetime.strptime(message['moment'], '%Y-%m-%dT%H:%M:%S.%f')
 
-            for field in aglomachine_mapping.__table__.columns:
-                if field.name in aglomachine_mapping.excluded_fields:
-                    continue
-                aglomachine_data[field.name] = \
-                    message.get(key.format(
-                        getattr(aglomachine_mapping, field.name)
-                    ), None)
+            for aglomachine in Aglomachine.query.all():
+                aglomachine_mapping = aglomachine.mapping
+                aglomachine_data = {}
 
-            data = AglomachineData(**aglomachine_data,
-                                   added_at=date,
-                                   aglomachine_id=aglomachine.id)
-            db.session.add(data)
-            db.session.commit()
-            del data, aglomachine_data, aglomachine_mapping
-
-            for eksgauster in aglomachine.eksgausters:
-                eksgauster_mapping = eksgauster.mapping
-                eksgauster_data = {}
-
-                for field in eksgauster_mapping.__table__.columns:
-                    if field.name in eksgauster_mapping.excluded_fields:
+                for field in aglomachine_mapping.__table__.columns:
+                    if field.name in aglomachine_mapping.excluded_fields:
                         continue
-
-                    eksgauster_data[field.name] = \
+                    aglomachine_data[field.name] = \
                         message.get(key.format(
-                            getattr(eksgauster_mapping, field.name)
+                            getattr(aglomachine_mapping, field.name)
                         ), None)
 
-                data = EksgausterData(**eksgauster_data,
-                                      added_at=date,
-                                      eksgauster_id=eksgauster.id)
+                data = AglomachineData(**aglomachine_data,
+                                       added_at=date,
+                                       aglomachine_id=aglomachine.id)
                 db.session.add(data)
                 db.session.commit()
-                del data, eksgauster_data, eksgauster_mapping
+                del data, aglomachine_data, aglomachine_mapping
 
-                for bearing in eksgauster.bearings:
-                    bearing_mapping = bearing.mapping
-                    bearing_data = {}
+                for eksgauster in aglomachine.eksgausters:
+                    eksgauster_mapping = eksgauster.mapping
+                    eksgauster_data = {}
 
-                    for field in bearing_mapping.__table__.columns:
-                        if field.name in bearing_mapping.excluded_fields:
+                    for field in eksgauster_mapping.__table__.columns:
+                        if field.name in eksgauster_mapping.excluded_fields:
                             continue
 
-                        bearing_data[field.name] = \
+                        eksgauster_data[field.name] = \
                             message.get(key.format(
-                                getattr(bearing_mapping, field.name)
+                                getattr(eksgauster_mapping, field.name)
                             ), None)
 
-                    data = BearingData(**bearing_data,
-                                       added_at=date,
-                                       bearing_id=bearing.id)
+                    data = EksgausterData(**eksgauster_data,
+                                          added_at=date,
+                                          eksgauster_id=eksgauster.id)
                     db.session.add(data)
                     db.session.commit()
+                    del data, eksgauster_data, eksgauster_mapping
+
+                    for bearing in eksgauster.bearings:
+                        bearing_mapping = bearing.mapping
+                        bearing_data = {}
+
+                        for field in bearing_mapping.__table__.columns:
+                            if field.name in bearing_mapping.excluded_fields:
+                                continue
+
+                            bearing_data[field.name] = \
+                                message.get(key.format(
+                                    getattr(bearing_mapping, field.name)
+                                ), None)
+
+                        data = BearingData(**bearing_data,
+                                           added_at=date,
+                                           bearing_id=bearing.id)
+                        db.session.add(data)
+                        db.session.commit()
+                    del bearing
+
 
 # read()
 from multiprocessing import Process, current_process

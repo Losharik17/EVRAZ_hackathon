@@ -1,30 +1,24 @@
 import datetime as dt
-import json
-from math import ceil
-
-from flask import jsonify, make_response
+from flask import jsonify
 from flask_restful import Resource, reqparse
-from sqlalchemy import or_
+from app.models import Aglomachine, Eksgauster, BearingData
 
-from app import db
-from app.models import (Aglomachine, AglomachineData, Bearing, BearingData,
-                        Eksgauster, EksgausterData)
+# kafka не даёт последние данные, быстрый фикс
+
+otkat = dt.datetime.utcnow() - dt.timedelta(days=5)
+minute = dt.timedelta(seconds=30)
 
 
 class EksgausterCurrentResource(Resource):
     PARSER = reqparse.RequestParser()
+    PARSER.add_argument('id', type=int, required=True)
 
-    def get(self):
-        self.PARSER.add_argument('id', type=int, required=True,
-                                 location='args')
-        date = dt.datetime.strptime('2023-01-25 22:29:25.125007',
-                                    '%Y-%m-%d %H:%M:%S.%f')
-        minute = dt.timedelta(seconds=29)
-
+    def get(self, id):
         x = Eksgauster.where(
-            id=1,
-            datas___added_at__between=(date - minute, date + minute),
-            bearings___datas___added_at__between=(date - minute, date + minute),
+            id=id,
+            datas___added_at__between=(otkat - minute, otkat + minute),
+            bearings___datas___added_at__between=(
+                otkat - minute, otkat + minute),
         ).all()[0].to_dict_current()
 
         return jsonify(x)
@@ -32,18 +26,14 @@ class EksgausterCurrentResource(Resource):
 
 class EksgausterAllCurrentResource(Resource):
     PARSER = reqparse.RequestParser()
+    PARSER.add_argument('id', type=int, required=True)
 
-    def get(self):
-        self.PARSER.add_argument('id', type=int, required=True,
-                                 location='args')
-        date = dt.datetime.strptime('2023-01-25 22:29:25.125007',
-                                    '%Y-%m-%d %H:%M:%S.%f')
-        minute = dt.timedelta(seconds=29)
-
+    def get(self, id):
         x = Eksgauster.where(
-            id=1,
-            datas___added_at__between=(date - minute, date + minute),
-            bearings___datas___added_at__between=(date - minute, date + minute),
+            id=id,
+            datas___added_at__between=(otkat - minute, otkat + minute),
+            bearings___datas___added_at__between=(
+                otkat - minute, otkat + minute),
         ).all()[0].to_dict_all_current()
 
         return jsonify(x)
@@ -51,64 +41,54 @@ class EksgausterAllCurrentResource(Resource):
 
 class AglomachineCurrentResource(Resource):
     PARSER = reqparse.RequestParser()
+    PARSER.add_argument('id', type=int, required=True)
 
     def get(self):
-        self.PARSER.add_argument('id', type=int, required=True,
-                                 location='args')
-        try:
-            # args = self.PARSER.parse_args()
-            # id = args['id']
-            # start_date = args['start_date']
-            # end_date = args['end_date']
-            ...
-
-        except:
-            return make_response(
-                jsonify({'message': 'the `id` argument is not specified'}),
-                406)
-
-        date = dt.datetime.strptime('2023-01-25 22:29:25.125007',
-                                    '%Y-%m-%d %H:%M:%S.%f')
-        minute = dt.timedelta(seconds=29)
-
-        data = Aglomachine.where(
-            datas___added_at__between=(date - minute, date + minute),
-            eksgausters___bearings___datas___added_at__between=(date - minute, date + minute),
-            eksgausters___datas___added_at__between=(date - minute, date + minute),
-            id=1
+        x1 = Aglomachine.where(
+            id=1,
+            datas___added_at__between=(otkat - minute, otkat + minute),
+            eksgausters___datas___added_at__between=(
+                otkat - minute, otkat + minute),
+            eksgausters___bearings___datas___added_at__between=(
+                otkat - minute, otkat + minute),
+        ).all()[0].to_dict()
+        x2 = Aglomachine.where(
+            id=2,
+            datas___added_at__between=(otkat - minute, otkat + minute),
+            eksgausters___datas___added_at__between=(
+                otkat - minute, otkat + minute),
+            eksgausters___bearings___datas___added_at__between=(
+                otkat - minute, otkat + minute),
+        ).all()[0].to_dict()
+        x3 = Aglomachine.where(
+            id=3,
+            datas___added_at__between=(otkat - minute, otkat + minute),
+            eksgausters___datas___added_at__between=(
+                otkat - minute, otkat + minute),
+            eksgausters___bearings___datas___added_at__between=(
+                otkat - minute, otkat + minute),
         ).all()[0].to_dict()
 
-        return jsonify(data)
+        datas = [x1, x2, x3]
+        return jsonify(datas)
 
 
 class GraphicsResource(Resource):
     PARSER = reqparse.RequestParser()
+    PARSER.add_argument('name')
+    PARSER.add_argument('parameter')
 
     def get(self):
-        self.PARSER.add_argument('id', type=int, required=True,
-                                 location='args')
-        try:
-            # args = self.PARSER.parse_args()
-            # id = args['id']
-            # start_date = args['start_date']
-            # end_date = args['end_date']
-            ...
+        return jsonify(Eksgauster.structure)
 
-        except:
-            return make_response(
-                jsonify({'message': 'the `id` argument is not specified'}),
-                406)
+    def post(self):
+        args = self.PARSER.parse_args()
+        param = args['param']
+        name = args['param']
 
-        date = dt.datetime.strptime('2023-01-25 22:29:25.125007',
-                                    '%Y-%m-%d %H:%M:%S.%f')
-        minute = dt.timedelta(seconds=29)
+        if param:
+            return jsonify(BearingData.where(
+                added_at__between=(otkat - minute, otkat + minute),
+            ))
 
-        data = Aglomachine.where(
-            datas___added_at__between=(date - minute, date + minute),
-            eksgausters___bearings___datas___added_at__between=(date - minute, date + minute),
-            eksgausters___datas___added_at__between=(date - minute, date + minute),
-            id=1
-        ).all()[0].to_dict()
-
-        return jsonify(data)
-
+        return jsonify(Eksgauster.structure)

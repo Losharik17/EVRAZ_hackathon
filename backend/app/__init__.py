@@ -13,8 +13,12 @@ from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
 from flask_socketio import SocketIO
 from flask_sqlalchemy import SQLAlchemy
+from threading import Event
+import signal
 
+from flask_kafka import FlaskKafka
 from config import Config
+
 
 db = SQLAlchemy()
 migrate = Migrate()

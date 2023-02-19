@@ -1,0 +1,112 @@
+{
+  "bearings": {
+    "title": "Подшипники",
+    "items": [
+      {
+        "title": "ПС 1",
+        "parameters": {
+          "temperature": "Т",
+          "vibration_vertical": "Верт",
+          "vibration_horizontal": "Гориз",
+          "vibration_axial": "Ось"
+        }
+      },
+      {
+        "title": "ПС 2",
+        "parameters": {
+          "temperature": "Т",
+          "vibration_vertical": "Верт",
+          "vibration_horizontal": "Гориз",
+          "vibration_axial": "Ось"
+        }
+      },
+      {
+        "title": "ПС 3",
+        "parameters": {
+          "temperature": "Т"
+        }
+      },
+      {
+        "title": "ПС 4",
+        "parameters": {
+          "temperature": "Т"
+        }
+      },
+      {
+        "title": "ПС 5",
+        "parameters": {
+          "temperature": "Т"
+        }
+      },
+      {
+        "title": "ПС 6",
+        "parameters": {
+          "temperature": "Т"
+        }
+      },
+      {
+        "title": "ПС 7",
+        "parameters": {
+          "temperature": "Т",
+          "vibration_vertical": "Верт",
+          "vibration_horizontal": "Гориз",
+          "vibration_axial": "Ось"
+        }
+      },
+      {
+        "title": "ПС 8",
+        "parameters": {
+          "temperature": "Т",
+          "vibration_vertical": "Верт",
+          "vibration_horizontal": "Гориз",
+          "vibration_axial": "Ось"
+        }
+      },
+      {
+        "title": "ПС 9",
+        "parameters": {
+          "temperature": "Т"
+        }
+      }
+    ]
+  },
+  "oil": {
+    "title": "Маслобак",
+    "oil_level": "Уровень масла",
+    "oil_pressure": "Уровень масла"
+  },
+  "oil_pump": {
+    "title": "Маслонасос",
+    "starting_oil_pump_started": "Запущен пусковой маслонасос эксгаустера",
+    "emergency_oil_pump_started": "Запущен аварийный маслонасос эксгаустера"
+  },
+  "main_drive": {
+    "title": "Главный привод",
+    "rotor_current": "Ток ротора",
+    "rotor_voltage": "Напряжение ротора",
+    "stator_current": "Ток статора",
+    "stator_voltage": "Напряжение статора",
+    "stator_temperature": "Температура статора"
+  },
+  "cooler": {
+    "title": "Охладитель",
+    "water_temperature_before": "Температура воды до",
+    "water_temperature_after": "Температура воды после",
+    "oil_temperature_before": "Температура масла до",
+    "oil_temperature_after": "Температура масла после"
+  },
+  "gas_manifold": {
+    "title": "Газовый коллектор",
+    "collector_temperature_before": "Коллектор температура до",
+    "collector_underpressure_before": "Коллектор давление до"
+  },
+  "eksgauster_operation": {
+    "title": "Эксгаустер",
+    "work": "Состояние работы эксгаустера",
+    "motor_air_temperature_1": "Температура воздуха двигателя 1",
+    "motor_air_temperature_2": "Температура воздуха двигателя 2",
+    "motor_air_temperature_3": "Температура воздуха двигателя 3",
+    "temperature_front_eksgauster": "Температура перед эксгаустером",
+    "vacuum_front_eksgauster": "Разряжение перед эксгаустером"
+  }
+}

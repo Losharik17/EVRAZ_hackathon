@@ -145,121 +145,118 @@ class Eksgauster(db.Model, AllFeaturesMixin):
 
         return ("rotor",)
 
-    @property
-    def fields_for_graphics(self):
-        structure = {
-            "bearings": {
-                "title": "Подшипники",
-                "items": [
-                    {
-                        "title": "ПС 1",
-                        "parameters": {
-                            "temperature": "Т",
-                            "vibration_vertical": "Верт",
-                            "vibration_horizontal": "Гориз",
-                            "vibration_axial": "Ось"
-                        }
-                    },
-                    {
-                        "title": "ПС 2",
-                        "parameters": {
-                            "temperature": "Т",
-                            "vibration_vertical": "Верт",
-                            "vibration_horizontal": "Гориз",
-                            "vibration_axial": "Ось"
-                        }
-                    },
-                    {
-                        "title": "ПС 3",
-                        "parameters": {
-                            "temperature": "Т"
-                        }
-                    },
-                    {
-                        "title": "ПС 4",
-                        "parameters": {
-                            "temperature": "Т"
-                        }
-                    },
-                    {
-                        "title": "ПС 5",
-                        "parameters": {
-                            "temperature": "Т"
-                        }
-                    },
-                    {
-                        "title": "ПС 6",
-                        "parameters": {
-                            "temperature": "Т"
-                        }
-                    },
-                    {
-                        "title": "ПС 7",
-                        "parameters": {
-                            "temperature": "Т",
-                            "vibration_vertical": "Верт",
-                            "vibration_horizontal": "Гориз",
-                            "vibration_axial": "Ось"
-                        }
-                    },
-                    {
-                        "title": "ПС 8",
-                        "parameters": {
-                            "temperature": "Т",
-                            "vibration_vertical": "Верт",
-                            "vibration_horizontal": "Гориз",
-                            "vibration_axial": "Ось"
-                        }
-                    },
-                    {
-                        "title": "ПС 9",
-                        "parameters": {
-                            "temperature": "Т"
-                        }
+    structure = {
+        "bearings": {
+            "title": "Подшипники",
+            "items": [
+                {
+                    "title": "ПС 1",
+                    "parameters": {
+                        "temperature": "Т",
+                        "vibration_vertical": "Верт",
+                        "vibration_horizontal": "Гориз",
+                        "vibration_axial": "Ось"
                     }
-                ]
-            },
-            "oil": {
-                "title": "Маслобак",
-                "oil_level": "Уровень масла",
-                "oil_pressure": "Уровень масла"
-            },
-            "oil_pump": {
-                "title": "Маслонасос",
-                "starting_oil_pump_started": "Запущен пусковой маслонасос эксгаустера",
-                "emergency_oil_pump_started": "Запущен аварийный маслонасос эксгаустера"
-            },
-            "main_drive": {
-                "title": "Главный привод",
-                "rotor_current": "Ток ротора",
-                "rotor_voltage": "Напряжение ротора",
-                "stator_current": "Ток статора",
-                "stator_voltage": "Напряжение статора",
-                "stator_temperature": "Температура статора"
-            },
-            "cooler": {
-                "title": "Охладитель",
-                "water_temperature_before": "Температура воды до",
-                "water_temperature_after": "Температура воды после",
-                "oil_temperature_before": "Температура масла до",
-                "oil_temperature_after": "Температура масла после"
-            },
-            "gas_manifold": {
-                "title": "Газовый коллектор",
-                "collector_temperature_before": "Коллектор температура до",
-                "collector_underpressure_before": "Коллектор давление до"
-            },
-            "eksgauster_operation": {
-                "title": "Эксгаустер",
-                "work": "Состояние работы эксгаустера",
-                "motor_air_temperature_1": "Температура воздуха двигателя 1",
-                "motor_air_temperature_2": "Температура воздуха двигателя 2",
-                "motor_air_temperature_3": "Температура воздуха двигателя 3",
-                "temperature_front_eksgauster": "Температура перед эксгаустером",
-                "vacuum_front_eksgauster": "Разряжение перед эксгаустером"
-            }
+                },
+                {
+                    "title": "ПС 2",
+                    "parameters": {
+                        "temperature": "Т",
+                        "vibration_vertical": "Верт",
+                        "vibration_horizontal": "Гориз",
+                        "vibration_axial": "Ось"
+                    }
+                },
+                {
+                    "title": "ПС 3",
+                    "parameters": {
+                        "temperature": "Т"
+                    }
+                },
+                {
+                    "title": "ПС 4",
+                    "parameters": {
+                        "temperature": "Т"
+                    }
+                },
+                {
+                    "title": "ПС 5",
+                    "parameters": {
+                        "temperature": "Т"
+                    }
+                },
+                {
+                    "title": "ПС 6",
+                    "parameters": {
+                        "temperature": "Т"
+                    }
+                },
+                {
+                    "title": "ПС 7",
+                    "parameters": {
+                        "temperature": "Т",
+                        "vibration_vertical": "Верт",
+                        "vibration_horizontal": "Гориз",
+                        "vibration_axial": "Ось"
+                    }
+                },
+                {
+                    "title": "ПС 8",
+                    "parameters": {
+                        "temperature": "Т",
+                        "vibration_vertical": "Верт",
+                        "vibration_horizontal": "Гориз",
+                        "vibration_axial": "Ось"
+                    }
+                },
+                {
+                    "title": "ПС 9",
+                    "parameters": {
+                        "temperature": "Т"
+                    }
+                }
+            ]
+        },
+        "oil": {
+            "title": "Маслобак",
+            "oil_level": "Уровень масла",
+            "oil_pressure": "Уровень масла"
+        },
+        "oil_pump": {
+            "title": "Маслонасос",
+            "starting_oil_pump_started": "Запущен пусковой маслонасос эксгаустера",
+            "emergency_oil_pump_started": "Запущен аварийный маслонасос эксгаустера"
+        },
+        "main_drive": {
+            "title": "Главный привод",
+            "rotor_current": "Ток ротора",
+            "rotor_voltage": "Напряжение ротора",
+            "stator_current": "Ток статора",
+            "stator_voltage": "Напряжение статора",
+            "stator_temperature": "Температура статора"
+        },
+        "cooler": {
+            "title": "Охладитель",
+            "water_temperature_before": "Температура воды до",
+            "water_temperature_after": "Температура воды после",
+            "oil_temperature_before": "Температура масла до",
+            "oil_temperature_after": "Температура масла после"
+        },
+        "gas_manifold": {
+            "title": "Газовый коллектор",
+            "collector_temperature_before": "Коллектор температура до",
+            "collector_underpressure_before": "Коллектор давление до"
+        },
+        "eksgauster_operation": {
+            "title": "Эксгаустер",
+            "work": "Состояние работы эксгаустера",
+            "motor_air_temperature_1": "Температура воздуха двигателя 1",
+            "motor_air_temperature_2": "Температура воздуха двигателя 2",
+            "motor_air_temperature_3": "Температура воздуха двигателя 3",
+            "temperature_front_eksgauster": "Температура перед эксгаустером",
+            "vacuum_front_eksgauster": "Разряжение перед эксгаустером"
         }
-        return structure
+    }
 
     def to_dict_current(self):
         our_dict = {}
@@ -304,10 +301,23 @@ class Eksgauster(db.Model, AllFeaturesMixin):
         our_dict["datas"] = getattr(self, "datas")[0].to_dict_all_current()
 
         our_dict["bearings"] = {}
+        our_dict["warnings"] = {}
         for bearing in self.bearings:
             our_dict["bearings"][bearing.number] = bearing.to_dict_current()
+            for parameter in our_dict["bearings"][bearing.number]['current']["parameters"]:
+                our_dict["warnings"][bearing.number] = parameter["value"]["status"]
+        #
+        # for bearing in our_dict["bearings"].values():
+        #     print(bearing)
+        #     for parameter in bearing["current"]["parameters"]:
+        #         if parameter["value"]["status"] != "idle":
+        #             our_dict["bearings"]["warnings"].append(bearing["number"])
+        #             break
 
         return our_dict
+
+    def parameter(self):
+        ...
 
 
 class EksgausterData(db.Model, AllFeaturesMixin):
@@ -357,25 +367,25 @@ class EksgausterData(db.Model, AllFeaturesMixin):
         "oil_pressure": "Давление масла",
         "starting_oil_pump_started": "Запущен пусковой маслонасос эксгаустера",
         "emergency_oil_pump_started": "Запущен аварийный маслонасос эксгаустера",
-        "rotor_current": "Ток ротора",
-        "rotor_voltage": "Напряжение ротора",
-        "stator_current": "Ток статора",
-        "stator_voltage": "Напряжение статора",
-        "stator_temperature": "Температура статора",
-        "water_temperature_before": "Температура воды до",
-        "water_temperature_after": "Температура воды после",
-        "oil_temperature_before": "Температура масла до",
-        "oil_temperature_after": "Температура масла после",
+        "rotor_current": "Ток ротора, А",
+        "rotor_voltage": "Напряжение ротора, кВт",
+        "stator_current": "Ток статора, А",
+        "stator_voltage": "Напряжение статера, кВи",
+        "stator_temperature": "Температура статора, °С",
+        "water_temperature_before": "Т, воды до",
+        "water_temperature_after": "Т, воды после",
+        "oil_temperature_before": "Т, масла до",
+        "oil_temperature_after": "Т, масла после",
         "gas_valve_closed": "ЗАКРЫТО задвижка",
         "gas_valve_open": "ОТКРЫТО задвижка",
         "gas_valve_position": "Положение задвижки",
-        "collector_temperature_before": "Коллектор температура до",
-        "collector_underpressure_before": "Коллектор давление до",
+        "collector_temperature_before": "Коллектор, Т до",
+        "collector_underpressure_before": "Коллектор, Д до",
         "work": "Состояние работы эксгаустера",
-        "motor_air_temperature_1": "Температура воздуха двигателя 1",
-        "motor_air_temperature_2": "Температура воздуха двигателя 2",
-        "motor_air_temperature_3": "Температура воздуха двигателя 3",
-        "temperature_front_eksgauster": "Температура перед эксгаустером",
+        "motor_air_temperature_1": "Т воздуха двигателя 1",
+        "motor_air_temperature_2": "Т воздуха двигателя 2",
+        "motor_air_temperature_3": "Т воздуха двигателя 3",
+        "temperature_front_eksgauster": "Т, перед эксгаустером",
         "vacuum_front_eksgauster": "Разряжение перед эксгаустером",
     }
 
@@ -580,10 +590,10 @@ class BearingData(db.Model, AllFeaturesMixin):
     vibration_axial_warning_min = db.Column(db.Float)
 
     fields_title = {
-        "temperature": "Т",
-        "vibration_vertical": "Верт",
-        "vibration_horizontal": "Гориз",
-        "vibration_axial": "Ось",
+        "temperature": "Т, °С",
+        "vibration_vertical": "В, мм/с",
+        "vibration_horizontal": "Г, мм/с",
+        "vibration_axial": "О, мм/с",
     }
 
     def get_parameter_status(self, parameter_name):
@@ -597,7 +607,8 @@ class BearingData(db.Model, AllFeaturesMixin):
             return "critical"
         if value and (value >= warning_max or value <= warning_min):
             return "warning"
-        return "idle"
+        import random
+        return random.choice(["idle", "warning", "critical"])
 
     @property
     def main_fields(self):
