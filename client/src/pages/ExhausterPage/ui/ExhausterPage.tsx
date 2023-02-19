@@ -26,6 +26,7 @@ import {
 import { Gate } from 'entities/exhauster';
 import { Scale } from 'entities/scheme/ui/Scale/Scale';
 import { Exhauster } from 'widgets/Exhauster/Exhauster';
+import { PageLoader } from 'widgets/PageLoader';
 import cls from './ExhausterPage.module.scss';
 import exhausterPng from './exhauster.png';
 
