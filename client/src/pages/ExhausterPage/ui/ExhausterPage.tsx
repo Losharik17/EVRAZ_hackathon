@@ -1,22 +1,54 @@
-import { FC } from 'react';
+import { useEffect, useLayoutEffect, HTMLAttributes, FC } from 'react';
 import { classNames } from 'shared/lib';
-import { Exhauster } from 'shared/ui';
-import { Exhauster as IExhauster } from 'shared/api/models';
+import { useLocation } from 'react-router-dom';
+import { useLazyGetAllExhausterPropertiesQuery } from 'shared/api/service/exhauster';
+import {
+    SchemeRangeContainer,
+    Scheme, SchemePointer,
+
+} from 'entities/scheme/ui';
+
+import { SchemeProgressIndicator }
+    from 'features/SchemeProgressIndicator/ui/SchemeProgressIndicator';
+import {
+    bearings as bearingsStyle,
+    cooler,
+    gas,
+    gate,
+    presure,
+    reducer,
+    temperature,
+    temperature1,
+    temperature2,
+    temperature3,
+} from 'shared/api/consts/style.exhauster';
+
+import { Gate } from 'entities/exhauster';
+import { Scale } from 'entities/scheme/ui/Scale/Scale';
+import { Exhauster } from 'widgets/Exhauster/Exhauster';
 import cls from './ExhausterPage.module.scss';
+import exhausterPng from './exhauster.png';
 
 interface ExhausterPageProps {
     className?: string;
 }
 
-export const ExhausterPage: FC<ExhausterPageProps> = ({ className }) => {
-    const getExhauster = (): IExhauster => ({});
-    const exhauster = getExhauster();
+const ExhausterPage: FC<ExhausterPageProps> = ({ className }) => {
+    const { search } = useLocation();
+    const query = new URLSearchParams(search);
+    const id = query.get('id');
+    const [getProps, { data }] = useLazyGetAllExhausterPropertiesQuery();
 
+    useEffect(() => {
+        getProps('');
+    }, []);
+    console.log(data);
     return (
         <div className={classNames(cls.ExhausterPage, {}, [className])}>
-            <Exhauster exhauster={exhauster} />
+            {/* {exhauster !== undefined ? <Exhauster exhauster={exhauster} /> : <></>} */}
+            {data && <Exhauster exhauster={data} />}
         </div>
     );
 };
 
-// export default ExhausterPage;
+export default ExhausterPage;

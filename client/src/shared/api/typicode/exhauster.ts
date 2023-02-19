@@ -115,13 +115,23 @@ export interface ExhausterMain {
     work?: BooleanProperty;
 }
 
+export interface BearingsKeys {
+    1: BearingMain;
+    2: BearingMain;
+    3: BearingMain;
+    4: BearingMain;
+    5: BearingMain;
+    6: BearingMain;
+    7: BearingMain;
+    8: BearingMain;
+    9: BearingMain;
+}
+
 export interface Exhauster {
-    id?: number;
-    name?: string;
-    bearings?: Bearing[];
-    datas?: SensorsData[];
-    rotor?: Rotor;
-    current?: SensorsData;
+    id: number;
+    name: string;
+    bearings: BearingsKeys;
+    datas: SensorsData;
 }
 
 export interface Aglomachine {

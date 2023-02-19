@@ -9,12 +9,10 @@ interface TrendPageProps {
     className?: string;
 }
 
-export const TrendPage: FC<TrendPageProps> = ({ className }) => {
+const TrendPage: FC<TrendPageProps> = ({ className }) => {
     const { search } = useLocation();
     const query = new URLSearchParams(search);
     const id = query.get('id');
-
-    console.log(id);
 
     return (
         <div className={classNames(cls.TrendPage, {}, [className])}>
@@ -24,4 +22,4 @@ export const TrendPage: FC<TrendPageProps> = ({ className }) => {
     );
 };
 
-// export default TrendPage;
+export default TrendPage;
