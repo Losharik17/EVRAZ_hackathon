@@ -9,11 +9,9 @@ import { TrendsFilterToggle } from 'features/TrendsFilterToggle/ui/TrendsFilterT
 import { ArrowIcon } from 'shared/assets';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/ui';
+import { TrendsBar } from 'widgets/TrendsBar';
+import { ExhausterChart } from 'shared/api/models';
 import cls from './Controls.module.scss';
-
-interface ControlsProps {
-    className?: string;
-}
 
 interface UnitCell {
     name: string;
@@ -69,8 +67,14 @@ const bearings: UnitElements[] = [
     },
 ];
 
-export const Controls: FC<ControlsProps> = ({ className }) => (
+interface ControlsProps {
+    className?: string;
+    controls?: ExhausterChart;
+}
+
+export const Controls: FC<ControlsProps> = ({ className, controls }) => (
     <div className={classNames(cls.Controls, {}, [className])}>
+        <TrendsBar />
         <TrendsControlsWrapper
             label={(
                 <TrendsControlsLabel
@@ -85,74 +89,183 @@ export const Controls: FC<ControlsProps> = ({ className }) => (
             )}
             body={(
                 <>
-                    <TrendsFilterDropdown
-                        title={<>Подшипник</>}
-                    >
-                        {bearings.map(({ cellName, cells }) => (
+                    <TrendsFilterDropdown title={controls.bearings.title}>
+                        {controls.bearings.items.map(({ title, parameters }) => (
                             <TrendsFilterDropdown
-                                key={cellName}
-                                title={cellName}
+                                key={title}
+                                title={title}
                             >
-                                {cells.map(({ name, value }) => (
-                                    <TrendsContolsProperty
-                                        key={name}
-                                        title={(
-                                            <>
-                                                <TrendsFilterToggle name={`${cellName}${name}`} />
-                                                {name}
-                                            </>
-                                        )}
-                                        value={value}
+                                {parameters.temperature && (
+                                    <TrendsContolsProperty title={(
+                                        <>
+                                            <TrendsFilterToggle
+                                                name={`${parameters.temperature}${title}`}
+                                            />
+                                            {parameters.temperature}
+                                        </>
+                                    )}
                                     />
-                                ))}
+                                )}
+                                {parameters.vibration_axial && (
+                                    <TrendsContolsProperty title={(
+                                        <>
+                                            <TrendsFilterToggle
+                                                name={`${parameters.vibration_axial}${title}`}
+                                            />
+                                            {parameters.vibration_axial}
+                                        </>
+                                    )}
+                                    />
+                                )}
+                                {parameters.vibration_horizontal && (
+                                    <TrendsContolsProperty title={(
+                                        <>
+                                            <TrendsFilterToggle
+                                                name={`${parameters.vibration_horizontal}${title}`}
+                                            />
+                                            {parameters.vibration_horizontal}
+                                        </>
+                                    )}
+                                    />
+                                )}
+                                {parameters.vibration_vertical && (
+                                    <TrendsContolsProperty title={(
+                                        <>
+                                            <TrendsFilterToggle
+                                                name={`${parameters.vibration_vertical}${title}`}
+                                            />
+                                            {parameters.vibration_vertical}
+                                        </>
+                                    )}
+                                    />
+                                )}
                             </TrendsFilterDropdown>
                         ))}
                     </TrendsFilterDropdown>
-                    <TrendsFilterDropdown
-                        title={<>Подшипник</>}
-                    >
-                        {bearings.map(({ cellName, cells }) => (
-                            <TrendsFilterDropdown
-                                key={cellName}
-                                title={cellName}
-                            >
-                                {cells.map(({ name, value }) => (
-                                    <TrendsContolsProperty
-                                        key={name}
-                                        title={(
-                                            <>
-                                                <TrendsFilterToggle name={`${cellName}${name}`} />
-                                                {name}
-                                            </>
-                                        )}
-                                        value={value}
-                                    />
-                                ))}
-                            </TrendsFilterDropdown>
-                        ))}
+                    <TrendsFilterDropdown title={controls.oil.title}>
+                        <TrendsContolsProperty title={(
+                            <>
+                                <TrendsFilterToggle
+                                    name={`${controls.oil.oil_level}`}
+                                />
+                                {controls.oil.oil_level}
+                            </>
+                        )}
+                        />
+                        <TrendsContolsProperty title={(
+                            <>
+                                <TrendsFilterToggle
+                                    name={`${controls.oil.oil_pressure}`}
+                                />
+                                {controls.oil.oil_pressure}
+                            </>
+                        )}
+                        />
                     </TrendsFilterDropdown>
-                    <TrendsFilterDropdown
-                        title={<>Подшипник</>}
-                    >
-                        {bearings.map(({ cellName, cells }) => (
-                            <TrendsFilterDropdown
-                                key={cellName}
-                                title={cellName}
-                            >
-                                {cells.map(({ name, value }) => (
-                                    <TrendsContolsProperty
-                                        key={name}
-                                        title={(
-                                            <>
-                                                <TrendsFilterToggle name={`${cellName}${name}`} />
-                                                {name}
-                                            </>
-                                        )}
-                                        value={value}
-                                    />
-                                ))}
-                            </TrendsFilterDropdown>
-                        ))}
+                    <TrendsFilterDropdown title={controls.gas_manifold.title}>
+                        <TrendsContolsProperty title={(
+                            <>
+                                <TrendsFilterToggle
+                                    name={`${controls.gas_manifold.collector_temperature_before}`}
+                                />
+                                {controls.gas_manifold.collector_temperature_before}
+                            </>
+                        )}
+                        />
+                        <TrendsContolsProperty title={(
+                            <>
+                                <TrendsFilterToggle
+                                    name={`${controls.gas_manifold.collector_underpressure_before}`}
+                                />
+                                {controls.gas_manifold.collector_underpressure_before}
+                            </>
+                        )}
+                        />
+                    </TrendsFilterDropdown>
+                    <TrendsFilterDropdown title={controls.main_drive.title}>
+                        <TrendsContolsProperty title={(
+                            <>
+                                <TrendsFilterToggle
+                                    name={`${controls.main_drive.rotor_current}`}
+                                />
+                                {controls.main_drive.rotor_current}
+                            </>
+                        )}
+                        />
+                        <TrendsContolsProperty title={(
+                            <>
+                                <TrendsFilterToggle
+                                    name={`${controls.main_drive.rotor_voltage}`}
+                                />
+                                {controls.main_drive.rotor_voltage}
+                            </>
+                        )}
+                        />
+                        <TrendsContolsProperty title={(
+                            <>
+                                <TrendsFilterToggle
+                                    name={`${controls.main_drive.stator_current}`}
+                                />
+                                {controls.main_drive.stator_current}
+                            </>
+                        )}
+                        />
+                        <TrendsContolsProperty title={(
+                            <>
+                                <TrendsFilterToggle
+                                    name={`${controls.main_drive.stator_temperature}`}
+                                />
+                                {controls.main_drive.stator_temperature}
+                            </>
+                        )}
+                        />
+                        <TrendsContolsProperty title={(
+                            <>
+                                <TrendsFilterToggle
+                                    name={`${controls.main_drive.stator_voltage}`}
+                                />
+                                {controls.main_drive.stator_voltage}
+                            </>
+                        )}
+                        />
+                    </TrendsFilterDropdown>
+                    <TrendsFilterDropdown title={controls.cooler.title}>
+                        <TrendsContolsProperty title={(
+                            <>
+                                <TrendsFilterToggle
+                                    name={`${controls.cooler.oil_temperature_after}`}
+                                />
+                                {controls.cooler.oil_temperature_after}
+                            </>
+                        )}
+                        />
+                        <TrendsContolsProperty title={(
+                            <>
+                                <TrendsFilterToggle
+                                    name={`${controls.cooler.oil_temperature_before}`}
+                                />
+                                {controls.cooler.oil_temperature_before}
+                            </>
+                        )}
+                        />
+                        <TrendsContolsProperty title={(
+                            <>
+                                <TrendsFilterToggle
+                                    name={`${controls.cooler.water_temperature_after}`}
+                                />
+                                {controls.cooler.water_temperature_after}
+                            </>
+                        )}
+                        />
+                        <TrendsContolsProperty title={(
+                            <>
+                                <TrendsFilterToggle
+                                    name={`${controls.cooler.water_temperature_before}`}
+                                />
+                                {controls.cooler.water_temperature_before}
+                            </>
+                        )}
+                        />
                     </TrendsFilterDropdown>
                 </>
             )}

@@ -65,7 +65,7 @@ export const Chart: FC<ChartProps> = ({ className }) => {
                     {/* Compeleted */}
                     <Legend
                         verticalAlign='top'
-                        iconType='diamond'
+                        iconType='plainline'
                     />
                     {/* TODO: Change data display */}
                     <Tooltip

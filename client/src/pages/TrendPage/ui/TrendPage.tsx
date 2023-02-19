@@ -1,27 +1,33 @@
-import { FC } from 'react';
+// import { useTrendsSelector } from 'entities/trends/model';
+import { FC, useEffect } from 'react';
 import { classNames } from 'shared/lib';
 import { Controls } from 'widgets/Controls';
 import { Chart } from 'widgets/Chart';
 import { useLocation } from 'react-router-dom';
+import { useLazyGetChartTitlesQuery } from 'shared/api/service/exhauster';
 import cls from './TrendPage.module.scss';
 
 interface TrendPageProps {
     className?: string;
 }
 
-export const TrendPage: FC<TrendPageProps> = ({ className }) => {
+const TrendPage: FC<TrendPageProps> = ({ className }) => {
     const { search } = useLocation();
     const query = new URLSearchParams(search);
     const id = query.get('id');
 
-    console.log(id);
+    const [getChartTitles, { data }] = useLazyGetChartTitlesQuery();
 
+    useEffect(() => {
+        getChartTitles('');
+    }, []);
+    console.log(data);
     return (
         <div className={classNames(cls.TrendPage, {}, [className])}>
-            <Controls />
+            {data !== undefined ? <Controls controls={data} /> : <></>}
             <Chart />
         </div>
     );
 };
 
-// export default TrendPage;
+export default TrendPage;

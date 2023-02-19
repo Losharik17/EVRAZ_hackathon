@@ -1,3 +1,5 @@
+import { Card } from '../../ui/Card/Card';
+
 export type Status = 'idle' | 'warning' | 'critical'
 
 export interface Property {
@@ -115,16 +117,91 @@ export interface ExhausterMain {
     work?: BooleanProperty;
 }
 
+export interface BearingsKeys {
+    1: BearingMain;
+    2: BearingMain;
+    3: BearingMain;
+    4: BearingMain;
+    5: BearingMain;
+    6: BearingMain;
+    7: BearingMain;
+    8: BearingMain;
+    9: BearingMain;
+}
+
+export interface Warnings {
+    1: Status;
+    2: Status;
+    3: Status;
+    4: Status;
+    5: Status;
+    6: Status;
+    7: Status;
+    8: Status;
+    9: Status;
+}
+
 export interface Exhauster {
-    id?: number;
-    name?: string;
-    bearings?: Bearing[];
-    datas?: SensorsData[];
-    rotor?: Rotor;
-    current?: SensorsData;
+    id: number;
+    name: string;
+    bearings: BearingsKeys;
+    datas: SensorsData;
+    warnings: Warnings;
 }
 
 export interface Aglomachine {
     id: number;
-    exhausters: ExhausterMain[];
+    number: number;
+    eksgausters: ExhausterMain[];
+}
+
+export interface CustomParameters {
+    temperature: string,
+    vibration_vertical: string,
+    vibration_horizontal: string;
+    vibration_axial: string;
+}
+
+export interface CustomOil extends Oil{
+    title: string;
+}
+
+export interface CustomOilpump extends OilPump {
+    title: string;
+}
+
+export interface CustomMainDrive extends MainDrive {
+    title: string;
+}
+
+export interface CustomCooler extends Cooler {
+    title: string;
+}
+
+export interface CustomOperations extends Operations {
+    title: string;
+}
+
+export interface CustomManifold extends Manifold {
+    title: string;
+}
+
+export interface BearingItem {
+    title: string;
+    parameters: CustomParameters;
+}
+
+export interface Bearings {
+    title: string;
+    items: BearingItem[]
+}
+
+export interface ExhausterChart {
+    bearings: Bearings;
+    oil: CustomOil;
+    oil_pump: CustomOilpump;
+    main_drive: CustomMainDrive;
+    cooler: CustomCooler;
+    gas_manifold: CustomManifold;
+    eksgauster_operation: CustomOperations;
 }

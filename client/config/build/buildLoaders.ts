@@ -50,7 +50,7 @@ export const buildLoaders = ({ isDev }: BuildOptions): webpack.RuleSetRule[] => 
     };
 
     const cssLoader: webpack.RuleSetRule = {
-        test: /\.s[ac]ss$/i,
+        test: /\.(s[ac]ss|css)$/i,
         use: [
             isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
             {
