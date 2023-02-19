@@ -18,7 +18,7 @@ import {
     Divider,
     Input,
 } from 'shared/ui';
-import { Exhauster, RadioIcon, ThermometerIcon, WaterIcon } from 'shared/assets';
+import { Exhauster, RadioIcon, RotorIcon, Scheme, ThermometerIcon, WaterIcon } from 'shared/assets';
 import { ExhausterMain } from 'shared/api/models';
 
 interface ExhausterCardProps {
@@ -55,7 +55,8 @@ export const ExhausterCard: FC<ExhausterCardProps> = ({
                 )}
             />
             <Divider />
-            <img src={Exhauster} alt='example' width='100%' />
+            {/* <img src={Exhauster} alt='example' width='100%' /> */}
+            <RotorIcon />
             <Divider />
             <ExhausterInfo
                 title='Предупреждения'
@@ -65,7 +66,7 @@ export const ExhausterCard: FC<ExhausterCardProps> = ({
                             id,
                             number,
                             current: { parameters },
-                        }) => (exhauster.warnings.find((warn) => warn.number === number)
+                        }) => (exhauster.warnings.find((warn) => warn.number !== number)
                             ? (
                                 <>
                                     <ExhausterWarning
@@ -74,9 +75,9 @@ export const ExhausterCard: FC<ExhausterCardProps> = ({
                                         params={parameters.map(({ value, title }) => (
                                             <WarningIndicator
                                                 key={title}
-                                                title={title}
+                                                title={title[0]}
                                                 variant={value.status}
-                                                Icon={title === 'T' ? ThermometerIcon : RadioIcon}
+                                                Icon={title === 'Т' ? ThermometerIcon : RadioIcon}
                                             />
                                         ))}
                                     />
@@ -89,7 +90,7 @@ export const ExhausterCard: FC<ExhausterCardProps> = ({
                                 params={(
                                     <WarningIndicator
                                         variant={exhauster.datas.oil.oil_level.value.status}
-                                        title={exhauster.datas.oil.oil_level.title}
+                                        title='L'
                                         Icon={WaterIcon}
                                     />
                                 )}
@@ -107,7 +108,7 @@ export const ExhausterCard: FC<ExhausterCardProps> = ({
                             id,
                             number,
                             current: { parameters },
-                        }) => (exhauster.warnings.find((warn) => warn.number !== number)
+                        }) => (exhauster.warnings.find((warn) => warn.number === number)
                             ? (
                                 <>
                                     <ExhausterWarning
@@ -116,9 +117,9 @@ export const ExhausterCard: FC<ExhausterCardProps> = ({
                                         params={parameters.map(({ value, title }) => (
                                             <WarningIndicator
                                                 key={title}
-                                                title={title}
+                                                title={title[0]}
                                                 variant={value.status}
-                                                Icon={title === 'T' ? ThermometerIcon
+                                                Icon={title[0] === 'Т' ? ThermometerIcon
                                                     : RadioIcon}
                                             />
                                         ))}
@@ -132,7 +133,7 @@ export const ExhausterCard: FC<ExhausterCardProps> = ({
                                 params={(
                                     <WarningIndicator
                                         variant={exhauster.datas.oil.oil_level.value.status}
-                                        title={exhauster.datas.oil.oil_level.title}
+                                        title='L'
                                         Icon={WaterIcon}
                                     />
                                 )}

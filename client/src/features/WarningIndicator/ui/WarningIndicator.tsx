@@ -24,7 +24,7 @@ export const WarningIndicator: FC<WarningIndicatorProps> = ({
         variant={variant}
         font={font}
     >
-        {title}
+        <div style={{ color: '#000' }}>{title}</div>
         {Icon && <Icon className={cls[variant]} />}
 
     </Chip>
