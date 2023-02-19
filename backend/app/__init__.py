@@ -1,3 +1,4 @@
+import json
 import logging
 import os
 from logging.handlers import RotatingFileHandler, SMTPHandler
@@ -17,10 +18,10 @@ from config import Config
 
 db = SQLAlchemy()
 migrate = Migrate()
-json = FlaskJSON()
+flask_json = FlaskJSON()
 ckeditor = CKEditor()
 babel_ex = BabelEx()
-cors = CORS()
+cors = CORS(allow_headers='*')
 ma = Marshmallow()
 socketio = SocketIO(cors_allowed_origins='*')
 admin = Admin(name='Сайт Кафедры', template_mode='bootstrap4',
@@ -35,7 +36,7 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
     db.init_app(app)
     migrate.init_app(app, db, render_as_batch=True)
-    json.init_app(app)
+    flask_json.init_app(app)
     ckeditor.init_app(app)
     babel_ex.init_app(app)
     cors.init_app(app)
@@ -43,17 +44,15 @@ def create_app(config_class=Config):
     socketio.init_app(app)
     ma.init_app(app)
 
+
     from app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
 
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
 
-    # from app.admin_panel import bp as admin_panel_bp
-    # app.register_blueprint(admin_panel_bp, url_prefix='/admin_panel')
-
-    from app.auth import bp as auth_bp
-    app.register_blueprint(auth_bp, url_prefix='/auth')
+    from app.api import bp as api_bp
+    app.register_blueprint(api_bp, url_prefix='/api')
 
     if not app.debug and not app.testing:
         if not os.path.exists('logs'):
@@ -67,7 +66,7 @@ def create_app(config_class=Config):
         app.logger.addHandler(file_handler)
 
         app.logger.setLevel(logging.INFO)
-        app.logger.info('App started')
+        # app.logger.info('App started')
 
     return app
 

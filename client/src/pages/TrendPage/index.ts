@@ -1,3 +1,1 @@
-import { TrendPage } from './ui/TrendPage';
-
-export { TrendPage };
+export { TrendPageAsync as TrendPage } from './ui/TrendPageAsync';

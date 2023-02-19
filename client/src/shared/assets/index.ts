@@ -9,6 +9,7 @@ import radio from './icons/radio.svg';
 import thermometer from './icons/thermometer.svg';
 import water from './icons/water.svg';
 import brush from './icons/custombrush.svg';
+import rotor from './images/rotor.svg';
 
 export const Exhauster = exhauster;
 export const EvrazIcon = evraz;
@@ -21,3 +22,4 @@ export const RadioIcon = radio;
 export const ThermometerIcon = thermometer;
 export const WaterIcon = water;
 export const BrushTraveller = brush;
+export const RotorIcon = rotor;

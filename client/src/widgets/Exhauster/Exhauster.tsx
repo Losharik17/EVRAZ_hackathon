@@ -3,7 +3,7 @@ import { Scheme, SchemePointer, SchemeRangeContainer } from 'entities/scheme/ui'
 import { SchemeProgressIndicator }
     from 'features/SchemeProgressIndicator/ui/SchemeProgressIndicator';
 import {
-    bearings,
+    bearings as bearingsStyle,
     cooler,
     gas,
     gate,
@@ -18,9 +18,14 @@ import { Exhauster as IExhauster } from 'shared/api/models';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Gate } from 'entities/exhauster';
 import { Scale } from 'entities/scheme/ui/Scale/Scale';
-import { useLocation } from 'react-router-dom';
 import cls from './Exhauster.module.scss';
 import exhausterPng from './exhauster.png';
+
+const bgs = {
+    idle: 'inherit',
+    critical: '#EB5835',
+    warning: '#FAB82E',
+};
 
 interface ExhausterProps extends HTMLAttributes<HTMLDivElement> {
     className?: string;
@@ -33,10 +38,7 @@ export const Exhauster: FC<ExhausterProps> = ({
     exhauster,
     ...props
 }) => {
-    const { search } = useLocation();
-    const query = new URLSearchParams(search);
-    const id = query.get('id');
-
+    console.log(exhauster);
     return (
         <div
             className={classNames(cls.Exhauster, {}, [className])}
@@ -58,113 +60,170 @@ export const Exhauster: FC<ExhausterProps> = ({
                     />
                     <div
                         className={cls.rect}
-                        style={bearings.nineth}
+                        style={bearingsStyle.nineth}
                     >
-                        <Scheme title={<>9СП</>}>
-                            <div>T, °С 220</div>
-                            <div>T, °С 220</div>
+                        <Scheme title='9 ПС'>
+                            {exhauster.bearings[9].current.parameters.map(({ title, value }) => (
+                                <div
+                                    key={title}
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        background: bgs[value.status],
+
+                                        borderRadius: 3,
+                                    }}
+                                >
+                                    <span>
+                                        {title}
+                                    </span>
+                                    <span>{`${Math.trunc(value.number)}`}</span>
+                                </div>
+                            ))}
                         </Scheme>
                     </div>
                     <div
                         className={cls.rect}
-                        style={bearings.eigth}
+                        style={bearingsStyle.eigth}
                     >
-                        <Scheme title={<>8СП</>}>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
+                        <Scheme title='8 ПС'>
+                            {exhauster.bearings[8].current.parameters.map(({ title, value }) => (
+                                <div
+                                    key={title}
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        background: bgs[value.status],
+
+                                        borderRadius: 3,
+                                    }}
+                                >
+                                    <span>
+                                        {title}
+                                    </span>
+                                    <span>{`${Math.trunc(value.number)}`}</span>
+                                </div>
+                            ))}
                         </Scheme>
                     </div>
                     <div
                         className={cls.rect}
-                        style={bearings.seventh}
+                        style={bearingsStyle.seventh}
                     >
-                        <Scheme title={<>7СП</>}>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
+                        <Scheme title='7 ПС'>
+                            {exhauster.bearings[7].current.parameters.map(({ title, value }) => (
+                                <div
+                                    key={title}
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        background: bgs[value.status],
+
+                                        borderRadius: 3,
+                                    }}
+                                >
+                                    <span>
+                                        {title}
+                                    </span>
+                                    <span>{`${Math.trunc(value.number)}`}</span>
+                                </div>
+                            ))}
                         </Scheme>
                     </div>
                     <div
                         className={cls.rect}
-                        style={bearings.sixth}
+                        style={bearingsStyle.sixth}
                     >
-                        <Scheme title={<>6СП</>}>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
+                        <Scheme title='6 ПС'>
+                            {exhauster.bearings[6].current.parameters.map(({ title, value }) => (
+                                <div
+                                    key={title}
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        background: bgs[value.status],
+
+                                        borderRadius: 3,
+                                    }}
+                                >
+                                    <span>
+                                        {title}
+                                    </span>
+                                    <span>{`${Math.trunc(value.number)}`}</span>
+                                </div>
+                            ))}
                         </Scheme>
                     </div>
                     <div
                         className={cls.rect}
-                        style={bearings.fifth}
+                        style={bearingsStyle.first}
                     >
-                        <Scheme title={<>5СП</>}>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
+                        <Scheme title='1 ПС'>
+                            {exhauster.bearings[1].current.parameters.map(({ title, value }) => (
+                                <div
+                                    key={title}
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        background: bgs[value.status],
+
+                                        borderRadius: 3,
+                                    }}
+                                >
+                                    <span>
+                                        {title}
+                                    </span>
+                                    <span>{`${Math.trunc(value.number)}`}</span>
+                                </div>
+                            ))}
                         </Scheme>
                     </div>
                     <div
                         className={cls.rect}
-                        style={bearings.second}
+                        style={bearingsStyle.second}
                     >
-                        <Scheme title={<>2ПС</>}>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
+                        <Scheme title='2 ПС'>
+                            {exhauster.bearings[2].current.parameters.map(({ title, value }) => (
+                                <div
+                                    key={title}
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        background: bgs[value.status],
+
+                                        borderRadius: 3,
+                                    }}
+                                >
+                                    <span>
+                                        {title}
+                                    </span>
+                                    <span>{`${Math.trunc(value.number)}`}</span>
+                                </div>
+                            ))}
                         </Scheme>
                     </div>
                     <div
                         className={cls.rect}
-                        style={bearings.fifth}
+                        style={bearingsStyle.fifth}
                     >
-                        <Scheme variant='light' title={<>5СП</>}>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
+                        <Scheme title='5 ПС'>
+                            {exhauster.bearings[5].current.parameters.map(({ title, value }) => (
+                                <div
+                                    key={title}
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        background: bgs[value.status],
+
+                                        borderRadius: 3,
+                                    }}
+                                >
+                                    <span>
+                                        {title}
+                                    </span>
+                                    <span>{`${Math.trunc(value.number)}`}</span>
+                                </div>
+                            ))}
                         </Scheme>
                     </div>
                     <div
@@ -177,7 +236,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                                 progress={(
                                     <SchemeProgressIndicator
                                         type='Oil presure'
-                                        value={2}
+                                        value={Math.trunc(exhauster.datas.oil.oil_pressure.value.number)}
                                     />
                                 )}
                             />
@@ -221,53 +280,57 @@ export const Exhauster: FC<ExhausterProps> = ({
                     </div>
                     <div
                         className={cls.rect}
-                        style={bearings.third}
+                        style={bearingsStyle.third}
                     />
                     <div
                         className={cls.rect}
-                        style={bearings.third}
+                        style={bearingsStyle.third}
                     >
-                        <Scheme title={<>3СП</>}>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
+                        <Scheme title='3 ПС'>
+                            {exhauster.bearings[3].current.parameters.map(({ title, value }) => (
+                                <div
+                                    key={title}
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        background: bgs[value.status],
+
+                                        borderRadius: 3,
+                                    }}
+                                >
+                                    <span>
+                                        {title}
+                                    </span>
+                                    <span>{`${Math.trunc(value.number)}`}</span>
+                                </div>
+                            ))}
                         </Scheme>
                     </div>
                     <div
                         className={cls.rect}
-                        style={bearings.fourth}
+                        style={bearingsStyle.fourth}
                     >
-                        <Scheme title={<>4СП</>}>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
+                        <Scheme title='4 ПС'>
+                            {exhauster.bearings[4].current.parameters.map(({ title, value }) => (
+                                <div
+                                    key={title}
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        background: bgs[value.status],
+
+                                        borderRadius: 3,
+                                    }}
+                                >
+                                    <span>
+                                        {title}
+                                    </span>
+                                    <span>{`${Math.trunc(value.number)}`}</span>
+                                </div>
+                            ))}
                         </Scheme>
                     </div>
-                    <div
-                        className={cls.rect}
-                        style={bearings.first}
-                    >
-                        <Scheme title={<>1СП</>}>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
-                            <div>
-                                <span>T, °С</span>
-                                <span>220</span>
-                            </div>
-                        </Scheme>
-                    </div>
+
                     <div
                         className={cls.rect}
                         style={gas}
@@ -275,7 +338,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                         <SchemeRangeContainer progress={(
                             <SchemeProgressIndicator
                                 type='Gas temperature'
-                                value={80}
+                                value={0}
                             />
                         )}
                         />
@@ -291,7 +354,11 @@ export const Exhauster: FC<ExhausterProps> = ({
                         className={cls.rect}
                         style={gate}
                     >
-                        <Gate size={20 / 1449 * 100} state={10} />
+                        <Gate
+                            size={20 / 1449 * 100}
+                            state={Math.trunc(exhauster.datas.gas_valve_position.value.number
+                                ? exhauster.datas.gas_valve_position.value.number : 0)}
+                        />
 
                     </div>
                     <div
@@ -304,7 +371,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                             height: `${21 / 855 * 100}%`,
                         }}
                     >
-                        <SchemePointer label='1' variant='critical' />
+                        <SchemePointer label='9' variant={exhauster.warnings[9]} />
                     </div>
                     <div
                         id='SCHEME-DIV21'
@@ -316,7 +383,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                             height: `${21 / 855 * 100}%`,
                         }}
                     >
-                        <SchemePointer label='1' variant='critical' />
+                        <SchemePointer label='8' variant={exhauster.warnings[8]} />
                     </div>
                     <div
                         id='SCHEME-DIV22'
@@ -328,7 +395,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                             height: `${21 / 855 * 100}%`,
                         }}
                     >
-                        <SchemePointer label='1' variant='warning' />
+                        <SchemePointer label='7' variant={exhauster.warnings[7]} />
                     </div>
                     <div
                         id='SCHEME-DIV23'
@@ -340,7 +407,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                             height: `${21 / 855 * 100}%`,
                         }}
                     >
-                        <SchemePointer label='1' variant='idle' />
+                        <SchemePointer label='3' variant={exhauster.warnings[3]} />
                     </div>
                     <div
                         id='SCHEME-DIV24'
@@ -352,7 +419,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                             height: `${21 / 855 * 100}%`,
                         }}
                     >
-                        <SchemePointer label='1' variant='warning' />
+                        <SchemePointer label='5' variant={exhauster.warnings[5]} />
                     </div>
                     <div
                         id='SCHEME-DIV25'
@@ -364,7 +431,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                             height: `${21 / 855 * 100}%`,
                         }}
                     >
-                        <SchemePointer label='1' variant='warning' />
+                        <SchemePointer label='6' variant={exhauster.warnings[6]} />
                     </div>
                     <div
                         id='SCHEME-DIV26'
@@ -376,7 +443,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                             height: `${21 / 855 * 100}%`,
                         }}
                     >
-                        <SchemePointer label='1' variant='idle' />
+                        <SchemePointer label='4' variant={exhauster.warnings[4]} />
                     </div>
                     <div
                         id='SCHEME-DIV27'
@@ -388,7 +455,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                             height: `${21 / 855 * 100}%`,
                         }}
                     >
-                        <SchemePointer label='1' variant='critical' />
+                        <SchemePointer label='2' variant={exhauster.warnings[2]} />
                     </div>
                     <div
                         id='SCHEME-DIV28'
@@ -411,13 +478,76 @@ export const Exhauster: FC<ExhausterProps> = ({
                             left: `${942 / 1449 * 100}%`,
                             top: `${337 / 855 * 100}%`,
                             width: `${230 / 1449 * 100}%`,
-                            height: `${148 / 855 * 100}%`,
+                            height: `${200 / 855 * 100}%`,
                             fontSize: `${15 / 855 * 100}vh`,
                             lineHeight: `${15 / 855 * 100}vh`,
                         }}
                     >
 
-                        sdfsfd
+                        <Scheme title='Главный привод'>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    background:
+                                        bgs[exhauster.datas.main_drive.rotor_current.value.status],
+
+                                    borderRadius: 3,
+                                }}
+                            >
+                                <span>{exhauster.datas.main_drive.rotor_current.title}</span>
+                                <span>
+                                    {Math.trunc(exhauster.datas.main_drive.rotor_current.value.number)}
+                                </span>
+                            </div>
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+
+                                    borderRadius: 3,
+                                }}
+                            >
+                                <span>{exhauster.datas.main_drive.rotor_voltage.title}</span>
+                                <span>{Math.trunc(exhauster.datas.main_drive.rotor_voltage.value.number)}</span>
+                            </div>
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+
+                                    borderRadius: 3,
+                                }}
+                            >
+                                <span>{exhauster.datas.main_drive.stator_current.title}</span>
+                                <span>{Math.trunc(exhauster.datas.main_drive.stator_current.value.number)}</span>
+                            </div>
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+
+                                    borderRadius: 3,
+                                }}
+                            >
+                                <span>{exhauster.datas.main_drive.stator_temperature.title}</span>
+                                <span>{Math.trunc(exhauster.datas.main_drive.stator_temperature.value.number)}</span>
+                            </div>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+
+                                    borderRadius: 3,
+                                }}
+                            >
+                                <span>{exhauster.datas.main_drive.stator_voltage.title}</span>
+                                <span>{exhauster.datas.main_drive.stator_voltage.value.number}</span>
+                            </div>
+                        </Scheme>
                     </div>
 
                     <div
@@ -438,7 +568,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                                 progress={(
                                     <SchemeProgressIndicator
                                         type='Oil level'
-                                        value={34}
+                                        value={Math.trunc(exhauster.datas.oil.oil_level.value.number)}
                                     />
                                 )}
                             />
