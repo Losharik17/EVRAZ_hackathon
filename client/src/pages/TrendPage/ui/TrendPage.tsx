@@ -3,6 +3,7 @@ import { FC } from 'react';
 import { classNames } from 'shared/lib';
 import { Controls } from 'widgets/Controls';
 import { Chart } from 'widgets/Chart';
+import { useLocation } from 'react-router-dom';
 import cls from './TrendPage.module.scss';
 
 interface TrendPageProps {

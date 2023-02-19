@@ -127,11 +127,24 @@ export interface BearingsKeys {
     9: BearingMain;
 }
 
+export interface Warnings {
+    1: Status;
+    2: Status;
+    3: Status;
+    4: Status;
+    5: Status;
+    6: Status;
+    7: Status;
+    8: Status;
+    9: Status;
+}
+
 export interface Exhauster {
     id: number;
     name: string;
     bearings: BearingsKeys;
     datas: SensorsData;
+    warnings: Warnings;
 }
 
 export interface Aglomachine {
