@@ -63,7 +63,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                         style={bearingsStyle.nineth}
                     >
                         <Scheme title='9 ПС'>
-                            {exhauster.bearings[9].current.parameters.map(({ title, value }) => (
+                            {exhauster.bearings[9]?.current.parameters.map(({ title, value }) => (
                                 <div
                                     key={title}
                                     style={{
@@ -356,7 +356,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                     >
                         <Gate
                             size={20 / 1449 * 100}
-                            state={Math.trunc(exhauster.datas.gas_valve_position.value.number
+                            state={Math.trunc(exhauster.datas.gas_valve_position?.value?.number
                                 ? exhauster.datas.gas_valve_position.value.number : 0)}
                         />
 
@@ -490,14 +490,14 @@ export const Exhauster: FC<ExhausterProps> = ({
                                     display: 'flex',
                                     justifyContent: 'space-between',
                                     background:
-                                        bgs[exhauster.datas.main_drive.rotor_current.value.status],
+                                        bgs[exhauster.datas.main_drive?.rotor_current?.value.status],
 
                                     borderRadius: 3,
                                 }}
                             >
-                                <span>{exhauster.datas.main_drive.rotor_current.title}</span>
+                                <span>{exhauster.datas.main_drive?.rotor_current.title}</span>
                                 <span>
-                                    {Math.trunc(exhauster.datas.main_drive.rotor_current.value.number)}
+                                    {Math.trunc(exhauster.datas.main_drive?.rotor_current.value.number)}
                                 </span>
                             </div>
 
@@ -509,8 +509,8 @@ export const Exhauster: FC<ExhausterProps> = ({
                                     borderRadius: 3,
                                 }}
                             >
-                                <span>{exhauster.datas.main_drive.rotor_voltage.title}</span>
-                                <span>{Math.trunc(exhauster.datas.main_drive.rotor_voltage.value.number)}</span>
+                                <span>{exhauster.datas.main_drive?.rotor_voltage.title}</span>
+                                <span>{Math.trunc(exhauster.datas.main_drive?.rotor_voltage.value.number)}</span>
                             </div>
 
                             <div
@@ -521,8 +521,8 @@ export const Exhauster: FC<ExhausterProps> = ({
                                     borderRadius: 3,
                                 }}
                             >
-                                <span>{exhauster.datas.main_drive.stator_current.title}</span>
-                                <span>{Math.trunc(exhauster.datas.main_drive.stator_current.value.number)}</span>
+                                <span>{exhauster.datas.main_drive?.stator_current.title}</span>
+                                <span>{Math.trunc(exhauster.datas.main_drive?.stator_current.value.number)}</span>
                             </div>
 
                             <div
@@ -533,8 +533,8 @@ export const Exhauster: FC<ExhausterProps> = ({
                                     borderRadius: 3,
                                 }}
                             >
-                                <span>{exhauster.datas.main_drive.stator_temperature.title}</span>
-                                <span>{Math.trunc(exhauster.datas.main_drive.stator_temperature.value.number)}</span>
+                                <span>{exhauster.datas.main_drive?.stator_temperature.title}</span>
+                                <span>{Math.trunc(exhauster.datas.main_drive?.stator_temperature.value.number)}</span>
                             </div>
                             <div
                                 style={{
@@ -544,8 +544,8 @@ export const Exhauster: FC<ExhausterProps> = ({
                                     borderRadius: 3,
                                 }}
                             >
-                                <span>{exhauster.datas.main_drive.stator_voltage.title}</span>
-                                <span>{exhauster.datas.main_drive.stator_voltage.value.number}</span>
+                                <span>{exhauster.datas.main_drive?.stator_voltage.title}</span>
+                                <span>{exhauster.datas.main_drive?.stator_voltage.value.number}</span>
                             </div>
                         </Scheme>
                     </div>
@@ -564,6 +564,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                     >
                         <Scheme variant='light' title={<>Маслобак</>}>
                             <SchemeRangeContainer
+
                                 range={<Scale divisions={['0', '20', '40', '60', '80', '100']} />}
                                 progress={(
                                     <SchemeProgressIndicator
