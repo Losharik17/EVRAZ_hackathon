@@ -1,3 +1,3 @@
-import { TrendPage } from './ui/TrendPage';
+import TrendPage from './ui/TrendPage';
 
 export { TrendPage };

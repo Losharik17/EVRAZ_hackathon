@@ -11,12 +11,12 @@ export const api = createApi({
     endpoints: () => ({}),
 });
 /* eslint-disable */
-export const exhausterApi = api.injectEndpoints({ 
-    endpoints: (build) => ({ 
-        getExhauster: build.query<ExhausterMain, any>({ 
-            query: (id) => ({ url: '/eksgauster' }) 
+export const exhausterApi = api.injectEndpoints({
+    endpoints: (build) => ({
+        getExhauster: build.query<ExhausterMain, any>({
+            query: (id) => ({ url: '/eksgauster' })
         }),
-    }) 
+    })
 });
 
 export const { useGetExhausterQuery, useLazyGetExhausterQuery } = exhausterApi

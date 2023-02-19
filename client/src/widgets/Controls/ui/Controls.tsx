@@ -9,6 +9,7 @@ import { TrendsFilterToggle } from 'features/TrendsFilterToggle/ui/TrendsFilterT
 import { ArrowIcon } from 'shared/assets';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/ui';
+import { TrendsBar } from 'widgets/TrendsBar';
 import cls from './Controls.module.scss';
 
 interface ControlsProps {
@@ -71,6 +72,7 @@ const bearings: UnitElements[] = [
 
 export const Controls: FC<ControlsProps> = ({ className }) => (
     <div className={classNames(cls.Controls, {}, [className])}>
+        <TrendsBar />
         <TrendsControlsWrapper
             label={(
                 <TrendsControlsLabel

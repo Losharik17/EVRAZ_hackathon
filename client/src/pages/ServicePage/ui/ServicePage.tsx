@@ -26,8 +26,21 @@ const ServicePage: FC<ServicePageProps> = ({ className }) => {
                     ))}
                 </div>
             ))} */}
-            <div className={cls.Aglomaschine}>
-                {exhauster && <ExhausterCard exhauster={exhauster} />}
+            <div className={cls.Wrapper}>
+                <div className={cls.Aglomaschine}>
+                    {exhauster && (
+                        <ExhausterCard
+                            className={cls.ExhausterCard}
+                            exhauster={exhauster}
+                        />
+                    )}
+                    {exhauster && (
+                        <ExhausterCard
+                            className={cls.ExhausterCard}
+                            exhauster={exhauster}
+                        />
+                    )}
+                </div>
             </div>
         </div>
     );
