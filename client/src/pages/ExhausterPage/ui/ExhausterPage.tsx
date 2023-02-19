@@ -26,6 +26,7 @@ import {
 import { Gate } from 'entities/exhauster';
 import { Scale } from 'entities/scheme/ui/Scale/Scale';
 import { Exhauster } from 'widgets/Exhauster/Exhauster';
+import { ids } from 'webpack';
 import cls from './ExhausterPage.module.scss';
 import exhausterPng from './exhauster.png';
 
@@ -40,9 +41,9 @@ const ExhausterPage: FC<ExhausterPageProps> = ({ className }) => {
     const [getProps, { data }] = useLazyGetAllExhausterPropertiesQuery();
 
     useEffect(() => {
-        getProps('');
+        getProps(id);
     }, []);
-    console.log(data);
+
     return (
         <div className={classNames(cls.ExhausterPage, {}, [className])}>
             {/* {exhauster !== undefined ? <Exhauster exhauster={exhauster} /> : <></>} */}

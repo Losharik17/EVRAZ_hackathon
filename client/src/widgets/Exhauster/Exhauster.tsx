@@ -70,7 +70,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                                         display: 'flex',
                                         justifyContent: 'space-between',
                                         background: bgs[value.status],
-                                        padding: 5,
+
                                         borderRadius: 3,
                                     }}
                                 >
@@ -94,7 +94,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                                         display: 'flex',
                                         justifyContent: 'space-between',
                                         background: bgs[value.status],
-                                        padding: 5,
+
                                         borderRadius: 3,
                                     }}
                                 >
@@ -118,7 +118,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                                         display: 'flex',
                                         justifyContent: 'space-between',
                                         background: bgs[value.status],
-                                        padding: 5,
+
                                         borderRadius: 3,
                                     }}
                                 >
@@ -142,7 +142,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                                         display: 'flex',
                                         justifyContent: 'space-between',
                                         background: bgs[value.status],
-                                        padding: 5,
+
                                         borderRadius: 3,
                                     }}
                                 >
@@ -166,7 +166,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                                         display: 'flex',
                                         justifyContent: 'space-between',
                                         background: bgs[value.status],
-                                        padding: 5,
+
                                         borderRadius: 3,
                                     }}
                                 >
@@ -190,7 +190,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                                         display: 'flex',
                                         justifyContent: 'space-between',
                                         background: bgs[value.status],
-                                        padding: 5,
+
                                         borderRadius: 3,
                                     }}
                                 >
@@ -214,7 +214,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                                         display: 'flex',
                                         justifyContent: 'space-between',
                                         background: bgs[value.status],
-                                        padding: 5,
+
                                         borderRadius: 3,
                                     }}
                                 >
@@ -236,7 +236,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                                 progress={(
                                     <SchemeProgressIndicator
                                         type='Oil presure'
-                                        value={Math.trunc(exhauster.datas.oil.oil_level.value.number)}
+                                        value={Math.trunc(exhauster.datas.oil.oil_pressure.value.number)}
                                     />
                                 )}
                             />
@@ -294,7 +294,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                                         display: 'flex',
                                         justifyContent: 'space-between',
                                         background: bgs[value.status],
-                                        padding: 5,
+
                                         borderRadius: 3,
                                     }}
                                 >
@@ -318,7 +318,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                                         display: 'flex',
                                         justifyContent: 'space-between',
                                         background: bgs[value.status],
-                                        padding: 5,
+
                                         borderRadius: 3,
                                     }}
                                 >
@@ -478,13 +478,76 @@ export const Exhauster: FC<ExhausterProps> = ({
                             left: `${942 / 1449 * 100}%`,
                             top: `${337 / 855 * 100}%`,
                             width: `${230 / 1449 * 100}%`,
-                            height: `${148 / 855 * 100}%`,
+                            height: `${200 / 855 * 100}%`,
                             fontSize: `${15 / 855 * 100}vh`,
                             lineHeight: `${15 / 855 * 100}vh`,
                         }}
                     >
 
-                        sdfsfd
+                        <Scheme title='Главный привод'>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    background:
+                                        bgs[exhauster.datas.main_drive.rotor_current.value.status],
+
+                                    borderRadius: 3,
+                                }}
+                            >
+                                <span>{exhauster.datas.main_drive.rotor_current.title}</span>
+                                <span>
+                                    {Math.trunc(exhauster.datas.main_drive.rotor_current.value.number)}
+                                </span>
+                            </div>
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+
+                                    borderRadius: 3,
+                                }}
+                            >
+                                <span>{exhauster.datas.main_drive.rotor_voltage.title}</span>
+                                <span>{Math.trunc(exhauster.datas.main_drive.rotor_voltage.value.number)}</span>
+                            </div>
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+
+                                    borderRadius: 3,
+                                }}
+                            >
+                                <span>{exhauster.datas.main_drive.stator_current.title}</span>
+                                <span>{Math.trunc(exhauster.datas.main_drive.stator_current.value.number)}</span>
+                            </div>
+
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+
+                                    borderRadius: 3,
+                                }}
+                            >
+                                <span>{exhauster.datas.main_drive.stator_temperature.title}</span>
+                                <span>{Math.trunc(exhauster.datas.main_drive.stator_temperature.value.number)}</span>
+                            </div>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+
+                                    borderRadius: 3,
+                                }}
+                            >
+                                <span>{exhauster.datas.main_drive.stator_voltage.title}</span>
+                                <span>{exhauster.datas.main_drive.stator_voltage.value.number}</span>
+                            </div>
+                        </Scheme>
                     </div>
 
                     <div
