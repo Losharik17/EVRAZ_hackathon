@@ -8,6 +8,14 @@ export interface Property {
     title: string;
 }
 
+export interface BooleanProperty {
+    value: {
+        number: boolean;
+        status?: Status;
+    },
+    title: string;
+}
+
 export interface BearingParameters {
     parameters: Property[];
     id: number;
@@ -17,7 +25,12 @@ export interface BearingParameters {
 export interface Bearing {
     id: number;
     number: number;
-    datas: BearingParameters[];
+    datas?: BearingParameters[];
+    current: BearingParameters;
+}
+
+export interface Warning {
+    number: number;
 }
 
 export interface Oil {
@@ -51,7 +64,7 @@ export interface Manifold {
 }
 
 export interface Operations {
-    work: Property;
+    work: BooleanProperty;
     motor_air_temperature_1?: Property;
     motor_air_temperature_2?: Property;
     motor_air_temperature_3?: Property;
@@ -75,12 +88,43 @@ export interface Rotor {
     id: number;
     number: string;
     start_date: string;
+    eksgauster_id: number;
+}
+
+export interface CurrentBearing {
+    added_at: string;
+    parameters: Property[];
+}
+
+export interface BearingMain {
+    id: number;
+    number: number;
+    eksgauster_id: number;
+    current: CurrentBearing;
+}
+
+export interface ExhausterMain {
+    id?: number;
+    name?: string;
+    bearings?: BearingMain[];
+    warnings?: Warning[];
+    datas?: {
+        oil?: Oil;
+    }
+    rotor?: Rotor;
+    work?: BooleanProperty;
 }
 
 export interface Exhauster {
+    id?: number;
+    name?: string;
+    bearings?: Bearing[];
+    datas?: SensorsData[];
+    rotor?: Rotor;
+    current?: SensorsData;
+}
+
+export interface Aglomachine {
     id: number;
-    name: string;
-    bearings: Bearing[];
-    datas: SensorsData[];
-    rotor: Rotor;
+    exhausters: ExhausterMain[];
 }

@@ -1,0 +1,23 @@
+.Scale {
+    width: 100%;
+}
+
+.Division {
+    // padding: 5px 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    display: flex;
+    justify-content: center !important;
+
+    color: #595959;
+    border-right: 1px solid #D9DADA;
+    font-weight: 375;
+    font-size: 12px;
+    line-height: 14px;
+
+}
+
+.Division:first-child {
+    border-left: 1px solid #D9DADA;
+}

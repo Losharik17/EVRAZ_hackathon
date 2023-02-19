@@ -2,7 +2,7 @@ import { ExhausterLamp } from 'entities/exhauster';
 import { FC, useState } from 'react';
 
 interface ExhausterStateProps {
-    title: string;
+    title?: string;
     state?: boolean;
 }
 

@@ -63,5 +63,6 @@ module.exports = {
         'react/jsx-no-useless-fragment': 'off',
         'no-param-reassign': 'off',
         'no-mixed-operators': 'off',
+        camelcase: 'off',
     },
 };

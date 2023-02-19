@@ -14,7 +14,7 @@ enum IndicatorEnum {
 
 const variants = {
     [IndicatorEnum.OIL_PRESURE]: {
-        title: 'ДАВЛЕНИЕ МАСЛА, кг/см<sup>2</sup>',
+        title: 'ДАВЛЕНИЕ МАСЛА, кг/см',
         background: '#FDC65F',
         range: progresBarsRange.oilPresureRange,
     },
@@ -24,7 +24,7 @@ const variants = {
         range: progresBarsRange.oilLevelRange,
     },
     [IndicatorEnum.GAS_TEMPERATURE]: {
-        title: 'ТЕМПЕРАТУРА ГАЗА, &degC',
+        title: 'ТЕМПЕРАТУРА ГАЗА, C',
         background: '#B3B9B9',
         range: progresBarsRange.gasTemperatureRange,
     },

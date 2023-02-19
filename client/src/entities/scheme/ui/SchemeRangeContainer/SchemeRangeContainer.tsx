@@ -14,7 +14,7 @@ export const SchemeRangeContainer: FC<SchemeRangeContainerProps> = ({
     progress,
 }) => (
     <div className={classNames(cls.SchemeRangeContainer, {}, [className])}>
-        {range}
-        {progress}
+        <div className={cls.Range}>{range}</div>
+        <div className={cls.Progress}>{progress}</div>
     </div>
 );
