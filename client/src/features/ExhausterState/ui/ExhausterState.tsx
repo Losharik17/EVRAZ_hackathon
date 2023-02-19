@@ -1,24 +1,11 @@
+import { ExhausterLamp } from 'entities/exhauster';
 import { FC, useState } from 'react';
-import { Checkbox } from 'shared/ui';
 
 interface ExhausterStateProps {
-    title: string;
-    defaultState?: boolean;
+    title?: string;
+    state?: boolean;
 }
 
-export const ExhausterState: FC<ExhausterStateProps> = ({ title, defaultState = false }) => {
-    const [isChecked, setIsChecked] = useState(defaultState);
-
-    const toggleChecked = () => {
-        setIsChecked((prev) => !prev);
-    };
-
-    return (
-        <Checkbox
-            theme={isChecked ? 'active' : 'inactive'}
-            isChecked={isChecked}
-            toggleChecked={toggleChecked}
-            label={title}
-        />
-    );
-};
+export const ExhausterState: FC<ExhausterStateProps> = ({ title, state = false }) => (
+    <ExhausterLamp variant={state ? 'active' : 'inactive'} />
+);
