@@ -7,5 +7,3 @@ from app.main.kafka_consumer import read
 @bp.route('/123', methods=['GET'])
 def test():
     return jsonify({'status': 'ok'})
-
-
