@@ -6,3 +6,4 @@ export { Chip } from './Chip/Chip';
 export { Alert } from './Alert/Alert';
 export { Button } from './Button/Button';
 export { Exhauster } from '../../widgets/Exhauster/Exhauster';
+export { Loader } from './Loader/Loader';

@@ -99,7 +99,7 @@ export const Controls: FC<ControlsProps> = ({ className, controls }) => (
                                     <TrendsContolsProperty title={(
                                         <>
                                             <TrendsFilterToggle
-                                                name={`${parameters.temperature}${title}`}
+                                                name={`${Object.keys(parameters)[0]}`}
                                             />
                                             {parameters.temperature}
                                         </>
@@ -110,7 +110,7 @@ export const Controls: FC<ControlsProps> = ({ className, controls }) => (
                                     <TrendsContolsProperty title={(
                                         <>
                                             <TrendsFilterToggle
-                                                name={`${parameters.vibration_axial}${title}`}
+                                                name={`${Object.keys(parameters)[1]}`}
                                             />
                                             {parameters.vibration_axial}
                                         </>
@@ -121,7 +121,7 @@ export const Controls: FC<ControlsProps> = ({ className, controls }) => (
                                     <TrendsContolsProperty title={(
                                         <>
                                             <TrendsFilterToggle
-                                                name={`${parameters.vibration_horizontal}${title}`}
+                                                name={`${Object.keys(parameters)[2]}`}
                                             />
                                             {parameters.vibration_horizontal}
                                         </>
@@ -132,7 +132,7 @@ export const Controls: FC<ControlsProps> = ({ className, controls }) => (
                                     <TrendsContolsProperty title={(
                                         <>
                                             <TrendsFilterToggle
-                                                name={`${parameters.vibration_vertical}${title}`}
+                                                name={`${Object.keys(parameters)[3]}`}
                                             />
                                             {parameters.vibration_vertical}
                                         </>
@@ -146,7 +146,7 @@ export const Controls: FC<ControlsProps> = ({ className, controls }) => (
                         <TrendsContolsProperty title={(
                             <>
                                 <TrendsFilterToggle
-                                    name={`${controls.oil.oil_level}`}
+                                    name={`${Object.keys(controls.oil)[0]}`}
                                 />
                                 {controls.oil.oil_level}
                             </>
@@ -155,7 +155,7 @@ export const Controls: FC<ControlsProps> = ({ className, controls }) => (
                         <TrendsContolsProperty title={(
                             <>
                                 <TrendsFilterToggle
-                                    name={`${controls.oil.oil_pressure}`}
+                                    name={`${Object.keys(controls.oil)[1]}`}
                                 />
                                 {controls.oil.oil_pressure}
                             </>
@@ -166,7 +166,7 @@ export const Controls: FC<ControlsProps> = ({ className, controls }) => (
                         <TrendsContolsProperty title={(
                             <>
                                 <TrendsFilterToggle
-                                    name={`${controls.gas_manifold.collector_temperature_before}`}
+                                    name={`${Object.keys(controls.gas_manifold)[0]}`}
                                 />
                                 {controls.gas_manifold.collector_temperature_before}
                             </>
@@ -175,7 +175,7 @@ export const Controls: FC<ControlsProps> = ({ className, controls }) => (
                         <TrendsContolsProperty title={(
                             <>
                                 <TrendsFilterToggle
-                                    name={`${controls.gas_manifold.collector_underpressure_before}`}
+                                    name={`${Object.keys(controls.gas_manifold)[1]}`}
                                 />
                                 {controls.gas_manifold.collector_underpressure_before}
                             </>

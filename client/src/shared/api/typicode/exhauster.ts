@@ -109,7 +109,7 @@ export interface ExhausterMain {
     id?: number;
     name?: string;
     bearings?: BearingMain[];
-    warnings?: Warning[];
+    warnings?: Array<number>;
     datas?: {
         oil?: Oil;
     }

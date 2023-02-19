@@ -32,7 +32,7 @@ export const ExhausterCard: FC<ExhausterCardProps> = ({
 }) => (
     <Card className={className}>
         <ExhausterRow
-            before={<ExhausterState state={false} />}
+            before={<ExhausterState state={exhauster.work.value.number} />}
             title={`Эксгаустер ${exhauster.name}`}
             after={(
                 <ExhausterLink to={`${RoutePath.Эксгаустер}?id=${exhauster.id}`} />
@@ -66,7 +66,7 @@ export const ExhausterCard: FC<ExhausterCardProps> = ({
                             id,
                             number,
                             current: { parameters },
-                        }) => (exhauster.warnings.find((warn) => warn.number !== number)
+                        }) => (exhauster.warnings.find((n) => n === number)
                             ? (
                                 <>
                                     <ExhausterWarning
@@ -108,7 +108,7 @@ export const ExhausterCard: FC<ExhausterCardProps> = ({
                             id,
                             number,
                             current: { parameters },
-                        }) => (exhauster.warnings.find((warn) => warn.number === number)
+                        }) => (exhauster.warnings.includes(number)
                             ? (
                                 <>
                                     <ExhausterWarning

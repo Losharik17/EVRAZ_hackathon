@@ -13,7 +13,7 @@ export const exhausterApi = api.injectEndpoints({
             query: (id) => ({ url: '/eksgauster_all/' + id }),
             providesTags: ['Exhauster']
         }),
-        getAglomachine: build.query<Aglomachine, any>({ 
+        getAglomachine: build.query<Aglomachine[], any>({ 
             query: (id) => ({ url: '/aglomachine' }),
             providesTags: ['Exhauster']
         }),
@@ -21,10 +21,11 @@ export const exhausterApi = api.injectEndpoints({
             query: () => ({ url: '/graphics' }),
             providesTags: ['Exhauster']
         }),
-        createChart: build.mutation<any, any>({
-            query: () => ({
+        getChart: build.mutation<any, any>({
+            query: (line: any) => ({
                 url: '/user/registration',
                 method: 'POST',
+                body: line
             }),
         })
     }) 
