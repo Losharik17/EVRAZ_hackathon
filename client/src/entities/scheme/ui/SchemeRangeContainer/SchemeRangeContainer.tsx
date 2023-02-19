@@ -13,7 +13,7 @@ export const SchemeRangeContainer: FC<SchemeRangeContainerProps> = ({
     range,
     progress,
 }) => (
-    <div className={classNames(cls.SchemeRangeContainer, {}, [className])}>
+    <div style={{ width: '100%', height: '100%' }} className={classNames(cls.SchemeRangeContainer, {}, [className])}>
         <div className={cls.Range}>{range}</div>
         <div className={cls.Progress}>{progress}</div>
     </div>
