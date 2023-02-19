@@ -1,8 +1,7 @@
 import { FC } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-daterangepicker/daterangepicker.css';
+
 import cls from './TrendsBar.module.scss';
 
 interface TrendsBarProps {

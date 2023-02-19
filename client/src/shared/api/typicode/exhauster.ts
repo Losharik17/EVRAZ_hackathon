@@ -1,3 +1,5 @@
+import { Card } from '../../ui/Card/Card';
+
 export type Status = 'idle' | 'warning' | 'critical'
 
 export interface Property {
@@ -149,5 +151,57 @@ export interface Exhauster {
 
 export interface Aglomachine {
     id: number;
-    exhausters: ExhausterMain[];
+    number: number;
+    eksgausters: ExhausterMain[];
+}
+
+export interface CustomParameters {
+    temperature: string,
+    vibration_vertical: string,
+    vibration_horizontal: string;
+    vibration_axial: string;
+}
+
+export interface CustomOil extends Oil{
+    title: string;
+}
+
+export interface CustomOilpump extends OilPump {
+    title: string;
+}
+
+export interface CustomMainDrive extends MainDrive {
+    title: string;
+}
+
+export interface CustomCooler extends Cooler {
+    title: string;
+}
+
+export interface CustomOperations extends Operations {
+    title: string;
+}
+
+export interface CustomManifold extends Manifold {
+    title: string;
+}
+
+export interface BearingItem {
+    title: string;
+    parameters: CustomParameters;
+}
+
+export interface Bearings {
+    title: string;
+    items: BearingItem[]
+}
+
+export interface ExhausterChart {
+    bearings: Bearings;
+    oil: CustomOil;
+    oil_pump: CustomOilpump;
+    main_drive: CustomMainDrive;
+    cooler: CustomCooler;
+    gas_manifold: CustomManifold;
+    eksgauster_operation: CustomOperations;
 }

@@ -1,4 +1,5 @@
-import { Exhauster, ExhausterMain } from '../models';
+import { Aglomachine } from '../typicode/exhauster';
+import { Exhauster, ExhausterMain, ExhausterChart } from '../models';
 import { api } from './api';
 
 /* eslint-disable */
@@ -12,7 +13,21 @@ export const exhausterApi = api.injectEndpoints({
             query: (id) => ({ url: '/eksgauster_all' }),
             providesTags: ['Exhauster']
         }),
-    })
+        getAglomachine: build.query<Aglomachine, any>({ 
+            query: (id) => ({ url: '/aglomachine' }),
+            providesTags: ['Exhauster']
+        }),
+        getChartTitles: build.query<ExhausterChart, any>({ 
+            query: () => ({ url: '/graphics' }),
+            providesTags: ['Exhauster']
+        }),
+        createChart: build.mutation<any, any>({
+            query: () => ({
+                url: '/user/registration',
+                method: 'POST',
+            }),
+        })
+    }) 
 });
 /* eslint-enable */
 export const {
@@ -20,4 +35,7 @@ export const {
     useLazyGetExhausterQuery,
     useLazyGetAllExhausterPropertiesQuery,
     useGetAllExhausterPropertiesQuery,
+    useLazyGetAglomachineQuery,
+    useGetChartTitlesQuery,
+    useLazyGetChartTitlesQuery,
 } = exhausterApi;

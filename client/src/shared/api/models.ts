@@ -16,4 +16,5 @@ export {
     ExhausterMain,
     CurrentBearing,
     BearingMain,
+    ExhausterChart,
 } from './typicode/exhauster';
