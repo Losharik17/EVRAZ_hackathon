@@ -21,6 +21,12 @@ import { Scale } from 'entities/scheme/ui/Scale/Scale';
 import cls from './Exhauster.module.scss';
 import exhausterPng from './exhauster.png';
 
+const bgs = {
+    idle: 'inherit',
+    critical: '#EB5835',
+    warning: '#FAB82E',
+};
+
 interface ExhausterProps extends HTMLAttributes<HTMLDivElement> {
     className?: string;
     exhauster?: IExhauster;
@@ -58,10 +64,20 @@ export const Exhauster: FC<ExhausterProps> = ({
                     >
                         <Scheme title='9 ПС'>
                             {exhauster.bearings[9].current.parameters.map(({ title, value }) => (
-                                <div key={title}>
+                                <div
+                                    key={title}
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        background: bgs[value.status],
+                                        padding: 5,
+                                        borderRadius: 3,
+                                    }}
+                                >
                                     <span>
-                                        {`${title}${Math.trunc(value.number)}`}
+                                        {title}
                                     </span>
+                                    <span>{`${Math.trunc(value.number)}`}</span>
                                 </div>
                             ))}
                         </Scheme>
@@ -77,10 +93,10 @@ export const Exhauster: FC<ExhausterProps> = ({
                                     style={{
                                         display: 'flex',
                                         justifyContent: 'space-between',
-                                        background: value.status === 'critical'
-                                            ? '#EB5835' : '#FAB82E',
+                                        background: bgs[value.status],
+                                        padding: 5,
+                                        borderRadius: 3,
                                     }}
-
                                 >
                                     <span>
                                         {title}
@@ -101,6 +117,9 @@ export const Exhauster: FC<ExhausterProps> = ({
                                     style={{
                                         display: 'flex',
                                         justifyContent: 'space-between',
+                                        background: bgs[value.status],
+                                        padding: 5,
+                                        borderRadius: 3,
                                     }}
                                 >
                                     <span>
@@ -122,6 +141,9 @@ export const Exhauster: FC<ExhausterProps> = ({
                                     style={{
                                         display: 'flex',
                                         justifyContent: 'space-between',
+                                        background: bgs[value.status],
+                                        padding: 5,
+                                        borderRadius: 3,
                                     }}
                                 >
                                     <span>
@@ -143,6 +165,9 @@ export const Exhauster: FC<ExhausterProps> = ({
                                     style={{
                                         display: 'flex',
                                         justifyContent: 'space-between',
+                                        background: bgs[value.status],
+                                        padding: 5,
+                                        borderRadius: 3,
                                     }}
                                 >
                                     <span>
@@ -159,10 +184,20 @@ export const Exhauster: FC<ExhausterProps> = ({
                     >
                         <Scheme title='2 ПС'>
                             {exhauster.bearings[2].current.parameters.map(({ title, value }) => (
-                                <div key={title}>
+                                <div
+                                    key={title}
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        background: bgs[value.status],
+                                        padding: 5,
+                                        borderRadius: 3,
+                                    }}
+                                >
                                     <span>
-                                        {`${title}${Math.trunc(value.number)}`}
+                                        {title}
                                     </span>
+                                    <span>{`${Math.trunc(value.number)}`}</span>
                                 </div>
                             ))}
                         </Scheme>
@@ -173,10 +208,20 @@ export const Exhauster: FC<ExhausterProps> = ({
                     >
                         <Scheme title='5 ПС'>
                             {exhauster.bearings[5].current.parameters.map(({ title, value }) => (
-                                <div key={title}>
+                                <div
+                                    key={title}
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        background: bgs[value.status],
+                                        padding: 5,
+                                        borderRadius: 3,
+                                    }}
+                                >
                                     <span>
-                                        {`${title}${Math.trunc(value.number)}`}
+                                        {title}
                                     </span>
+                                    <span>{`${Math.trunc(value.number)}`}</span>
                                 </div>
                             ))}
                         </Scheme>
@@ -191,7 +236,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                                 progress={(
                                     <SchemeProgressIndicator
                                         type='Oil presure'
-                                        value={2}
+                                        value={Math.trunc(exhauster.datas.oil.oil_level.value.number)}
                                     />
                                 )}
                             />
@@ -243,10 +288,20 @@ export const Exhauster: FC<ExhausterProps> = ({
                     >
                         <Scheme title='3 ПС'>
                             {exhauster.bearings[3].current.parameters.map(({ title, value }) => (
-                                <div key={title}>
+                                <div
+                                    key={title}
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        background: bgs[value.status],
+                                        padding: 5,
+                                        borderRadius: 3,
+                                    }}
+                                >
                                     <span>
-                                        {`${title}${Math.trunc(value.number)}`}
+                                        {title}
                                     </span>
+                                    <span>{`${Math.trunc(value.number)}`}</span>
                                 </div>
                             ))}
                         </Scheme>
@@ -257,10 +312,20 @@ export const Exhauster: FC<ExhausterProps> = ({
                     >
                         <Scheme title='4 ПС'>
                             {exhauster.bearings[4].current.parameters.map(({ title, value }) => (
-                                <div key={title}>
+                                <div
+                                    key={title}
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        background: bgs[value.status],
+                                        padding: 5,
+                                        borderRadius: 3,
+                                    }}
+                                >
                                     <span>
-                                        {`${title}${Math.trunc(value.number)}`}
+                                        {title}
                                     </span>
+                                    <span>{`${Math.trunc(value.number)}`}</span>
                                 </div>
                             ))}
                         </Scheme>
@@ -273,7 +338,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                         <SchemeRangeContainer progress={(
                             <SchemeProgressIndicator
                                 type='Gas temperature'
-                                value={80}
+                                value={0}
                             />
                         )}
                         />
@@ -289,7 +354,11 @@ export const Exhauster: FC<ExhausterProps> = ({
                         className={cls.rect}
                         style={gate}
                     >
-                        <Gate size={20 / 1449 * 100} state={10} />
+                        <Gate
+                            size={20 / 1449 * 100}
+                            state={Math.trunc(exhauster.datas.gas_valve_position.value.number
+                                ? exhauster.datas.gas_valve_position.value.number : 0)}
+                        />
 
                     </div>
                     <div
@@ -302,7 +371,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                             height: `${21 / 855 * 100}%`,
                         }}
                     >
-                        <SchemePointer label='1' variant='critical' />
+                        <SchemePointer label='9' variant={exhauster.warnings[9]} />
                     </div>
                     <div
                         id='SCHEME-DIV21'
@@ -314,7 +383,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                             height: `${21 / 855 * 100}%`,
                         }}
                     >
-                        <SchemePointer label='1' variant='critical' />
+                        <SchemePointer label='8' variant={exhauster.warnings[8]} />
                     </div>
                     <div
                         id='SCHEME-DIV22'
@@ -326,7 +395,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                             height: `${21 / 855 * 100}%`,
                         }}
                     >
-                        <SchemePointer label='1' variant='warning' />
+                        <SchemePointer label='7' variant={exhauster.warnings[7]} />
                     </div>
                     <div
                         id='SCHEME-DIV23'
@@ -338,7 +407,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                             height: `${21 / 855 * 100}%`,
                         }}
                     >
-                        <SchemePointer label='1' variant='idle' />
+                        <SchemePointer label='3' variant={exhauster.warnings[3]} />
                     </div>
                     <div
                         id='SCHEME-DIV24'
@@ -350,7 +419,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                             height: `${21 / 855 * 100}%`,
                         }}
                     >
-                        <SchemePointer label='1' variant='warning' />
+                        <SchemePointer label='5' variant={exhauster.warnings[5]} />
                     </div>
                     <div
                         id='SCHEME-DIV25'
@@ -362,7 +431,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                             height: `${21 / 855 * 100}%`,
                         }}
                     >
-                        <SchemePointer label='1' variant='warning' />
+                        <SchemePointer label='6' variant={exhauster.warnings[6]} />
                     </div>
                     <div
                         id='SCHEME-DIV26'
@@ -374,7 +443,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                             height: `${21 / 855 * 100}%`,
                         }}
                     >
-                        <SchemePointer label='1' variant='idle' />
+                        <SchemePointer label='4' variant={exhauster.warnings[4]} />
                     </div>
                     <div
                         id='SCHEME-DIV27'
@@ -386,7 +455,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                             height: `${21 / 855 * 100}%`,
                         }}
                     >
-                        <SchemePointer label='1' variant='critical' />
+                        <SchemePointer label='2' variant={exhauster.warnings[2]} />
                     </div>
                     <div
                         id='SCHEME-DIV28'
@@ -436,7 +505,7 @@ export const Exhauster: FC<ExhausterProps> = ({
                                 progress={(
                                     <SchemeProgressIndicator
                                         type='Oil level'
-                                        value={34}
+                                        value={Math.trunc(exhauster.datas.oil.oil_level.value.number)}
                                     />
                                 )}
                             />
