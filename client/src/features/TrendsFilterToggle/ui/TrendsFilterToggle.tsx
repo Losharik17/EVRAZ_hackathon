@@ -6,11 +6,15 @@ import cls from './TrendsFilterToggle.module.scss';
 interface TrendsFilterToggleProps {
     className?: string;
     name?: string;
+    eksgauster_id?: any;
+    number?: any;
 }
 
 export const TrendsFilterToggle: FC<TrendsFilterToggleProps> = ({
     name,
     className,
+    eksgauster_id,
+    number,
 }) => {
     const { addFilter, removeFilter, filter } = useTrendsActions();
     const filters = useTrendsSelector((state) => state.filter.filters);

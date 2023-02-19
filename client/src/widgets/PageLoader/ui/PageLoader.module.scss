@@ -1,0 +1,7 @@
+.PageLoader {
+    min-height: calc(100vh - var(--navbar-height) - var(--page-title-height) - 65px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}

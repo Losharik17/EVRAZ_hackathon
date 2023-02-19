@@ -1,6 +1,7 @@
 import { routeConfig } from 'app/config';
 import { FC, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { PageLoader } from 'widgets/PageLoader';
 import { PageTitle } from 'widgets/PageTitle/ui/PageTitle';
 
 export const AppRouter: FC = () => (
@@ -10,7 +11,7 @@ export const AppRouter: FC = () => (
                 key={path}
                 path={path}
                 element={(
-                    <Suspense fallback={<div>Loading...</div>}>
+                    <Suspense fallback={<PageLoader />}>
                         <div className='page'>
                             <PageTitle title={name} />
                             <div className='page-wrapper'>

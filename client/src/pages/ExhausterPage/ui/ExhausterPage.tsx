@@ -26,7 +26,6 @@ import {
 import { Gate } from 'entities/exhauster';
 import { Scale } from 'entities/scheme/ui/Scale/Scale';
 import { Exhauster } from 'widgets/Exhauster/Exhauster';
-import { ids } from 'webpack';
 import cls from './ExhausterPage.module.scss';
 import exhausterPng from './exhauster.png';
 
@@ -38,7 +37,7 @@ const ExhausterPage: FC<ExhausterPageProps> = ({ className }) => {
     const { search } = useLocation();
     const query = new URLSearchParams(search);
     const id = query.get('id');
-    const [getProps, { data }] = useLazyGetAllExhausterPropertiesQuery();
+    const [getProps, { data, isLoading, isFetching }] = useLazyGetAllExhausterPropertiesQuery();
 
     useEffect(() => {
         getProps(id);
@@ -46,7 +45,7 @@ const ExhausterPage: FC<ExhausterPageProps> = ({ className }) => {
 
     return (
         <div className={classNames(cls.ExhausterPage, {}, [className])}>
-            {/* {exhauster !== undefined ? <Exhauster exhauster={exhauster} /> : <></>} */}
+            {isLoading && <PageLoader />}
             {data && <Exhauster exhauster={data} />}
         </div>
     );

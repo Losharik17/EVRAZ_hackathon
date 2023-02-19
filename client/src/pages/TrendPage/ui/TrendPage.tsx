@@ -5,6 +5,7 @@ import { Controls } from 'widgets/Controls';
 import { Chart } from 'widgets/Chart';
 import { useLocation } from 'react-router-dom';
 import { useLazyGetChartTitlesQuery } from 'shared/api/service/exhauster';
+import { Loader } from 'shared/ui';
 import cls from './TrendPage.module.scss';
 
 interface TrendPageProps {
@@ -16,7 +17,7 @@ const TrendPage: FC<TrendPageProps> = ({ className }) => {
     const query = new URLSearchParams(search);
     const id = query.get('id');
 
-    const [getChartTitles, { data }] = useLazyGetChartTitlesQuery();
+    const [getChartTitles, { data, isLoading }] = useLazyGetChartTitlesQuery();
 
     useEffect(() => {
         getChartTitles('');
@@ -24,8 +25,15 @@ const TrendPage: FC<TrendPageProps> = ({ className }) => {
     console.log(data);
     return (
         <div className={classNames(cls.TrendPage, {}, [className])}>
-            {data !== undefined ? <Controls controls={data} /> : <></>}
-            <Chart />
+            {isLoading && <Loader />}
+            {data !== undefined ? (
+                <>
+                    <Controls controls={data} />
+                    {' '}
+                    <Chart />
+                </>
+            ) : <></>}
+
         </div>
     );
 };

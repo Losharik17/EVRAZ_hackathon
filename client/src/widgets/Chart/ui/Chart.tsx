@@ -35,11 +35,27 @@ const data = [
     { name: '03:00', uv: 320, pv: 200 },
     { name: '03:15', uv: 200, pv: 200 },
     { name: '03:30', uv: 600, pv: 200 },
-    { name: '03:45', uv: 100, pv: 200 },
-    { name: '04:00', uv: 320, pv: 200 },
-    { name: '04:15', uv: 200, pv: 200 },
-    { name: '04:30', uv: 600, pv: 200 },
-    { name: '04:45', uv: 100, pv: 200 },
+    { name: '03:45', uv: 100, pv: 1200 },
+    { name: '04:00', uv: 310, pv: 210 },
+    { name: '04:15', uv: 2023, pv: 300 },
+    { name: '04:30', uv: 6320, pv: 400 },
+    { name: '04:45', uv: 120, pv: 200 },
+    { name: '05:00', uv: 320, pv: 120 },
+    { name: '05:15', uv: 100, pv: 30 },
+    { name: '05:30', uv: 600, pv: 1230 },
+    { name: '05:45', uv: 80, pv: 280 },
+    { name: '06:00', uv: 120, pv: 700 },
+    { name: '06:15', uv: 130, pv: 777 },
+    { name: '06:30', uv: 723, pv: 123 },
+    { name: '06:45', uv: 150, pv: 200 },
+    { name: '07:00', uv: 920, pv: 412 },
+    { name: '07:15', uv: 700, pv: 200 },
+    { name: '07:30', uv: 100, pv: 123 },
+    { name: '07:45', uv: 500, pv: 200 },
+    { name: '08:00', uv: 420, pv: 312 },
+    { name: '08:15', uv: 210, pv: 921 },
+    { name: '08:30', uv: 620, pv: 21 },
+    { name: '08:45', uv: 200, pv: 200 },
 ];
 
 export const Chart: FC<ChartProps> = ({ className }) => {
@@ -107,7 +123,7 @@ export const Chart: FC<ChartProps> = ({ className }) => {
                         />
                     ))}
                     <Line type='monotone' dataKey='uv' stroke='red' />
-                    <Line dataKey='pv' stroke='yellow' />
+                    <Line dataKey='pv' stroke='black' />
                 </LineChart>
             </ResponsiveContainer>
         </div>
