@@ -1,5 +1,7 @@
 from functools import lru_cache
+
 from sqlalchemy_mixins import AllFeaturesMixin
+
 from app import db
 from app.mapping_models import (AglomachineMapping, BearingMapping,
                                 EksgausterMapping)

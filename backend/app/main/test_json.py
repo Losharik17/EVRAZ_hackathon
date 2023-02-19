@@ -1,6 +1,8 @@
 import datetime as dt
 import json
-from sqlalchemy import or_, extract
+
+from sqlalchemy import extract, or_
+
 from app.models import *
 
 

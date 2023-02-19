@@ -1,12 +1,14 @@
 import datetime as dt
+import json
 from math import ceil
-from sqlalchemy import or_
+
 from flask import jsonify, make_response
 from flask_restful import Resource, reqparse
-from app.models import Aglomachine, Eksgauster, EksgausterData, BearingData, \
-    AglomachineData, Bearing
-import json
+from sqlalchemy import or_
+
 from app import db
+from app.models import (Aglomachine, AglomachineData, Bearing, BearingData,
+                        Eksgauster, EksgausterData)
 
 
 class EksgausterCurrentResource(Resource):

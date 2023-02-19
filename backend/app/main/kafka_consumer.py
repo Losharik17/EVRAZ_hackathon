@@ -1,11 +1,11 @@
+import datetime as dt
+import json
 import time
 
 from kafka import KafkaConsumer
-import datetime as dt
-import json
-from app.models import *
 
 from app import create_app
+from app.models import *
 
 
 def read():
@@ -89,9 +89,7 @@ def read():
                     db.session.commit()
 
 # read()
-from multiprocessing import current_process
-from multiprocessing import Process
-
+from multiprocessing import Process, current_process
 
 # process = Process(target=read, daemon=True)
 # process.start()

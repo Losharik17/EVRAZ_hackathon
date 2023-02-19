@@ -1,6 +1,8 @@
+import json
 import logging
 import os
 from logging.handlers import RotatingFileHandler, SMTPHandler
+
 from flask import Flask
 from flask_admin import Admin
 from flask_babelex import Babel as BabelEx
@@ -11,8 +13,8 @@ from flask_marshmallow import Marshmallow
 from flask_migrate import Migrate
 from flask_socketio import SocketIO
 from flask_sqlalchemy import SQLAlchemy
+
 from config import Config
-import json
 
 db = SQLAlchemy()
 migrate = Migrate()
